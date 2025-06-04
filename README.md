@@ -5,8 +5,12 @@
 
 -   register user
     -   ~~db query create user~~
-    -   router post /users
-        -   bcryptjs
+    -   ~~router post /users~~
+        -   ~~bcryptjs~~
+    -   errors 
+        -   error handler
+        -   database error
+        -   same username error
     -   validations
 
 
