@@ -6,6 +6,8 @@
 -   register user
     -   ~~db query create user~~
     -   router post /users
+        -   bcryptjs
+    -   validations
 
 
 
