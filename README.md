@@ -12,6 +12,8 @@
         -   database error
         -   same username error
     -   validations
+        -   ~~implement validations~~
+        -   validation error return
 
 
 

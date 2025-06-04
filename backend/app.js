@@ -12,5 +12,10 @@ app.get('/', (req, res, next) => {
 })
 app.use('/users', userRouter);
 
+// error handler 
+app.use((error, req, res, next) => {
+    res.status(500).json(error);
+})
+
 const PORT = 3000;
 app.listen(PORT, () => console.log(`listening on port: ${PORT}`));
