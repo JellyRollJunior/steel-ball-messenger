@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { makeRequest } from "../../utils/requests.js";
-import { getUrl } from "../../utils/serverUrl.js";
+import { useState } from 'react';
+import { makeRequest } from '../../utils/requests.js';
+import { getUrl } from '../../utils/serverUrl.js';
+import { Link } from 'react-router';
 
 const Login = () => {
   const [username, setUsername] = useState('');
@@ -54,6 +55,9 @@ const Login = () => {
         required
       />
       <button>Submit</button>
+      <Link to="/signup">
+        <button type="button">Sign up</button>
+      </Link>
     </form>
   );
 };
