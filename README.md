@@ -4,11 +4,10 @@
 
 -   login
     -   ~~retrieve user query~~
-    -   passport config
-    -   local strategy
-    -   store user in backend middleware
-    -   return jwt token on login
-    -   validations
+    -   ~~validations~~
+    -   jwt strategy
+        -   return jwt token on login
+        -   store user in request
 
 ## TODOS - frontend
 
