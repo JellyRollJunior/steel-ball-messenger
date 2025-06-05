@@ -5,6 +5,6 @@
 ## TODOS - frontend
 
 -   form
-    -   create login form
-    -   post /login request
+    -   ~~create login form~~
+    -   ~~post /login request~~
     -   link to /signup
