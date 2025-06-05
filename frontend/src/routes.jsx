@@ -1,6 +1,6 @@
 import { createBrowserRouter } from 'react-router';
 import { App } from './App.jsx';
-import { Signup } from './pages/Signup.jsx';
+import { Signup } from './pages/Signup/Signup.jsx';
 
 const router = createBrowserRouter([
   {

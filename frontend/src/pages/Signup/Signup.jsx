@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { makeRequest } from '../utils/requests.js';
-import { getUrl } from '../utils/serverUrl.js';
+import { makeRequest } from '../../utils/requests.js';
+import { getUrl } from '../../utils/serverUrl.js';
 
 const Signup = () => {
-  const [username, setUsername] = useState(null);
-  const [password, setPassword] = useState(null);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
   const submitSignup = async (event) => {
