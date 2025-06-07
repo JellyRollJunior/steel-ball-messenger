@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { userRouter } from './routes/userRouter.js';
 import { loginRouter } from './routes/loginRouter.js';
+import { chatRouter } from './routes/chatRouter.js';
 
 const app = express();
 app.use(cors());
@@ -13,6 +14,7 @@ app.get('/', (req, res, next) => {
 });
 app.use('/users', userRouter);
 app.use('/login', loginRouter);
+app.use('/chats', chatRouter);
 
 // error handler
 app.use((error, req, res, next) => {
