@@ -13,12 +13,7 @@
 -   messaging
 
     -   db queries
-        -   ~~create chat~~
-        -   ~~retrieve chat~~
         -   create message
-    -   /chats
-        -   POST
-            -   users validation
     -   /messages
         -   POST
 
