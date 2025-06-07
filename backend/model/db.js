@@ -65,7 +65,7 @@ const createChat = async (users) => {
         });
         return chat;
     } catch (error) {
-        throw new DatabaseError('unable to insert chat');
+        throw new DatabaseError('unable to create chat');
     }
 };
 
