@@ -62,6 +62,14 @@ const createChat = async (users) => {
                     connect: userIdArray,
                 },
             },
+            include: {
+                users: {
+                    select: {
+                        id: true,
+                        username: true,
+                    },
+                },
+            },
         });
         return chat;
     } catch (error) {
