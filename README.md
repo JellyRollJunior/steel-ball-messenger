@@ -2,6 +2,7 @@
 
 ## TODOS - backend
 
+-   deserialize current user from token
 -   messaging
     -   db queries
         -   ~~create chat~~
