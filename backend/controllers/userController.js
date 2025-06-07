@@ -12,7 +12,7 @@ const postUser = async (req, res, next) => {
         const username = req.body.username;
         const password = req.body.password;
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = await db.insertUser(username, hashedPassword);
+        const user = await db.createUser(username, hashedPassword);
         res.json(user);
     } catch (error) {
         next(error);
