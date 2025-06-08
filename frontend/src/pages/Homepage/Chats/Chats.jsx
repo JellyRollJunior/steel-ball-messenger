@@ -1,10 +1,9 @@
 import { useState } from 'react';
-import { useChats } from '../../../hooks/useChats.jsx';
+import { useChats } from '../../../hooks/useChats.js';
 
 const Chats = () => {
   const { chats, loading, error } = useChats();
   const [showCreateChat, setShowCreateChat] = useState(false);
-  console.log(chats);
 
   return (
     <section>
