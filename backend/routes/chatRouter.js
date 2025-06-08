@@ -5,6 +5,7 @@ import * as chatController from '../controllers/chatController.js';
 
 const chatRouter = Router();
 
-chatRouter.post('/', authenticate, chatValidation, chatController.postChat);
+chatRouter.get('/', authenticate, chatController.getChats)
+chatRouter.post('/', authenticate, chatValidation, chatController.postChats);
 
 export { chatRouter };

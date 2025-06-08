@@ -1,8 +1,17 @@
 import { validationResult } from 'express-validator';
-import * as db from '../model/db.js';
 import { ValidationError } from '../errors/ValidationError.js';
+import * as db from '../model/db.js';
 
-const postChat = async (req, res, next) => {
+const getChats = async (req, res, next) => {
+    try {
+        const chats = await db.getChats(req.user.id);
+        res.json({ chats });
+    } catch (error) {
+        next(error);
+    }
+};
+
+const postChats = async (req, res, next) => {
     const validationErrors = validationResult(req);
     try {
         if (!validationErrors.isEmpty()) {
@@ -17,4 +26,4 @@ const postChat = async (req, res, next) => {
     }
 };
 
-export { postChat };
+export { getChats, postChats };
