@@ -21,6 +21,9 @@
 -   chat
     -   latest message
 
+-   queries
+    -   return chats by ID or some order that makes sense
+
 ## TODOS - frontend
 
 -   homepage
