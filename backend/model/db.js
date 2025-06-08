@@ -3,10 +3,10 @@ import { DatabaseError } from '../errors/DatabaseError.js';
 
 const prisma = new PrismaClient();
 
-const getUsers = async (params = {}) => {
+const getUsers = async (where = {}) => {
     try {
         const user = await prisma.user.findMany({
-            where: params,
+            where: where,
         });
         return user;
     } catch (error) {
