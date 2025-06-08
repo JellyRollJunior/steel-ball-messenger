@@ -4,6 +4,7 @@
 
 | METHOD | URI    | Function                       | Body                  | Notes              |
 | ------ | ------ | ------------------------------ | --------------------- | ------------------ |
+| GET    | /users | Retrieve all user              | token                 |                    |
 | POST   | /users | Create user                    | { username, password} |                    |
 | POST   | /login | Login user                     | { username, password} |                    |
 | GET    | /chats | Retrieve all chats for user    | token                 |                    |
@@ -19,6 +20,7 @@
         -   POST
 
 -   chat
+
     -   latest message
 
 -   queries
@@ -27,10 +29,12 @@
 ## TODOS - frontend
 
 -   creating a chat
-    -   create button to show chat form
-    -   creating chat form
-        -   retrieve all users
-    -   send post request with all users on form submit
+    -   ~~create button to show chat form~~
+    -   ~~creating chat form~~
+        -   ~~retrieve all users~~
+    -   ~~send post request with all users on form submit~~
+
+
 
 ### TODO LATER
 
@@ -38,3 +42,4 @@
 -   signup redirects to login
 -   login redirects to index
 -   index redirects to login if user not logged in
+-   trigger refetch chats on new chat creation

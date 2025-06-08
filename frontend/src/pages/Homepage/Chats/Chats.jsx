@@ -1,12 +1,36 @@
 import { useState } from 'react';
 import { useChats } from '../../../hooks/useChats.js';
 import { useUsers } from '../../../hooks/useUsers.js';
+import { makeRequest } from '../../../utils/requests.js';
+import { getUrl } from '../../../utils/serverUrl.js';
 
 const Chats = () => {
   const { chats, loading, error } = useChats();
   const { users, loading: loadingUsers, error: errorUsers } = useUsers();
   const [showCreateChat, setShowCreateChat] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
+  console.log(selectedUser);
+  const createChat = async (event) => {
+    event.preventDefault();
+    try {
+      const token = localStorage.getItem('token');
+      const formatUser = [{ id: Number(selectedUser) }];
+      const newChat = await makeRequest(getUrl('/chats'), {
+        mode: 'cors',
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `bearer ${token}`,
+        },
+        body: JSON.stringify({
+          users: formatUser
+        }),
+      });
+      console.log(newChat);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <section>
@@ -17,7 +41,7 @@ const Chats = () => {
       {error && <h2>{error}</h2>}
       {loading && <h2>loading</h2>}
       {showCreateChat && (
-        <form>
+        <form onSubmit={createChat}>
           <select
             name="users"
             id="users"
