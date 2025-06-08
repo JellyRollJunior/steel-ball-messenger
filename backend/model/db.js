@@ -14,6 +14,20 @@ const getUsers = async (params = {}) => {
     }
 };
 
+const getAllUsers = async () => {
+    try {
+        const user = await prisma.user.findMany({
+            select: {
+                id: true,
+                username: true,
+            },
+        });
+        return user;
+    } catch (error) {
+        throw new DatabaseError('Unable to fetch users', 500);
+    }
+};
+
 const createUser = async (username, password) => {
     try {
         const user = await prisma.user.create({
@@ -77,4 +91,4 @@ const createChat = async (users) => {
     }
 };
 
-export { getUsers, createUser, getChats, createChat };
+export { getUsers, getAllUsers, createUser, getChats, createChat };

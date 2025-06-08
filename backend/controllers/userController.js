@@ -1,7 +1,16 @@
-import bcrypt from "bcryptjs";
-import { ValidationError } from "../errors/ValidationError.js";
-import { validationResult } from "express-validator";
-import * as db from "../model/db.js";
+import bcrypt from 'bcryptjs';
+import { ValidationError } from '../errors/ValidationError.js';
+import { validationResult } from 'express-validator';
+import * as db from '../model/db.js';
+
+const getUsers = async (req, res, next) => {
+    try {
+        const users = await db.getAllUsers();
+        res.json({ users });
+    } catch (error) {
+        next(error);
+    }
+};
 
 const postUser = async (req, res, next) => {
     const validationErrors = validationResult(req);
@@ -19,4 +28,4 @@ const postUser = async (req, res, next) => {
     }
 };
 
-export { postUser };
+export { getUsers, postUser };
