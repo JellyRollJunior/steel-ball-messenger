@@ -6,14 +6,10 @@
 | ------ | ------ | ------------------------------ | --------------------- | ------------------ |
 | POST   | /users | Create user                    | { username, password} |                    |
 | POST   | /login | Login user                     | { username, password} |                    |
-| GET    | /chats | Retrieve all chats for user    | token                 | chat: { id, users} |
-| POST   | /chats | Create chat between >= 1 users | token, { users }      | returns chat id    |
+| GET    | /chats | Retrieve all chats for user    | token                 |                    |
+| POST   | /chats | Create chat between >= 1 users | token, { users }      | chat: { id, users} |
 
 ## TODOS - backend
-
--   chats
-
-    -   GET /chats
 
 -   messaging
 
@@ -26,6 +22,10 @@
     -   latest message
 
 ## TODOS - frontend
+
+-   homepage
+    -   ~~render homepage on index route~~
+    -   render chats component
 
 -   creating component to show all chats
 
