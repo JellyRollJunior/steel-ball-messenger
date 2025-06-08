@@ -26,15 +26,6 @@
 
 ## TODOS - frontend
 
--   homepage
-    -   ~~render homepage on index route~~
-    -   render chats component
-
--   creating component to show all chats
-
-    -   retrieve all chats
-    -   display them
-
 -   creating a chat
     -   create button to show chat form
     -   creating chat form
