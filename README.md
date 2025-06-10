@@ -15,13 +15,17 @@
 -   messaging
 
     -   db queries
+        -   retrieve messages
         -   create message
     -   /messages
-        -   POST
+        -   POST /chats/:chatId/messages
+        -   GET
 
 -   chat
 
-    -   latest message
+    -   GET /chats/:chatId
+        -   retrieves all messages
+        -   
 
 -   queries
     -   return chats by ID or some order that makes sense
@@ -32,6 +36,7 @@
 
 ### TODO LATER
 
+-   GET /chats -> implement get latest message
 -   FIX: disallow creating chats that already exist (same users)
 -   signup redirects to login
 -   login redirects to index

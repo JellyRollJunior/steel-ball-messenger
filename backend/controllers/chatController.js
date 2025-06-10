@@ -4,7 +4,7 @@ import * as db from '../model/db.js';
 
 const getChats = async (req, res, next) => {
     try {
-        const chats = await db.getChats(req.user.id);
+        const chats = await db.getAllChats(req.user.id);
         res.json({ chats });
     } catch (error) {
         next(error);

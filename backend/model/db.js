@@ -42,7 +42,7 @@ const createUser = async (username, password) => {
     }
 };
 
-const getChats = async (userId) => {
+const getAllChats = async (userId) => {
     try {
         const chats = await prisma.chat.findMany({
             include: {
@@ -64,6 +64,34 @@ const getChats = async (userId) => {
         return chats;
     } catch (error) {
         throw new DatabaseError('unable to retrieve chats');
+    }
+};
+
+const getChatById = async (userId, chatId) => {
+    try {
+        const chat = await prisma.chat.findFirst({
+            where: {
+                id: Number(chatId),
+                users: {
+                    some: {
+                        id: Number(userId)
+                    }
+                }
+            },
+            include: {
+                messages: true,
+                users: {
+                    select: {
+                        id: true,
+                        username: true,
+                    },
+                },
+            },
+        });
+        if (!chat) throw new Error();
+        return chat;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve chat');
     }
 };
 
@@ -91,4 +119,4 @@ const createChat = async (users) => {
     }
 };
 
-export { getUsers, getAllUsers, createUser, getChats, createChat };
+export { getUsers, getAllUsers, createUser, getChatById, getAllChats, createChat };
