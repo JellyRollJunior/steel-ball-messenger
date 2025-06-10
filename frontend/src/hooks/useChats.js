@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
 
@@ -7,36 +7,41 @@ const useChats = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    const fetchChats = useCallback(async (signal) => {
+        setLoading(true);
+        const token = localStorage.getItem('token');
+        try {
+            const data = await makeRequest(getUrl('/chats'), {
+                mode: 'cors',
+                method: 'GET',
+                headers: {
+                    Authorization: `bearer ${token}`,
+                },
+                signal,
+            });
+            setChats(data.chats);
+            setError(null);
+        } catch (error) {
+            console.log(error);
+            setError('Error!');
+        } finally {
+            setLoading(false);
+        }
+    }, [])
+
     useEffect(() => {
         const abortController = new AbortController();
-        const fetchChats = async () => {
-            setLoading(true);
-            const token = localStorage.getItem('token');
-            try {
-                const data = await makeRequest(getUrl('/chats'), {
-                    mode: 'cors',
-                    method: 'GET',
-                    headers: {
-                        Authorization: `bearer ${token}`,
-                    },
-                    signal: abortController.signal,
-                });
-                setChats(data.chats);
-                setError(null);
-            } catch (error) {
-                console.log(error);
-                setError('Error!');
-            } finally {
-                setLoading(false);
-            }
-        };
 
-        fetchChats();
+        fetchChats(abortController.signal);
 
         return () => abortController.abort();
-    }, []);
+    }, [fetchChats]);
 
-    return { chats, loading, error };
+    const refetch = () => {
+        fetchChats();
+    };
+
+    return { chats, loading, error, refetch };
 };
 
 export { useChats };

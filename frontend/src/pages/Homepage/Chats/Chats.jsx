@@ -5,11 +5,11 @@ import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
 const Chats = () => {
-  const { chats, loading, error } = useChats();
+  const { chats, loading, error, refetch: refetchChats } = useChats();
   const { users, loading: loadingUsers, error: errorUsers } = useUsers();
   const [showCreateChat, setShowCreateChat] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  console.log(selectedUser);
+  
   const createChat = async (event) => {
     event.preventDefault();
     try {
@@ -23,9 +23,10 @@ const Chats = () => {
           Authorization: `bearer ${token}`,
         },
         body: JSON.stringify({
-          users: formatUser
+          users: formatUser,
         }),
       });
+      refetchChats();
       console.log(newChat);
     } catch (error) {
       console.log(error);
@@ -39,7 +40,9 @@ const Chats = () => {
         Create new chat
       </button>
       {error && <h2>{error}</h2>}
-      {loading && <h2>loading</h2>}
+      {loading && <h2>loading chats</h2>}
+      {errorUsers && <h2>{errorUsers}</h2>}
+      {loadingUsers && <h2>loading users</h2>}
       {showCreateChat && (
         <form onSubmit={createChat}>
           <select

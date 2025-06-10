@@ -28,12 +28,6 @@
 
 ## TODOS - frontend
 
--   creating a chat
-    -   ~~create button to show chat form~~
-    -   ~~creating chat form~~
-        -   ~~retrieve all users~~
-    -   ~~send post request with all users on form submit~~
-
 
 
 ### TODO LATER
