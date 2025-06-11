@@ -15,17 +15,9 @@
 -   messaging
 
     -   db queries
-        -   retrieve messages
         -   create message
     -   /messages
         -   POST /chats/:chatId/messages
-        -   GET
-
--   chat
-
-    -   GET /chats/:chatId
-        -   retrieves all messages
-        -   
 
 -   queries
     -   return chats by ID or some order that makes sense

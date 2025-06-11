@@ -67,7 +67,7 @@ const getAllChats = async (userId) => {
     }
 };
 
-const getChatById = async (userId, chatId) => {
+const getChatMessages = async (userId, chatId) => {
     try {
         const chat = await prisma.chat.findFirst({
             where: {
@@ -119,4 +119,4 @@ const createChat = async (users) => {
     }
 };
 
-export { getUsers, getAllUsers, createUser, getChatById, getAllChats, createChat };
+export { getUsers, getAllUsers, createUser, getChatMessages, getAllChats, createChat };

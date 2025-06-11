@@ -12,15 +12,19 @@ const getChats = async (req, res, next) => {
 };
 
 const getChatMessages = async (req, res, next) => {
+    const validationErrors = validationResult(req);
     try {
+        if (!validationErrors.isEmpty()) {
+            throw new ValidationError(validationErrors.array());
+        }
         const userId = req.user.id;
         const chatId = req.params.chatId;
-        const chat = await db.getChatById(userId, chatId);
+        const chat = await db.getChatMessages(userId, chatId);
         res.json(chat);
     } catch (error) {
-        next(error)
+        next(error);
     }
-}
+};
 
 const postChats = async (req, res, next) => {
     const validationErrors = validationResult(req);
