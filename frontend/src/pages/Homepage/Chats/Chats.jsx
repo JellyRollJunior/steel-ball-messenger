@@ -4,12 +4,12 @@ import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
-const Chats = () => {
+const Chats = ({ setChatId }) => {
   const { chats, loading, error, refetch: refetchChats } = useChats();
   const { users, loading: loadingUsers, error: errorUsers } = useUsers();
   const [showCreateChat, setShowCreateChat] = useState(false);
   const [selectedUser, setSelectedUser] = useState(null);
-  
+
   const createChat = async (event) => {
     event.preventDefault();
     try {
@@ -69,6 +69,7 @@ const Chats = () => {
           {chats.map((chat) => (
             <li key={chat.id}>
               <div>{chat.id}</div>
+              <button onClick={() => setChatId(chat.id)}>Show messages</button>
               {chat.users.map((user) => (
                 <div key={user.id}>{user.username}</div>
               ))}

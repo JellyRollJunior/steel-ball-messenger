@@ -15,9 +15,15 @@
 -   queries
     -   return chats by ID or some order that makes sense
 
+
 ## TODOS - frontend
 
-
+-   messages
+    -   display messages
+        -   display current user other user chats
+    -   create messages
+        -   create chat component (input)
+        -   make post request on submit
 
 ### TODO LATER
 
@@ -28,5 +34,8 @@
 -   index redirects to login if user not logged in
 -   trigger refetch chats on new chat creation
 -   messages -> only return senderId, content, and date 
-    -   (dont need to send message id and chatId)
+    -   (dont need to send chatId)
     -   orderby datetime
+    -   get /chats/:chatId
+        -   don't return chat (already have this)
+        -   return usernames
