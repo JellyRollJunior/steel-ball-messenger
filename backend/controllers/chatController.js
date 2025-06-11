@@ -11,6 +11,17 @@ const getChats = async (req, res, next) => {
     }
 };
 
+const getChatMessages = async (req, res, next) => {
+    try {
+        const userId = req.user.id;
+        const chatId = req.params.chatId;
+        const chat = await db.getChatById(userId, chatId);
+        res.json(chat);
+    } catch (error) {
+        next(error)
+    }
+}
+
 const postChats = async (req, res, next) => {
     const validationErrors = validationResult(req);
     try {
@@ -26,4 +37,4 @@ const postChats = async (req, res, next) => {
     }
 };
 
-export { getChats, postChats };
+export { getChats, getChatMessages, postChats };
