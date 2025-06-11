@@ -1,13 +1,5 @@
-import { validationResult } from 'express-validator';
-import { ValidationError } from '../errors/ValidationError.js';
+import { validateInput } from '../validations/validateInput.js';
 import * as db from '../model/db.js';
-
-const validateInput = (req) => {
-    const validationErrors = validationResult(req);
-    if (!validationErrors.isEmpty()) {
-        throw new ValidationError(validationErrors.array());
-    }
-};
 
 const getChats = async (req, res, next) => {
     try {

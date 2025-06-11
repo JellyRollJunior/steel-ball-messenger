@@ -1,6 +1,5 @@
 import bcrypt from 'bcryptjs';
-import { ValidationError } from '../errors/ValidationError.js';
-import { validationResult } from 'express-validator';
+import { validateInput } from '../validations/validateInput.js';
 import * as db from '../model/db.js';
 
 const getUsers = async (req, res, next) => {
@@ -13,11 +12,8 @@ const getUsers = async (req, res, next) => {
 };
 
 const postUser = async (req, res, next) => {
-    const validationErrors = validationResult(req);
     try {
-        if (!validationErrors.isEmpty()) {
-            throw new ValidationError(validationErrors.array());
-        }
+        validateInput(req);
         const username = req.body.username;
         const password = req.body.password;
         const hashedPassword = await bcrypt.hash(password, 10);
