@@ -34,3 +34,6 @@
 -   login redirects to index
 -   index redirects to login if user not logged in
 -   trigger refetch chats on new chat creation
+-   messages -> only return senderId, content, and date 
+    -   (dont need to send message id and chatId)
+    -   orderby datetime

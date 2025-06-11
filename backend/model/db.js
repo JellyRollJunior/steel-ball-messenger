@@ -67,34 +67,6 @@ const getAllChats = async (userId) => {
     }
 };
 
-const getChatMessages = async (userId, chatId) => {
-    try {
-        const chat = await prisma.chat.findFirst({
-            where: {
-                id: Number(chatId),
-                users: {
-                    some: {
-                        id: Number(userId)
-                    }
-                }
-            },
-            include: {
-                messages: true,
-                users: {
-                    select: {
-                        id: true,
-                        username: true,
-                    },
-                },
-            },
-        });
-        if (!chat) throw new Error();
-        return chat;
-    } catch (error) {
-        throw new DatabaseError('Unable to retrieve chat');
-    }
-};
-
 const createChat = async (users) => {
     try {
         const userIdArray = users.map((user) => ({ id: user.id }));
@@ -119,4 +91,55 @@ const createChat = async (users) => {
     }
 };
 
-export { getUsers, getAllUsers, createUser, getChatMessages, getAllChats, createChat };
+const getChatMessages = async (userId, chatId) => {
+    try {
+        const chat = await prisma.chat.findFirst({
+            where: {
+                id: Number(chatId),
+                users: {
+                    some: {
+                        id: Number(userId),
+                    },
+                },
+            },
+            include: {
+                messages: true,
+                users: {
+                    select: {
+                        id: true,
+                        username: true,
+                    },
+                },
+            },
+        });
+        if (!chat) throw new Error();
+        return chat;
+    } catch (error) {
+        throw new DatabaseError('Unable to retrieve chat');
+    }
+};
+
+const createMessage = async (chatId, senderId, content) => {
+    try {
+        const message = await prisma.message.create({
+            data: {
+                chatId: Number(chatId),
+                senderId: Number(senderId),
+                content,
+            },
+        });
+        return message
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+export {
+    getUsers,
+    getAllUsers,
+    createUser,
+    getAllChats,
+    createChat,
+    getChatMessages,
+    createMessage,
+};
