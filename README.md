@@ -14,8 +14,6 @@
 
 -   messaging
 
-    -   db queries
-        -   create message
     -   /messages
         -   POST /chats/:chatId/messages
 

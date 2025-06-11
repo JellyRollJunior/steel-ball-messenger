@@ -130,7 +130,7 @@ const createMessage = async (chatId, senderId, content) => {
         });
         return message
     } catch (error) {
-        console.log(error);
+        throw new DatabaseError('Error creating message')
     }
 };
 
