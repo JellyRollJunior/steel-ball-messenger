@@ -12,11 +12,6 @@
 
 ## TODOS - backend
 
--   messaging
-
-    -   /messages
-        -   POST /chats/:chatId/messages
-
 -   queries
     -   return chats by ID or some order that makes sense
 
