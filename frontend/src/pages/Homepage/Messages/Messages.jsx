@@ -10,6 +10,8 @@ const Messages = ({ chatId }) => {
   return (
     <section>
       <h2>Messages</h2>
+      {error && <h2>{error}</h2>}
+      {isLoading && <h2>loading chats</h2>}
       {messages && (
         <ul>
           {messages.map((message) => (

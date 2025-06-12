@@ -14,7 +14,8 @@
 
 -   queries
     -   return chats by ID or some order that makes sense
-
+-   GET /chats/:chatId 
+    -   returning messages -> return username as well
 
 ## TODOS - frontend
 
