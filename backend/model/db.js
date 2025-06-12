@@ -94,20 +94,26 @@ const createChat = async (users) => {
 const getChatMessages = async (userId, chatId) => {
     try {
         const chat = await prisma.chat.findFirst({
+            select: {
+                messages: {
+                    select: {
+                        id: true,
+                        content: true,
+                        sendTime: true,
+                        sender: {
+                            select: {
+                                id: true,
+                                username: true,
+                            },
+                        },
+                    },
+                },
+            },
             where: {
                 id: Number(chatId),
                 users: {
                     some: {
                         id: Number(userId),
-                    },
-                },
-            },
-            include: {
-                messages: true,
-                users: {
-                    select: {
-                        id: true,
-                        username: true,
                     },
                 },
             },
@@ -128,9 +134,9 @@ const createMessage = async (chatId, senderId, content) => {
                 content,
             },
         });
-        return message
+        return message;
     } catch (error) {
-        throw new DatabaseError('Error creating message')
+        throw new DatabaseError('Error creating message');
     }
 };
 

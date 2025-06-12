@@ -15,9 +15,9 @@ const Messages = ({ chatId }) => {
       {messages && (
         <ul>
           {messages.map((message) => (
-            <li>
+            <li key={message.id}>
               <div>{message.content}</div>
-              <div>{message.senderId}</div>
+              <div>{message.sender.id} {message.sender.username}</div>
               <div>{message.sendTime}</div>
             </li>
           ))}

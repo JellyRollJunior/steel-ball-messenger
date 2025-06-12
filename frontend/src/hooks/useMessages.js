@@ -11,6 +11,7 @@ const useMessages = (chatId) => {
         const abortController = new AbortController();
 
         const fetchMessages = async () => {
+            if (!chatId) return;
             setIsLoading(true);
             const token = localStorage.getItem('token');
             try {
@@ -25,7 +26,7 @@ const useMessages = (chatId) => {
                         signal: abortController.signal,
                     }
                 );
-                setMessages(data.messages);
+                data.messages ? setMessages(data.messages) : setMessages(null);
                 setError(null);
             } catch (error) {
                 console.log(error);
