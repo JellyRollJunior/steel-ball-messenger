@@ -14,15 +14,8 @@
 
 -   queries
     -   return chats by ID or some order that makes sense
--   GET /chats/:chatId 
-    -   returning messages -> return username as well
 
 ## TODOS - frontend
-
--   messages
-    -   create messages
-        -   create chat component (input)
-        -   make post request on submit
 
 ### TODO LATER
 
@@ -31,4 +24,7 @@
 -   signup redirects to login
 -   login redirects to index
 -   index redirects to login if user not logged in
--   trigger refetch chats on new chat creation
+-   error handling
+    -   send message
+        -   errors
+        -   no token goto login

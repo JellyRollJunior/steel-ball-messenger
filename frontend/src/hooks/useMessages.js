@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
 
@@ -7,10 +7,7 @@ const useMessages = (chatId) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(() => {
-        const abortController = new AbortController();
-
-        const fetchMessages = async () => {
+    const fetchMessages = useCallback(async (signal) => {
             if (!chatId) return;
             setIsLoading(true);
             const token = localStorage.getItem('token');
@@ -23,7 +20,7 @@ const useMessages = (chatId) => {
                         headers: {
                             Authorization: `bearer ${token}`,
                         },
-                        signal: abortController.signal,
+                        signal
                     }
                 );
                 data.messages ? setMessages(data.messages) : setMessages(null);
@@ -34,14 +31,21 @@ const useMessages = (chatId) => {
             } finally {
                 setIsLoading(false);
             }
-        };
+        }, [chatId])
 
-        fetchMessages();
+    useEffect(() => {
+        const abortController = new AbortController();
+
+        fetchMessages(abortController.signal);
 
         return () => abortController.abort();
-    }, [chatId]);
+    }, [fetchMessages]);
 
-    return { messages, isLoading, error };
+    const refetch = () => {
+        fetchMessages();
+    }
+
+    return { messages, isLoading, error, refetch };
 };
 
 export { useMessages };

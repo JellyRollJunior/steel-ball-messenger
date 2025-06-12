@@ -4,7 +4,7 @@ import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
 const Messages = ({ chatId }) => {
-  const { messages, isLoading, error } = useMessages(chatId);
+  const { messages, isLoading, error, refetch: refetchMessages } = useMessages(chatId);
   const [content, setContent] = useState('');
 
   const createChat = async (event) => {
@@ -12,7 +12,7 @@ const Messages = ({ chatId }) => {
     // goto login page if no token
     const token = localStorage.getItem('token');
     try {
-      const message = await makeRequest(getUrl(`/chats/${chatId}/messages`), {
+      await makeRequest(getUrl(`/chats/${chatId}/messages`), {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -21,8 +21,7 @@ const Messages = ({ chatId }) => {
         },
         body: JSON.stringify({ content }),
       });
-      // refetch messages
-      console.log(message);
+      refetchMessages();
     } catch (error) {
       console.log(error);
     }
