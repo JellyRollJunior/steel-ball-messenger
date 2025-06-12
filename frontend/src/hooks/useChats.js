@@ -16,6 +16,7 @@ const useChats = () => {
                 method: 'GET',
                 headers: {
                     Authorization: `bearer ${token}`,
+                    'Content-Type': 'application/json',
                 },
                 signal,
             });
