@@ -54,7 +54,7 @@ const getProfile = async (userId) => {
     try {
         const profile = await prisma.profile.findFirst({
             where: {
-                userId,
+                userId: Number(userId),
             }
         })
         return profile;

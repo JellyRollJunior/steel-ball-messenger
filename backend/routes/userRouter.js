@@ -8,4 +8,6 @@ const userRouter = Router();
 userRouter.get('/', authenticate, userController.getUsers);
 userRouter.post('/', userValidation, userController.postUser);
 
+userRouter.get('/:userId/profiles', userController.getProfile)
+
 export { userRouter };

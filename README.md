@@ -15,8 +15,6 @@
 -   queries
     -   return chats by ID or some order that makes sense
 -   profile
-    -   db query
-        -   edit bio (?)
     -   controller
         -   Get, PUT
 

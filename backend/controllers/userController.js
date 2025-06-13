@@ -24,4 +24,14 @@ const postUser = async (req, res, next) => {
     }
 };
 
-export { getUsers, postUser };
+const getProfile = async (req, res, next) => {
+    try {
+        const profileId = req.params.userId;
+        const profile = await db.getProfile(profileId);
+        res.json(profile);
+    } catch (error) {
+        next(error);
+    }
+};
+
+export { getUsers, postUser, getProfile };
