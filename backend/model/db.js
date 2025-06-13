@@ -50,6 +50,35 @@ const createUser = async (username, password) => {
     }
 };
 
+const getProfile = async (userId) => {
+    try {
+        const profile = await prisma.profile.findFirst({
+            where: {
+                userId,
+            }
+        })
+        return profile;
+    }catch (error) {
+        throw new DatabaseError('Unable to retrieve profile');
+    }
+}
+
+const updateProfile = async (userId, bio) => {
+    try {
+        const profile = await prisma.profile.update({
+            data: {
+                bio
+            },
+            where: {
+                userId
+            }
+        });
+        return profile;
+    } catch (error) {
+        throw new DatabaseError('Unable to update profile');
+    }
+}
+
 const getAllChats = async (userId) => {
     try {
         const chats = await prisma.chat.findMany({
@@ -152,6 +181,8 @@ export {
     getUsers,
     getAllUsers,
     createUser,
+    getProfile,
+    updateProfile,
     getAllChats,
     createChat,
     getChatMessages,
