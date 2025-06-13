@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { UserContext } from '../../providers/UserContext/UserContextProvide.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
 
 const Login = () => {
+  const { setUser } = useContext(UserContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+
   const submitLogin = async (event) => {
     event.preventDefault();
     try {
-      const json = await makeRequest(getUrl('/login'), {
+      const data = await makeRequest(getUrl('/login'), {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -22,7 +25,8 @@ const Login = () => {
         }),
       });
       // save token into local storage
-      localStorage.setItem('token', json.token);
+      localStorage.setItem('token', data.token);
+      setUser(data.id, data.username);
     } catch (error) {
       console.log(error);
       setError('Unable to authenticate user.');
@@ -57,6 +61,9 @@ const Login = () => {
       <button>Submit</button>
       <Link to="/signup">
         <button type="button">Sign up</button>
+      </Link>      
+      <Link to="/">
+        <button type="button">Homepage</button>
       </Link>
     </form>
   );

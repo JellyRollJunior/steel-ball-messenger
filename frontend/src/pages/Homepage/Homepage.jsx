@@ -4,7 +4,6 @@ import { Messages } from './Messages/Messages.jsx';
 import { Profiles } from './Profiles/Profiles.jsx';
 
 const Homepage = () => {
-
   const [chatId, setChatId] = useState(null)
   const [userProfileId, setUserProfileId] = useState(null)
 

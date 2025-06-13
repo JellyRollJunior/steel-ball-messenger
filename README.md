@@ -21,7 +21,8 @@
     -   edit own profile
 -   user context
     -   on login, save user data
-    -   backend -> return current user ID on login
+    -   move usercontext to separate file
+    -   
 
 ### TODO LATER
 
@@ -38,3 +39,4 @@
 -   context for controlling homepage display logic
 -   context for storing current user data on login
 -   notifications context
+-   refetch user data if user is null (context)
