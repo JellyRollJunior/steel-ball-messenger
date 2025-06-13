@@ -6,14 +6,15 @@ import { Profiles } from './Profiles/Profiles.jsx';
 const Homepage = () => {
 
   const [chatId, setChatId] = useState(null)
-  const [profileId, setProfileId] = useState(null)
+  // const [profileId, setProfileId] = useState(null)
 
   return (
     <>
       <h2>Homepage</h2>
       <Chats setChatId={setChatId} />
       <Messages chatId={chatId} />
-      <Profiles profileId={profileId} />
+      {/* <Profiles profileId={profileId} /> */}
+      <Profiles />
     </>
   );
 };
