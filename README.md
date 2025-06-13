@@ -17,6 +17,12 @@
 
 ## TODOS - frontend
 
+-   profiles
+    -   profile component
+    -   view own profile
+    -   view other profile (from clicking messages or avatar/name)
+    -   edit own profile
+
 ### TODO LATER
 
 -   user avatar
