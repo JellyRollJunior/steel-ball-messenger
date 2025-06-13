@@ -19,6 +19,9 @@
 
 -   profiles
     -   edit own profile
+-   user context
+    -   on login, save user data
+    -   backend -> return current user ID on login
 
 ### TODO LATER
 

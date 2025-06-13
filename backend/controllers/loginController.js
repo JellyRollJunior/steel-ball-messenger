@@ -25,7 +25,11 @@ const postLogin = async (req, res, next) => {
             process.env.TOKEN_SECRET,
             options
         );
-        res.json({ token });
+        res.json({
+            id: user.id,
+            username: user.username,
+            token,
+        });
     } catch (error) {
         next(error);
     }
