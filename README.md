@@ -14,11 +14,20 @@
 
 -   queries
     -   return chats by ID or some order that makes sense
+-   profile
+    -   schema
+    -   db query
+        -   on user create, create bio
+        -   get bio
+        -   edit bio (?)
+    -   controller
+        -   Get, PUT
 
 ## TODOS - frontend
 
 ### TODO LATER
 
+-   user avatar
 -   GET /chats -> implement get latest message
 -   FIX: disallow creating chats that already exist (same users)
 -   signup redirects to login

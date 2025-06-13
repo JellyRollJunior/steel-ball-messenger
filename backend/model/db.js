@@ -31,7 +31,15 @@ const getAllUsers = async () => {
 const createUser = async (username, password) => {
     try {
         const user = await prisma.user.create({
-            data: { username, password },
+            data: {
+                username,
+                password,
+                profile: {
+                    create: {
+                        bio: 'Welcome to my profile!',
+                    },
+                },
+            },
         });
         return user;
     } catch (error) {

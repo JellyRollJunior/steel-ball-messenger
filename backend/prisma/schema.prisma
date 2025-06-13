@@ -15,6 +15,15 @@ model User {
 
   chats    Chat[]
   messages Message[]
+  profile  Profile?
+}
+
+model Profile {
+  id  Int    @id @default(autoincrement())
+  bio String
+
+  user   User @relation(fields: [userId], references: [id])
+  userId Int  @unique
 }
 
 model Chat {
