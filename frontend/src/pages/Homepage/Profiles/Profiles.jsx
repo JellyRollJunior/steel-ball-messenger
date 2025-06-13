@@ -10,10 +10,13 @@ const Profiles = ({ userId = 22 }) => {
       {error && <h2>{error}</h2>}
       {isLoading && <h2>loading chats</h2>}
       <h2>Profiles</h2>
-      {profile && (
+      {profile && profile.bio && (
         <p>
           {profile.bio}
         </p>
+      )}
+      {!profile && (
+        <p>oops! no profile</p>
       )}
     </section>
   );

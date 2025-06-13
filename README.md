@@ -18,9 +18,6 @@
 ## TODOS - frontend
 
 -   profiles
-    -   profile component
-    -   view own profile
-    -   view other profile (from clicking messages or avatar/name)
     -   edit own profile
 
 ### TODO LATER
@@ -35,3 +32,5 @@
     -   send message
         -   errors
         -   no token goto login
+-   context for controlling homepage display logic
+-   context for storing current user data on login

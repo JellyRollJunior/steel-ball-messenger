@@ -25,13 +25,13 @@ const useProfiles = (userId) => {
                 setError(null);
             } catch (error) {
                 console.log(error);
-                setError(error);
+                setError('Error!');
             } finally {
                 setIsLoading(false);
             }
         };
 
-        fetchProfiles();
+        if (userId) fetchProfiles();
 
         return () => abortController.abort();
     }, [userId]);

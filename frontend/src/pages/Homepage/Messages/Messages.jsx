@@ -3,7 +3,7 @@ import { useMessages } from '../../../hooks/useMessages.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
-const Messages = ({ chatId }) => {
+const Messages = ({ chatId, setUserProfileId }) => {
   const { messages, isLoading, error, refetch: refetchMessages } = useMessages(chatId);
   const [content, setContent] = useState('');
 
@@ -42,9 +42,9 @@ const Messages = ({ chatId }) => {
             {messages.map((message) => (
               <li key={message.id}>
                 <div>{message.content}</div>
-                <div>
+                <button onClick={() => setUserProfileId(message.sender.id)}>
                   {message.sender.id} {message.sender.username}
-                </div>
+                </button>
                 <div>{message.sendTime}</div>
               </li>
             ))}
