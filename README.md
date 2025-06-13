@@ -14,9 +14,6 @@
 
 -   queries
     -   return chats by ID or some order that makes sense
--   profile
-    -   controller
-        -   Get, PUT
 
 ## TODOS - frontend
 

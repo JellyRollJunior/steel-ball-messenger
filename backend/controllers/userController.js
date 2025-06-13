@@ -35,4 +35,15 @@ const getProfile = async (req, res, next) => {
     }
 };
 
-export { getUsers, postUser, getProfile };
+const patchProfile = async (req, res, next) => {
+    try {
+        validateInput(req);
+        const bio = req.body.bio;
+        const profile = await db.updateProfile(req.user.id, bio);
+        res.json(profile);
+    } catch (error) {
+        next(error)
+    }
+}
+
+export { getUsers, postUser, getProfile, patchProfile };
