@@ -37,3 +37,4 @@
         -   no token goto login
 -   context for controlling homepage display logic
 -   context for storing current user data on login
+-   notifications context

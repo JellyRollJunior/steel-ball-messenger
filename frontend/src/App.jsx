@@ -1,5 +1,7 @@
+import { Outlet } from 'react-router';
+
 function App() {
-    return <h1>hello world</h1>;
+  return <Outlet />;
 }
 
 export { App };
