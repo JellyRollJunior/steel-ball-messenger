@@ -26,6 +26,7 @@ const postUser = async (req, res, next) => {
 
 const getProfile = async (req, res, next) => {
     try {
+        validateInput(req);
         const profileId = req.params.userId;
         const profile = await db.getProfile(profileId);
         res.json(profile);
