@@ -1,7 +1,12 @@
 import { Outlet } from 'react-router';
+import { UserContextProvider } from './providers/userContext.jsx';
 
 function App() {
-  return <Outlet />;
+  return (
+    <UserContextProvider>
+      <Outlet />
+    </UserContextProvider>
+  );
 }
 
 export { App };
