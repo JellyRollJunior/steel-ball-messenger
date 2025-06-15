@@ -8,7 +8,7 @@ const UserContextProvider = ({ children }) => {
   const [username, setUsername] = useState(null);
   const [bio, setBio] = useState(null);
 
-  const getUser = async () => {
+  const fetchUser = async () => {
     if (bio == null || id == null || username == null) {
       const token = localStorage.getItem('token');
       const data = await makeRequest(getUrl('/current'), {
@@ -33,7 +33,7 @@ const UserContextProvider = ({ children }) => {
   };
 
   return (
-    <UserContext.Provider value={{ id, username, bio, getUser, setUser }}>
+    <UserContext.Provider value={{ id, username, bio, fetchUser, setUser }}>
       {children}
     </UserContext.Provider>
   );

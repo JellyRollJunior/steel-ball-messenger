@@ -4,7 +4,7 @@ const UserContext = createContext({
   id: null,
   username: null,
   bio: null,
-  getUser: () => {},
+  fetchUser: () => {},
   setUser: () => {},
 });
 

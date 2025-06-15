@@ -2,13 +2,13 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from '../../../providers/UserContext/UserContext.jsx';
 
 const EditProfile = ({ profileUserId }) => {
-  const { id, getUser } = useContext(UserContext);
+  const { id, fetchUser } = useContext(UserContext);
 
   useEffect(() => {
     if (!id) {
-      getUser();
+      fetchUser();
     }
-  }, [id, getUser]);
+  }, [id, fetchUser]);
 
   if (!profileUserId || profileUserId != id) return null;
 
