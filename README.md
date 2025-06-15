@@ -19,18 +19,18 @@
 
 -   queries
     -   return chats by ID or some order that makes sense
--   backend: implement get self profile
-    -   current
-        -   move patch profile to current
-        -   implement get current data
 -   404 handler
+-   get profile returns profile owners, username
 
 ## TODOS - frontend
 
 -   profiles
     -   edit own profile
+    
 -   user context
     -   refetch user data if user is null (context) (new get user function)
+        -   make getters
+    -   add bio
 
 ### TODO LATER
 
