@@ -5,6 +5,12 @@ import { bioValidations } from '../validations/bioValidations.js';
 
 const currentRouter = Router();
 
-currentRouter.patch('/', authenticate, bioValidations, currentController.patchProfile)
+currentRouter.get('/', authenticate, currentController.getCurrent);
+currentRouter.patch(
+    '/',
+    authenticate,
+    bioValidations,
+    currentController.patchProfile
+);
 
-export { currentRouter }
+export { currentRouter };
