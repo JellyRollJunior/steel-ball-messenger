@@ -1,4 +1,5 @@
 import { useProfiles } from '../../../hooks/useProfiles.js';
+import { EditProfile } from '../EditProfile/EditProfile.jsx';
 
 const Profiles = ({ userId }) => {
   const { profile, isLoading, error } = useProfiles(userId);
@@ -18,6 +19,7 @@ const Profiles = ({ userId }) => {
       {!profile && (
         <p>oops! no profile</p>
       )}
+      <EditProfile profileUserId={userId} />
     </section>
   );
 };
