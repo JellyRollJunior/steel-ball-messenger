@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router';
-import { UserContextProvider } from './providers/UserContext/UserContextProvide.jsx';
+import { UserContextProvider } from './providers/UserContext/UserContextProvider.jsx';
 
 function App() {
   return (

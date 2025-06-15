@@ -20,9 +20,8 @@
 -   profiles
     -   edit own profile
 -   user context
-    -   on login, save user data
-    -   move usercontext to separate file
-    -   
+    -   refetch user data if user is null (context) (new get user function)
+        -   backend: implement get self profile
 
 ### TODO LATER
 
@@ -39,4 +38,3 @@
 -   context for controlling homepage display logic
 -   context for storing current user data on login
 -   notifications context
--   refetch user data if user is null (context)

@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContextProvide.jsx';
+import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';

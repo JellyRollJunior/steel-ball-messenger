@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { useProfiles } from '../../../hooks/useProfiles.js';
-import { UserContext } from '../../../providers/UserContext/UserContextProvide.jsx';
+import { UserContext } from '../../../providers/UserContext/UserContext.jsx';
 
 const Profiles = ({ userId = 22 }) => {
   const { id, username} = useContext(UserContext);
