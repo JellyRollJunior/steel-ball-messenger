@@ -19,6 +19,10 @@
 -   queries
     -   return chats by ID or some order that makes sense
 -   backend: implement get self profile
+    -   current
+        -   move patch profile to current
+        -   implement get current data
+-   404 handler
 
 ## TODOS - frontend
 
