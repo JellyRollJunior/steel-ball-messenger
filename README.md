@@ -2,18 +2,23 @@
 
 ### Endpoints
 
-| METHOD | URI    | Function                       | Body                  | Notes              |
-| ------ | ------ | ------------------------------ | --------------------- | ------------------ |
-| GET    | /users | Retrieve all user              | token                 |                    |
-| POST   | /users | Create user                    | { username, password} |                    |
-| POST   | /login | Login user                     | { username, password} |                    |
-| GET    | /chats | Retrieve all chats for user    | token                 |                    |
-| POST   | /chats | Create chat between >= 1 users | token, { users }      | chat: { id, users} |
+| METHOD | URI                     | Function                       | Body                  | Notes                |
+| ------ | ----------------------- | ------------------------------ | --------------------- | -------------------- |
+| POST   | /login                  | Login user                     | { username, password} |                      |
+| GET    | /users                  | Retrieve all user              | token                 |                      |
+| POST   | /users                  | Create user                    | { username, password} | creates user profile |
+| PATCH  | /users                  | Update user profile            | { bio }               |                      |
+| GET    | /users/:userId/profiles | Retrieve user profile          | { userId }            |                      |
+| GET    | /chats                  | Retrieve all chats for user    | token                 |                      |
+| POST   | /chats                  | Create chat between >= 1 users | token, { users }      | chat: { id, users}   |
+| GET    | /chats/:chatId          | Retrive chat messages          | token                 |                      |
+| POST   | /chats/:chatId/messages | Create chat message            | token, { content }    |                      |
 
 ## TODOS - backend
 
 -   queries
     -   return chats by ID or some order that makes sense
+-   backend: implement get self profile
 
 ## TODOS - frontend
 
@@ -21,7 +26,6 @@
     -   edit own profile
 -   user context
     -   refetch user data if user is null (context) (new get user function)
-        -   backend: implement get self profile
 
 ### TODO LATER
 
