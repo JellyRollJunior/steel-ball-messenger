@@ -20,17 +20,15 @@
 -   queries
     -   get chats
 -   404 handler
--   latest message
+-   GET /chats -> implement get latest message
+-   user avatar
 
 ## TODOS - frontend
 
--   profiles
-    -   edit own profile
+-   always call get /current on homepage load
 
 ### TODO LATER
 
--   user avatar
--   GET /chats -> implement get latest message
 -   FIX: disallow creating chats that already exist (same users)
 -   signup redirects to login
 -   login redirects to index

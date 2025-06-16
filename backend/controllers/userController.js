@@ -29,7 +29,10 @@ const getProfile = async (req, res, next) => {
         validateInput(req);
         const profileId = req.params.userId;
         const profile = await db.getProfile(profileId);
-        res.json(profile);
+        res.json({
+            bio: profile.bio,
+            username: profile.user.username,
+        });
     } catch (error) {
         next(error);
     }
