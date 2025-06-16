@@ -103,8 +103,8 @@ const getAllChats = async (userId) => {
                 latestMessage: {
                     select: {
                         content: true,
-                    }
-                }
+                    },
+                },
             },
             where: {
                 users: {
@@ -112,6 +112,11 @@ const getAllChats = async (userId) => {
                         id: Number(userId),
                     },
                 },
+            },
+            orderBy: {
+                latestMessage: {
+                    sendTime: 'desc',
+                }
             },
         });
         return chats;

@@ -17,8 +17,6 @@
 
 ## TODOS - backend
 
--   orderby queries
-    -   get chats
 -   user avatar
 -   refactor to ID validation?
 
