@@ -2,7 +2,7 @@ import { useProfiles } from '../../../hooks/useProfiles.js';
 import { EditProfile } from '../EditProfile/EditProfile.jsx';
 
 const Profiles = ({ userId }) => {
-  const { profile, isLoading, error } = useProfiles(userId);
+  const { profile, isLoading, error, setProfile } = useProfiles(userId);
 
   if (!userId) return null;
 
@@ -12,14 +12,12 @@ const Profiles = ({ userId }) => {
       {isLoading && <h2>loading chats</h2>}
       <h2>Profiles</h2>
       {profile && profile.bio && (
-        <p>
-          {profile.bio}
-        </p>
+        <>
+          <p>{profile.bio}</p>
+          <EditProfile profileUserId={userId} userBio={profile.bio} setProfile={setProfile} />
+        </>
       )}
-      {!profile && (
-        <p>oops! no profile</p>
-      )}
-      <EditProfile profileUserId={userId} />
+      {!profile && <p>oops! no profile</p>}
     </section>
   );
 };

@@ -26,11 +26,6 @@
 
 -   profiles
     -   edit own profile
-    
--   user context
-    -   refetch user data if user is null (context) (new get user function)
-        -   make getters
-    -   add bio
 
 ### TODO LATER
 
@@ -48,3 +43,4 @@
 -   context for storing current user data on login
 -   notifications context
 -   merge get current and chats (?)
+-   getToken util that redirects to login if token expires

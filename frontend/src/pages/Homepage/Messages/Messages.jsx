@@ -16,7 +16,7 @@ const Messages = ({ chatId, setUserProfileId }) => {
         mode: 'cors',
         method: 'POST',
         headers: {
-          Authorization: `bearer ${token}`,
+          'Authorization': `bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({ content }),
