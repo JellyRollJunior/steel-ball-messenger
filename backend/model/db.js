@@ -17,9 +17,13 @@ const getUsers = async (where = {}) => {
 const getAllUsers = async () => {
     try {
         const user = await prisma.user.findMany({
-            select: {
-                id: true,
-                username: true,
+            include: {
+                user: {
+                    username: true,
+                },
+            },
+            orderBy: {
+                username: 'asc',
             },
         });
         return user;
@@ -53,31 +57,39 @@ const createUser = async (username, password) => {
 const getProfile = async (userId) => {
     try {
         const profile = await prisma.profile.findFirst({
+            select: {
+                bio: true,
+                user: {
+                    select: {
+                        username: true,
+                    },
+                },
+            },
             where: {
                 userId: Number(userId),
-            }
-        })
+            },
+        });
         return profile;
-    }catch (error) {
+    } catch (error) {
         throw new DatabaseError('Unable to retrieve profile');
     }
-}
+};
 
 const updateProfile = async (userId, bio) => {
     try {
         const profile = await prisma.profile.update({
             data: {
-                bio
+                bio,
             },
             where: {
-                userId
-            }
+                userId,
+            },
         });
         return profile;
     } catch (error) {
         throw new DatabaseError('Unable to update profile');
     }
-}
+};
 
 const getAllChats = async (userId) => {
     try {
@@ -143,6 +155,9 @@ const getChatMessages = async (userId, chatId) => {
                                 username: true,
                             },
                         },
+                    },
+                    orderBy: {
+                        sendTime: 'asc',
                     },
                 },
             },

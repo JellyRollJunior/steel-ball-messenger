@@ -18,9 +18,9 @@
 ## TODOS - backend
 
 -   queries
-    -   return chats by ID or some order that makes sense
+    -   get chats
 -   404 handler
--   get profile returns profile owners, username
+-   latest message
 
 ## TODOS - frontend
 
