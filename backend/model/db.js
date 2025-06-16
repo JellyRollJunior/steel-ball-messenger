@@ -17,10 +17,9 @@ const getUsers = async (where = {}) => {
 const getAllUsers = async () => {
     try {
         const user = await prisma.user.findMany({
-            include: {
-                user: {
-                    username: true,
-                },
+            select: {
+                id: true,
+                username: true,
             },
             orderBy: {
                 username: 'asc',
@@ -101,6 +100,11 @@ const getAllChats = async (userId) => {
                         username: true,
                     },
                 },
+                latestMessage: {
+                    select: {
+                        content: true,
+                    }
+                }
             },
             where: {
                 users: {
@@ -184,6 +188,11 @@ const createMessage = async (chatId, senderId, content) => {
                 chatId: Number(chatId),
                 senderId: Number(senderId),
                 content,
+                latestMessage: {
+                    connect: {
+                        id: Number(chatId),
+                    },
+                },
             },
         });
         return message;

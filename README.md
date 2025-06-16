@@ -17,9 +17,8 @@
 
 ## TODOS - backend
 
--   queries
+-   orderby queries
     -   get chats
--   GET /chats -> implement get latest message
 -   user avatar
 -   refactor to ID validation?
 

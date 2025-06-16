@@ -30,7 +30,10 @@ model Chat {
   id Int @id @default(autoincrement())
 
   users    User[]
-  messages Message[]
+  messages Message[] @relation(name: "chat")
+
+  latestMessage   Message? @relation(name: "latestMessage", fields: [latestMessageId], references: [id])
+  latestMessageId Int?     @unique
 }
 
 model Message {
@@ -38,8 +41,9 @@ model Message {
   content  String
   sendTime DateTime @default(now())
 
-  sender   User @relation(fields: [senderId], references: [id])
-  senderId Int
-  chat     Chat @relation(fields: [chatId], references: [id])
-  chatId   Int
+  sender        User  @relation(fields: [senderId], references: [id])
+  senderId      Int
+  chat          Chat  @relation(name: "chat", fields: [chatId], references: [id])
+  chatId        Int
+  latestMessage Chat? @relation(name: "latestMessage")
 }
