@@ -19,9 +19,9 @@
 
 -   queries
     -   get chats
--   404 handler
 -   GET /chats -> implement get latest message
 -   user avatar
+-   refactor to ID validation?
 
 ## TODOS - frontend
 
