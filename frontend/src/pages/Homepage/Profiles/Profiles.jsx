@@ -13,8 +13,13 @@ const Profiles = ({ userId }) => {
       <h2>Profiles</h2>
       {profile && profile.bio && (
         <>
+          <h3>{profile.user.username}</h3>
           <p>{profile.bio}</p>
-          <EditProfile profileUserId={userId} userBio={profile.bio} setProfile={setProfile} />
+          <EditProfile
+            profileUserId={userId}
+            userBio={profile.bio}
+            setProfile={setProfile}
+          />
         </>
       )}
       {!profile && <p>oops! no profile</p>}
