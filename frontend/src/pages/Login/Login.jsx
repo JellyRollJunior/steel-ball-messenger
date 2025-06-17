@@ -63,7 +63,7 @@ const Login = () => {
           maxLength={36}
           required
         />
-        <button>Submit</button>
+        <button>Log In</button>
         <Link to="/signup">
           <button type="button">Sign up</button>
         </Link>

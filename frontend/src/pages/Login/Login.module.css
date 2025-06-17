@@ -7,12 +7,14 @@
 
 .formCard {
   padding: 6px;
+  min-width: 280px;
 }
 
 .formCard > * {
   display: block
 }
 
-.formCard button {
+.formCard button,
+.formCard input {
   width: 100%;
 }
