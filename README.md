@@ -24,6 +24,10 @@
 ## TODOS - frontend
 
 -   always call get /current on homepage load
+-   login page
+    -   background
+    -   card
+    -   form
 
 ### TODO LATER
 
