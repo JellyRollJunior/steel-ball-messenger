@@ -3,7 +3,6 @@ import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
-import styles from './Login.module.css';
 import shared from '../../styles/shared.module.css';
 
 const Login = () => {
@@ -37,8 +36,10 @@ const Login = () => {
 
   return (
     <main className={shared.formWrapper}>
-      <h1>Steel Ball </h1>
-      <h2>Messenger</h2>
+      <h1 className={shared.formTitle}>
+        Steel Ball <br />
+        <span>Messenger</span>
+      </h1>
 
       <form onSubmit={submitLogin} className={shared.form}>
         {error && <h3>{error}</h3>}
