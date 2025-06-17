@@ -4,6 +4,7 @@ import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
 import styles from './Login.module.css';
+import shared from '../../styles/shared.module.css';
 
 const Login = () => {
   const { setUser } = useContext(UserContext);
@@ -35,10 +36,11 @@ const Login = () => {
   };
 
   return (
-    <main className={styles.formWrapper} >
-      <h1>Steel Ball</h1>
+    <main className={shared.formWrapper}>
+      <h1>Steel Ball </h1>
       <h2>Messenger</h2>
-      <form onSubmit={submitLogin} className={styles.formCard}>
+
+      <form onSubmit={submitLogin} className={shared.form}>
         {error && <h3>{error}</h3>}
         <h2>Login</h2>
         <label htmlFor="username">Username</label>
@@ -63,13 +65,12 @@ const Login = () => {
           maxLength={36}
           required
         />
-        <button>Log In</button>
-        <Link to="/signup">
-          <button type="button">Sign up</button>
-        </Link>
-        <Link to="/">
-          <button type="button">Homepage</button>
-        </Link>
+        <div className={shared.formButtonHolder}>
+          <button>Log In</button>
+          <Link to="/signup">
+            <button type="button">Sign up</button>
+          </Link>
+        </div>
       </form>
     </main>
   );

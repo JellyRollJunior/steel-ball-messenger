@@ -1,0 +1,29 @@
+.formWrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  padding: 6px;
+  min-width: 280px;
+}
+
+.form > * {
+  display: block
+}
+
+.form label,
+.form button {
+  margin-top: 6px;
+}
+
+.formButtonHolder {
+  margin-top: 24px;
+}
+
+.form button,
+.form input {
+  width: 100%;
+}
