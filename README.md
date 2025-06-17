@@ -19,6 +19,7 @@
 
 -   user avatar
 -   refactor to ID validation?
+-   FIX: disallow creating chats that already exist (same users)
 
 ## TODOS - frontend
 
@@ -26,7 +27,6 @@
 
 ### TODO LATER
 
--   FIX: disallow creating chats that already exist (same users)
 -   signup redirects to login
 -   login redirects to index
 -   index redirects to login if user not logged in

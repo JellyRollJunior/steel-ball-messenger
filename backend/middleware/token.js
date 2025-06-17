@@ -21,10 +21,9 @@ const verifyToken = (req, res, next) => {
         req.user = data;
         next();
     } catch (err) {
-        console.log(err);
         const error = new Error('Invalid or expired token.');
         error.statusCode = 403;
-        throw error;
+        next(error);
     }
 };
 
