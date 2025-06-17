@@ -3,6 +3,7 @@ import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
+import styles from './Login.module.css';
 
 const Login = () => {
   const { setUser } = useContext(UserContext);
@@ -34,38 +35,43 @@ const Login = () => {
   };
 
   return (
-    <form onSubmit={submitLogin}>
-      {error && <h3>{error}</h3>}
-      <label htmlFor="username">Username</label>
-      <input
-        type="text"
-        name="username"
-        id="username"
-        value={username}
-        onChange={(event) => setUsername(event.target.value)}
-        minLength={1}
-        maxLength={36}
-        required
-      />
-      <label htmlFor="password">Password</label>
-      <input
-        type="password"
-        name="password"
-        id="password"
-        value={password}
-        onChange={(event) => setPassword(event.target.value)}
-        minLength={1}
-        maxLength={36}
-        required
-      />
-      <button>Submit</button>
-      <Link to="/signup">
-        <button type="button">Sign up</button>
-      </Link>      
-      <Link to="/">
-        <button type="button">Homepage</button>
-      </Link>
-    </form>
+    <main className={styles.formWrapper} >
+      <h1>Steel Ball</h1>
+      <h2>Messenger</h2>
+      <form onSubmit={submitLogin} className={styles.formCard}>
+        {error && <h3>{error}</h3>}
+        <h2>Login</h2>
+        <label htmlFor="username">Username</label>
+        <input
+          type="text"
+          name="username"
+          id="username"
+          value={username}
+          onChange={(event) => setUsername(event.target.value)}
+          minLength={1}
+          maxLength={36}
+          required
+        />
+        <label htmlFor="password">Password</label>
+        <input
+          type="password"
+          name="password"
+          id="password"
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
+          minLength={1}
+          maxLength={36}
+          required
+        />
+        <button>Submit</button>
+        <Link to="/signup">
+          <button type="button">Sign up</button>
+        </Link>
+        <Link to="/">
+          <button type="button">Homepage</button>
+        </Link>
+      </form>
+    </main>
   );
 };
 
