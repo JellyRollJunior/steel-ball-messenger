@@ -47,7 +47,6 @@
 ## TODOS - frontend
 
 -   always call get /current on homepage load
--   extract form to component
 
 ### TODO LATER
 

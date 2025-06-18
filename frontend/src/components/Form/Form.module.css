@@ -1,0 +1,51 @@
+/* form */
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  height: 100%;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 18px;
+  padding: 16px 18px;
+}
+
+.formImage {
+  max-width: 130px;
+}
+
+.formTitle {
+  font-size: 3.5rem;
+  text-align: center;
+  line-height: 0.6;
+  font-family: 'ewert', Arial, Helvetica, sans-serif;
+}
+
+.formTitle > span {
+  font-size: 1.5rem;
+  font-family: 'rye', Arial, Helvetica, sans-serif;
+}
+
+.form {
+  display: block;
+  min-width: 280px;
+  padding: 6px;
+}
+
+.form,
+.form button,
+.form input {
+  width: 100%;
+}
+
+.form label {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
+
+.form button {
+  margin-top: 6px;
+}
