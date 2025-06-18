@@ -15,24 +15,43 @@
 | GET    | /chats/:chatId          | Retrive chat messages          | token                 |                      |
 | POST   | /chats/:chatId/messages | Create chat message            | token, { content }    |                      |
 
+### Learning Outcomes
+
+-   Backend
+
+
+
+-   Frontend
+
+
+### Retrospective aka yapping
+
+-   using prisma connect to connect two models! neato
+-   getting confident using prisma select and include
+-   Proud: custom "liquid glass" card stying
+-   Font face font-weights (didn't know i could set those)
+
+
+
+
+
 ## TODOS - backend
 
 -   user avatar
 -   refactor to ID validation?
 -   FIX: disallow creating chats that already exist (same users)
 
+-   remove user data from /login
+    -   we now pull user data from calling /current
+
 ## TODOS - frontend
 
 -   always call get /current on homepage load
--   login page
-    -   background
-    -   card
-    -   form
--   margins LR for responsive size in form
 -   extract form to component
 
 ### TODO LATER
 
+-   desktop view
 -   signup redirects to login
 -   login redirects to index
 -   index redirects to login if user not logged in

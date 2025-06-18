@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'arvo';
+  src: url('../assets/fonts/arvo.woff2');
+}
+
+@font-face {
+  font-family: 'arvo';
+  font-weight: bold;
+  src: url('../assets/fonts/arvo-bold.woff2');
+}
+
+@font-face {
+  font-family: 'ewert';
+  src: url('../assets/fonts/ewert.woff2');
+}
+
+@font-face {
+  font-family: 'rye';
+  src: url('../assets/fonts/rye.woff2');
+}
+
+:root {
+  font-size: 16px;
+  font-family: 'arvo', Arial, Helvetica, sans-serif;
+}
