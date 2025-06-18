@@ -48,6 +48,10 @@
 
 -   always call get /current on homepage load
 
+-   full page form
+    -   style errors
+    -   accept background image
+
 ### TODO LATER
 
 -   desktop view

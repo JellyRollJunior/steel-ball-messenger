@@ -2,9 +2,8 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
-import { Form } from '../../components/Form/Form.jsx';
+import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
 import { Link } from 'react-router';
-import styles from './Login.module.css';
 import shared from '../../styles/shared.module.css';
 
 const Login = () => {
@@ -37,41 +36,39 @@ const Login = () => {
   };
 
   return (
-    <div className={styles.pageWrapper}>
-      <Form onSubmit={submitLogin}>
-        {error && <h3>{error}</h3>}
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          minLength={1}
-          maxLength={36}
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          minLength={1}
-          maxLength={36}
-          required
-        />
-        <div className={shared.marginTopLarge}>
-          <button className={shared.primaryButton}>Log In</button>
-          <Link to="/signup">
-            <button type="button" className={`${shared.secondaryButton}`}>
-              Sign Up
-            </button>
-          </Link>
-        </div>
-      </Form>
-    </div>
+    <FullPageForm onSubmit={submitLogin}>
+      {error && <h3>{error}</h3>}
+      <label htmlFor="username">Username</label>
+      <input
+        type="text"
+        name="username"
+        id="username"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+        minLength={1}
+        maxLength={36}
+        required
+      />
+      <label htmlFor="password">Password</label>
+      <input
+        type="password"
+        name="password"
+        id="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        minLength={1}
+        maxLength={36}
+        required
+      />
+      <div className={shared.marginTopLarge}>
+        <button className={shared.primaryButton}>Log In</button>
+        <Link to="/signup">
+          <button type="button" className={`${shared.secondaryButton}`}>
+            Sign Up
+          </button>
+        </Link>
+      </div>
+    </FullPageForm>
   );
 };
 
