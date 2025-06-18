@@ -3,6 +3,7 @@ import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
+import styles from './Login.module.css';
 import shared from '../../styles/shared.module.css';
 
 const Login = () => {
@@ -35,45 +36,46 @@ const Login = () => {
   };
 
   return (
-    <main className={shared.formWrapper}>
-      <h1 className={shared.formTitle}>
-        Steel Ball <br />
-        <span>Messenger</span>
-      </h1>
-
-      <form onSubmit={submitLogin} className={shared.form}>
-        {error && <h3>{error}</h3>}
-        <h2>Login</h2>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          minLength={1}
-          maxLength={36}
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          minLength={1}
-          maxLength={36}
-          required
-        />
-        <div className={shared.formButtonHolder}>
-          <button>Log In</button>
-          <Link to="/signup">
-            <button type="button">Sign up</button>
-          </Link>
-        </div>
-      </form>
-    </main>
+    <div className={styles.pageWrapper}>
+      <main className={shared.formWrapper}>
+        <h1 className={shared.formTitle}>
+          Steel Ball <br />
+          <span>Messenger</span>
+        </h1>
+        <form onSubmit={submitLogin} className={shared.form}>
+          {error && <h3>{error}</h3>}
+          <h2>Login</h2>
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={username}
+            onChange={(event) => setUsername(event.target.value)}
+            minLength={1}
+            maxLength={36}
+            required
+          />
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+            minLength={1}
+            maxLength={36}
+            required
+          />
+          <div className={shared.formButtonHolder}>
+            <button>Log In</button>
+            <Link to="/signup">
+              <button type="button">Sign up</button>
+            </Link>
+          </div>
+        </form>
+      </main>
+    </div>
   );
 };
 
