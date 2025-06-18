@@ -69,9 +69,9 @@ const Login = () => {
             required
           />
           <div className={shared.formButtonHolder}>
-            <button>Log In</button>
+            <button className={shared.primaryButton} >Log In</button>
             <Link to="/signup">
-              <button type="button">Sign Up</button>
+              <button type="button" className={shared.secondaryButton}>Sign Up</button>
             </Link>
           </div>
         </form>
