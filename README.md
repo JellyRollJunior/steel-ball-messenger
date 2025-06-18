@@ -50,7 +50,6 @@
 
 -   full page form
     -   style errors
-    -   accept background image
 
 ### TODO LATER
 

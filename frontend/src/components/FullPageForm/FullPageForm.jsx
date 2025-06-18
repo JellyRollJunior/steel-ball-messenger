@@ -1,10 +1,13 @@
 import styles from './FullPageForm.module.css';
 import shared from '../../styles/shared.module.css';
 import steelBall from '../../assets/images/steel-ball.png';
+import gyroHeadshot from '../../assets/backgroundImages/gyro-headshot.png';
 
-const FullPageForm = ({ onSubmit, children }) => {
+const FullPageForm = ({ onSubmit, backgroundImage = gyroHeadshot, children }) => {
+  const backgroundImageStyling = { backgroundImage: `url(${backgroundImage})`}
+
   return (
-    <div className={styles.pageWrapper}>
+    <div className={styles.pageWrapper} style={backgroundImageStyling}>
       <main className={`${styles.formWrapper} ${shared.card}`}>
         <img
           className={styles.formImage}
