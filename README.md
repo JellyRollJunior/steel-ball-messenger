@@ -29,6 +29,7 @@
     -   card
     -   form
 -   margins LR for responsive size in form
+-   extract form to component
 
 ### TODO LATER
 

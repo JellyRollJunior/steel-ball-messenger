@@ -1,3 +1,15 @@
+.marginTopSmall {
+  margin-top: 6px;
+}
+
+.marginTopMedium {
+  margin-top: 16px;
+}
+
+.marginTopLarge {
+  margin-top: 26px;
+}
+
 /* my own ghetto liquid glass card styling */
 .card {
   border: 2px solid rgba(255, 255, 255, 0.75);
@@ -18,6 +30,7 @@
   border-radius: 6px;
   border: 2px solid;
   opacity: 0.93;
+  font-weight: bold;
 }
 
 .primaryButton {
@@ -63,35 +76,33 @@
 }
 
 .formTitle {
-  font-size: 2.8rem;
+  font-size: 3.5rem;
   text-align: center;
-  line-height: 0.8;
+  line-height: 0.6;
 }
 
 .formTitle > span {
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
 
 .form {
   display: block;
-  padding: 6px;
   min-width: 280px;
+  padding: 6px;
 }
 
-.form label,
-.form button {
-  margin-top: 6px;
-}
-
-.formButtonHolder {
-  margin-top: 16px;
-}
-
+.form,
 .form button,
 .form input {
   width: 100%;
 }
 
+.form label {
+  display: block;
+  margin-top: 12px;
+  font-size: 1.1rem;
+}
+
 .form button {
-  font-weight: bold;
+  margin-top: 6px;
 }
