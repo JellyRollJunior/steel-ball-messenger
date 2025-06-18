@@ -30,7 +30,7 @@
 -   getting confident using prisma select and include
 -   Proud: custom "liquid glass" card stying
 -   Font face font-weights (didn't know i could set those)
-
+-   as always, color palette pulled from Araki's art
 
 
 
@@ -50,6 +50,12 @@
 
 -   full page form
     -   style errors
+        -   form accept errors
+            -   if only 1, convert to array
+            -   need backend structure of errors (check)
+        -   render each error
+-   extract colors to variables
+-   form loading animation
 
 ### TODO LATER
 
@@ -64,5 +70,6 @@
 -   context for controlling homepage display logic
 -   context for storing current user data on login
 -   notifications context
+    -   set errors in notifications!
 -   merge get current and chats (?)
 -   getToken util that redirects to login if token expires

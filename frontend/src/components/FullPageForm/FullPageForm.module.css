@@ -51,6 +51,12 @@
   width: 100%;
 }
 
+.error {
+  text-align: center;
+  font-weight: bold;
+  color: #ff84ad;
+}
+
 .form label {
   display: block;
   margin-top: 12px;

@@ -29,6 +29,7 @@ const Login = () => {
       // save token into local storage
       localStorage.setItem('token', data.token);
       setUser(data.id, data.username);
+      setError(null);
     } catch (error) {
       console.log(error);
       setError('Unable to authenticate user.');
@@ -36,8 +37,7 @@ const Login = () => {
   };
 
   return (
-    <FullPageForm onSubmit={submitLogin}>
-      {error && <h3>{error}</h3>}
+    <FullPageForm onSubmit={submitLogin} errors={error}>
       <label htmlFor="username">Username</label>
       <input
         type="text"
