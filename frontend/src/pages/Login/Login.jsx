@@ -5,6 +5,7 @@ import { getUrl } from '../../utils/serverUrl.js';
 import { Link } from 'react-router';
 import styles from './Login.module.css';
 import shared from '../../styles/shared.module.css';
+import steelBall from '../../assets/images/steel-ball.png'
 
 const Login = () => {
   const { setUser } = useContext(UserContext);
@@ -37,14 +38,14 @@ const Login = () => {
 
   return (
     <div className={styles.pageWrapper}>
-      <main className={shared.formWrapper}>
+      <main className={`${shared.formWrapper} ${shared.card}`}>
+        <img className={shared.formImage} src={steelBall} alt="Gyro's green steel ball" />
         <h1 className={shared.formTitle}>
           Steel Ball <br />
           <span>Messenger</span>
         </h1>
         <form onSubmit={submitLogin} className={shared.form}>
           {error && <h3>{error}</h3>}
-          <h2>Login</h2>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -70,7 +71,7 @@ const Login = () => {
           <div className={shared.formButtonHolder}>
             <button>Log In</button>
             <Link to="/signup">
-              <button type="button">Sign up</button>
+              <button type="button">Sign Up</button>
             </Link>
           </div>
         </form>

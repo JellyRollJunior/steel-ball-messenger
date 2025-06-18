@@ -28,6 +28,7 @@
     -   background
     -   card
     -   form
+-   margins LR for responsive size in form
 
 ### TODO LATER
 
