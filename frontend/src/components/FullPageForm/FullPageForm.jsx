@@ -19,7 +19,7 @@ const FullPageForm = ({
   }
 
   return (
-    <div className={styles.pageWrapper} style={backgroundImageStyling}>
+    <div className={`${styles.pageLayout} ${shared.background}`} style={backgroundImageStyling}>
       <main className={`${styles.formWrapper} ${shared.card}`}>
         <LoadingElement
           isVisible={true}

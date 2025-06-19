@@ -45,6 +45,8 @@
 
 -   always call get /current on homepage load
 
+-   extract page background styling
+
 ### TODO LATER
 
 -   desktop view

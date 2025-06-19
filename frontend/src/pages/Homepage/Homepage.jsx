@@ -9,7 +9,6 @@ const Homepage = () => {
 
   return (
     <>
-      <h2>Homepage</h2>
       <Chats setChatId={setChatId} />
       <Messages chatId={chatId} setUserProfileId={setUserProfileId} />
       <Profiles userId={userProfileId} />
