@@ -1,0 +1,33 @@
+.animate {
+  animation: 2.25s ease-in-out infinite rotateWindback;
+}
+
+@keyframes rotateWindback {
+  0% {
+    transform: rotate(0);
+  }
+
+  10% {
+    transform: rotate(-40deg);
+  }
+
+  45% {
+    transform: rotate(420deg);
+  }
+
+  60% {
+    transform: rotate(340deg);
+  }
+
+  70% {
+    transform: rotate(370deg);
+  }
+
+  80% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

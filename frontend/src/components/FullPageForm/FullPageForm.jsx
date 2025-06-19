@@ -1,19 +1,20 @@
+import { LoadingElement } from '../LoadingElement/LoadingElement.jsx';
 import styles from './FullPageForm.module.css';
 import shared from '../../styles/shared.module.css';
-import steelBall from '../../assets/images/steel-ball.png';
 import gyroHeadshot from '../../assets/backgroundImages/gyro-headshot.png';
 
-const FullPageForm = ({ onSubmit, backgroundImage = gyroHeadshot, errors, children }) => {
-  const backgroundImageStyling = { backgroundImage: `url(${backgroundImage})`}
+const FullPageForm = ({
+  onSubmit,
+  backgroundImage = gyroHeadshot,
+  errors,
+  children,
+}) => {
+  const backgroundImageStyling = { backgroundImage: `url(${backgroundImage})` };
 
   return (
     <div className={styles.pageWrapper} style={backgroundImageStyling}>
       <main className={`${styles.formWrapper} ${shared.card}`}>
-        <img
-          className={styles.formImage}
-          src={steelBall}
-          alt="Gyro's green steel ball"
-        />
+        <LoadingElement isVisible={true} isAnimating={true} style={{maxWidth: '130px'}} />
         <h1 className={styles.formTitle}>
           <i>S.B.M</i>
           <br />
