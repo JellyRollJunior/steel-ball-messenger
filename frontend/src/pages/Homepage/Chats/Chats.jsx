@@ -3,6 +3,8 @@ import { useChats } from '../../../hooks/useChats.js';
 import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import shared from '../../../styles/shared.module.css';
+import styles from './Chats.module.css';
 
 const Chats = ({ setChatId }) => {
   const { chats, loading, error, refetch: refetchChats } = useChats();
@@ -34,7 +36,7 @@ const Chats = ({ setChatId }) => {
   };
 
   return (
-    <section>
+    <section className={`${styles.pageLayout} ${shared.background}`}>
       <h2>chats</h2>
       <button onClick={() => setShowCreateChat(!showCreateChat)}>
         Create new chat
