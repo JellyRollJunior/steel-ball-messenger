@@ -4,6 +4,7 @@ import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
 import shared from '../../styles/shared.module.css';
+import diego from '../../assets/backgroundImages/diego-world.png';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
@@ -41,7 +42,7 @@ const Signup = () => {
   };
 
   return (
-    <FullPageForm onSubmit={submitSignup} error={error}>
+    <FullPageForm onSubmit={submitSignup} error={error} backgroundImage={diego}>
       <label htmlFor="username">Username</label>
       <input
         type="text"

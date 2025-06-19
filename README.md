@@ -48,11 +48,9 @@
 
 -   always call get /current on homepage load
 
--   full page form
-    -   style errors (validation errors) -> notifications -> later
-
 -   signup
-    -   errors
+    -   background image
+    -   loading
 
 
 -   form top bot min margins
