@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
@@ -7,19 +7,22 @@ import shared from '../../styles/shared.module.css';
 import diego from '../../assets/backgroundImages/diego-world.png';
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [error, setError] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const submitSignup = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     if (password != passwordConfirm) {
       setError('Passwords do not match.');
       return;
     }
     try {
-      const user = await makeRequest(getUrl('/users'), {
+      await makeRequest(getUrl('/users'), {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -30,19 +33,24 @@ const Signup = () => {
           password,
         }),
       });
-      console.log(user);
+      setTimeout(() => {
+        setIsLoading(false);
+        navigate('/login');
+      }, 2000);
     } catch (error) {
-      if (error.validationErrors) {
-        setError(error.validationErrors);
-      } else {
-        setError(error.message);
-      }
-      console.log(error);
+      setTimeout(() => {
+        setIsLoading(false);
+        if (error.validationErrors) {
+          setError(error.validationErrors);
+        } else {
+          setError(error.message);
+        }
+      }, 2000);
     }
   };
 
   return (
-    <FullPageForm onSubmit={submitSignup} error={error} backgroundImage={diego}>
+    <FullPageForm onSubmit={submitSignup} isLoading={isLoading} error={error} backgroundImage={diego}>
       <label htmlFor="username">Username</label>
       <input
         type="text"

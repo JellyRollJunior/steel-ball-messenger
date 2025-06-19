@@ -48,11 +48,6 @@
 
 -   always call get /current on homepage load
 
--   signup
-    -   background image
-    -   loading
-
-
 -   form top bot min margins
 
 ### TODO LATER
