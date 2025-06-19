@@ -50,7 +50,7 @@
 .error {
   text-align: center;
   font-weight: bold;
-  color: #ff84ad;
+  color: var(--pink);
 }
 
 .form label {

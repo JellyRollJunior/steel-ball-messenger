@@ -39,7 +39,7 @@ const Login = () => {
       // show everyone my pro loading animation!
       setTimeout(() => {
         setIsLoading(false);
-      }, 2250);
+      }, 2000);
     }
   };
 

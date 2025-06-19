@@ -35,24 +35,24 @@
 
 .primaryButton {
   composes: button;
-  color: #eecbef;
-  background-color: #8f5bdd;
-  border-color: #8f5bdd;
+  color: var(--lavender);
+  background-color: var(--purple);
+  border-color: var(--purple);
 }
 
 .primaryButton:hover {
-  background-color: #eecbef;
-  color: #8f5bdd;
+  background-color: var(--lavender);
+  color: var(--purple);
 }
 
 .secondaryButton {
   composes: button;
-  color: #ffff9c;
-  background-color: #5bbd1e;
-  border-color: #5bbd1e;
+  color: var(--mountain-dew);
+  background-color: var(--green);
+  border-color: var(--green);
 }
 
 .secondaryButton:hover {
-  background-color: #ffff9c;
-  color: #5bbd1e;
+  background-color: var(--mountain-dew);
+  color: var(--green);
 }
