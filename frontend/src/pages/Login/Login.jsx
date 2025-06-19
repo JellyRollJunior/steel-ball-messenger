@@ -1,13 +1,12 @@
-import { useContext, useState } from 'react';
-import { UserContext } from '../../providers/UserContext/UserContext.jsx';
+import { useState } from 'react';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import shared from '../../styles/shared.module.css';
 
 const Login = () => {
-  const { setUser } = useContext(UserContext);
+  const navigate = useNavigate();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
@@ -30,15 +29,15 @@ const Login = () => {
       });
       // save token into local storage
       localStorage.setItem('token', data.token);
-      setUser(data.id, data.username);
-      setError(null);
-    } catch (error) {
-      console.log(error);
-      setError('Unable to authenticate user.');
-    } finally {
-      // show everyone my pro loading animation!
+      setTimeout(() => {
+        // show everyone my pro loading animation!
+        setIsLoading(false);
+        navigate('/');
+      }, 2000);
+    } catch {
       setTimeout(() => {
         setIsLoading(false);
+        setError('Unable to authenticate user.');
       }, 2000);
     }
   };

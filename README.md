@@ -49,18 +49,12 @@
 -   always call get /current on homepage load
 
 -   full page form
-    -   style errors
-        -   form accept errors
-            -   if only 1, convert to array
-            -   need backend structure of errors (check)
-        -   render each error
--   extract colors to variables
+    -   style errors (validation errors) -> notifications -> later
 
 ### TODO LATER
 
 -   desktop view
 -   signup redirects to login
--   login redirects to index
 -   index redirects to login if user not logged in
 -   error handling
     -   send message
