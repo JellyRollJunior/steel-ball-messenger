@@ -51,6 +51,12 @@
 -   full page form
     -   style errors (validation errors) -> notifications -> later
 
+-   signup
+    -   errors
+
+
+-   form top bot min margins
+
 ### TODO LATER
 
 -   desktop view

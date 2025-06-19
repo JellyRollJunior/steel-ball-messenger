@@ -9,12 +9,12 @@ const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const [errors, setErrors] = useState([]);
+  const [error, setError] = useState([]);
 
   const submitSignup = async (event) => {
     event.preventDefault();
     if (password != passwordConfirm) {
-      setErrors([{ msg: 'Passwords do not match.' }]);
+      setError('Passwords do not match.');
       return;
     }
     try {
@@ -32,19 +32,16 @@ const Signup = () => {
       console.log(user);
     } catch (error) {
       if (error.validationErrors) {
-        setErrors(error.validationErrors);
+        setError(error.validationErrors);
       } else {
-        setErrors([{ msg: error.message }]);
+        setError(error.message);
       }
       console.log(error);
     }
   };
 
   return (
-    <FullPageForm onSubmit={submitSignup}>
-      {errors.map((error) => (
-        <h3 key={error.msg}>{error.msg}</h3>
-      ))}
+    <FullPageForm onSubmit={submitSignup} error={error}>
       <label htmlFor="username">Username</label>
       <input
         type="text"
@@ -65,6 +62,7 @@ const Signup = () => {
         onChange={(event) => setPassword(event.target.value)}
         minLength={6}
         maxLength={24}
+        required
       />
       <label htmlFor="passwordConfirm">Confirm Password</label>
       <input
@@ -75,6 +73,7 @@ const Signup = () => {
         onChange={(event) => setPasswordConfirm(event.target.value)}
         minLength={6}
         maxLength={24}
+        required
       />
       <div className={shared.marginTopLarge}>
         <button className={shared.primaryButton}>Sign Up</button>

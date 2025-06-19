@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <FullPageForm onSubmit={submitLogin} errors={error} isLoading={isLoading}>
+    <FullPageForm onSubmit={submitLogin} error={error} isLoading={isLoading}>
       <label htmlFor="username">Username</label>
       <input
         type="text"
