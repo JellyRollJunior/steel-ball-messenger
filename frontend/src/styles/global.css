@@ -5,3 +5,12 @@
   --mountain-dew: #ffff9c;
   --green: #5bbd1e;
 }
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}

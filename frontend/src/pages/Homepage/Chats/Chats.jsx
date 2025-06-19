@@ -5,6 +5,7 @@ import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
+import createChatIcon from '../../../assets/icons/new-chat.svg';
 
 const Chats = ({ setChatId }) => {
   const { chats, loading, error, refetch: refetchChats } = useChats();
@@ -37,10 +38,15 @@ const Chats = ({ setChatId }) => {
 
   return (
     <section className={`${styles.pageLayout} ${shared.background}`}>
-      <h2>chats</h2>
-      <button onClick={() => setShowCreateChat(!showCreateChat)}>
-        Create new chat
-      </button>
+      <header className={`${styles.header} ${shared.card}`}>
+        <h1 className={`${styles.title} ${shared.card}`}>Username</h1>
+        <button
+          className={`${styles.createChatBtn} ${styles.iconButton}`}
+          onClick={() => setShowCreateChat(!showCreateChat)}
+        >
+          <img src={createChatIcon} alt="" />
+        </button>
+      </header>
       {error && <h2>{error}</h2>}
       {loading && <h2>loading chats</h2>}
       {errorUsers && <h2>{errorUsers}</h2>}
@@ -69,7 +75,7 @@ const Chats = ({ setChatId }) => {
       {chats && (
         <ul>
           {chats.map((chat) => (
-            <li key={chat.id}>
+            <li key={chat.id} className={shared.card}>
               <div>{chat.id}</div>
               <button onClick={() => setChatId(chat.id)}>Show messages</button>
               {chat.users.map((user) => (

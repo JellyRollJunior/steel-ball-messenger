@@ -43,9 +43,17 @@
 
 ## TODOS - frontend
 
--   always call get /current on homepage load
-
--   extract page background styling
+-   homepage
+    -   call /current on load
+    -   chats
+        -   title shows username
+        -   create new chat button
+        -   cards on each chat
+        -   profile pictures
+            -   chat cards
+        -   cards on each title thingy? play around with it
+    -   extract create new chat into it's own page (funny valentine)
+-   extract icon button
 
 ### TODO LATER
 
