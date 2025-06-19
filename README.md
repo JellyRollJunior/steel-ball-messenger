@@ -41,9 +41,6 @@
 -   refactor to ID validation?
 -   FIX: disallow creating chats that already exist (same users)
 
--   remove user data from /login
-    -   we now pull user data from calling /current
-
 ## TODOS - frontend
 
 -   always call get /current on homepage load
