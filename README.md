@@ -44,10 +44,7 @@
 ## TODOS - frontend
 
 -   homepage
-    -   call /current on load
     -   chats
-        -   title shows username
-        -   create new chat button
         -   cards on each chat
         -   profile pictures
             -   chat cards
