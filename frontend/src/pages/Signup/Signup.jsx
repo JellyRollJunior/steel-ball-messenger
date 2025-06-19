@@ -1,14 +1,22 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
+import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
+import shared from '../../styles/shared.module.css';
 
 const Signup = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [errors, setErrors] = useState([]);
 
   const submitSignup = async (event) => {
     event.preventDefault();
+    if (password != passwordConfirm) {
+      setErrors([{ msg: 'Passwords do not match.' }]);
+      return;
+    }
     try {
       const user = await makeRequest(getUrl('/users'), {
         mode: 'cors',
@@ -33,7 +41,7 @@ const Signup = () => {
   };
 
   return (
-    <form onSubmit={submitSignup}>
+    <FullPageForm onSubmit={submitSignup}>
       {errors.map((error) => (
         <h3 key={error.msg}>{error.msg}</h3>
       ))}
@@ -58,8 +66,23 @@ const Signup = () => {
         minLength={6}
         maxLength={24}
       />
-      <button>Submit</button>
-    </form>
+      <label htmlFor="passwordConfirm">Confirm Password</label>
+      <input
+        type="password"
+        name="passwordConfirm"
+        id="passwordConfirm"
+        value={passwordConfirm}
+        onChange={(event) => setPasswordConfirm(event.target.value)}
+        minLength={6}
+        maxLength={24}
+      />
+      <div className={shared.marginTopLarge}>
+        <button className={shared.primaryButton}>Sign Up</button>
+        <Link to="/login">
+          <button className={shared.secondaryButton}>Return to Login</button>
+        </Link>
+      </div>
+    </FullPageForm>
   );
 };
 
