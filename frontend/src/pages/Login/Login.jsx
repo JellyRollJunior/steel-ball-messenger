@@ -11,9 +11,11 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const submitLogin = async (event) => {
     event.preventDefault();
+    setIsLoading(true);
     try {
       const data = await makeRequest(getUrl('/login'), {
         mode: 'cors',
@@ -33,11 +35,16 @@ const Login = () => {
     } catch (error) {
       console.log(error);
       setError('Unable to authenticate user.');
+    } finally {
+      // show everyone my pro loading animation!
+      setTimeout(() => {
+        setIsLoading(false);
+      }, 2250);
     }
   };
 
   return (
-    <FullPageForm onSubmit={submitLogin} errors={error}>
+    <FullPageForm onSubmit={submitLogin} errors={error} isLoading={isLoading}>
       <label htmlFor="username">Username</label>
       <input
         type="text"

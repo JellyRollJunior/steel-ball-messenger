@@ -55,7 +55,6 @@
             -   need backend structure of errors (check)
         -   render each error
 -   extract colors to variables
--   form loading animation
 
 ### TODO LATER
 

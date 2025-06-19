@@ -5,8 +5,9 @@ import gyroHeadshot from '../../assets/backgroundImages/gyro-headshot.png';
 
 const FullPageForm = ({
   onSubmit,
-  backgroundImage = gyroHeadshot,
   errors,
+  isLoading = false,
+  backgroundImage = gyroHeadshot,
   children,
 }) => {
   const backgroundImageStyling = { backgroundImage: `url(${backgroundImage})` };
@@ -14,7 +15,7 @@ const FullPageForm = ({
   return (
     <div className={styles.pageWrapper} style={backgroundImageStyling}>
       <main className={`${styles.formWrapper} ${shared.card}`}>
-        <LoadingElement isVisible={true} isAnimating={true} style={{maxWidth: '130px'}} />
+        <LoadingElement isVisible={true} isAnimating={isLoading} style={{maxWidth: '130px'}} />
         <h1 className={styles.formTitle}>
           <i>S.B.M</i>
           <br />
