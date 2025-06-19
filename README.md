@@ -48,8 +48,6 @@
 
 -   always call get /current on homepage load
 
--   form top bot min margins
-
 ### TODO LATER
 
 -   desktop view
@@ -65,3 +63,4 @@
     -   set errors in notifications!
 -   merge get current and chats (?)
 -   getToken util that redirects to login if token expires
+-   slide animations for page change?

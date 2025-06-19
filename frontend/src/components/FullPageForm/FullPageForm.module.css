@@ -1,13 +1,13 @@
 .pageWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   min-height: 100vh;
   min-width: 100vw;
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.15);
   background-blend-mode: lighten;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .formWrapper {
@@ -19,7 +19,7 @@
   height: 100%;
   width: 100%;
   max-width: 500px;
-  margin: 0 18px;
+  margin: 36px 18px;
   padding: 16px 18px;
 }
 
