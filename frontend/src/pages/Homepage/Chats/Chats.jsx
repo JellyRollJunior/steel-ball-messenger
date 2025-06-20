@@ -25,7 +25,7 @@ const Chats = ({ setChatId }) => {
       {chats && (
         <ul className={`${styles.chatsWrapper} ${shared.marginTopLarge}`}>
           {chats.map((chat) => (
-            <li key={chat.id} className={`${shared.card}`}>
+            <li key={chat.id} className={`${styles.chatCard} ${shared.card}`}>
               <button
                 className={styles.chatItem}
                 onClick={() => setChatId(chat.id)}
