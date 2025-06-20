@@ -16,6 +16,14 @@
   font-family: 'rye', Arial, Helvetica, sans-serif;
 }
 
+.loadingWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 24px 0;
+}
+
 .chatsWrapper {
   display: flex;
   flex-direction: column;

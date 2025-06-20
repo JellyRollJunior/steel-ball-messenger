@@ -46,7 +46,6 @@
 -   homepage
     -   chats
         -   search bar
-        -   loading
 
 ### TODO LATER
 

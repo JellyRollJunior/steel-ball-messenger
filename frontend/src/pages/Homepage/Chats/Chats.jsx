@@ -2,14 +2,15 @@ import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserContext/UserContext.jsx';
 import { useChats } from '../../../hooks/useChats.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
-import shared from '../../../styles/shared.module.css';
-import styles from './Chats.module.css';
 import createChatIcon from '../../../assets/icons/new-chat.svg';
 import steelBall from '../../../assets/images/steel-ball.png';
+import shared from '../../../styles/shared.module.css';
+import styles from './Chats.module.css';
+import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 
 const Chats = ({ setChatId }) => {
-  // todo, handle error with notifications
-  const { chats, loading } = useChats();
+  // todo: handle error with notifications
+  const { chats, isLoading } = useChats();
   const { id, username } = useContext(UserContext);
 
   return (
@@ -20,7 +21,12 @@ const Chats = ({ setChatId }) => {
         </h1>
         <IconButton icon={createChatIcon} alt="create chat icon" />
       </header>
-      {loading && <h2>loading chats</h2>}
+      {isLoading && (
+        <div className={`${styles.loadingWrapper} ${shared.card} ${shared.marginTopLarge}`}>
+          <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />
+          <h2>Loading...</h2>
+        </div>
+      )}
       {chats && (
         <ul className={`${styles.chatsWrapper} ${shared.marginTopLarge}`}>
           {chats.map((chat) => (

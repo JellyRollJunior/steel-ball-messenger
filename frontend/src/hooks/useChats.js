@@ -4,11 +4,11 @@ import { getUrl } from '../utils/serverUrl.js';
 
 const useChats = () => {
     const [chats, setChats] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     const fetchChats = useCallback(async (signal) => {
-        setLoading(true);
+        setIsLoading(true);
         const token = localStorage.getItem('token');
         try {
             const data = await makeRequest(getUrl('/chats'), {
@@ -26,9 +26,9 @@ const useChats = () => {
             console.log(error);
             setError('Error!');
         } finally {
-            setLoading(false);
+            setIsLoading(false);
         }
-    }, [])
+    }, []);
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -42,7 +42,7 @@ const useChats = () => {
         fetchChats();
     };
 
-    return { chats, loading, error, refetch };
+    return { chats, isLoading, error, refetch };
 };
 
 export { useChats };
