@@ -47,8 +47,6 @@
     -   chats
         -   search bar
         -   loading
-        -   remove self from usernames
-        -   un-round card edges
 
 ### TODO LATER
 
