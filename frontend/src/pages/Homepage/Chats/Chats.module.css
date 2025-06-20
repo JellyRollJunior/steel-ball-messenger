@@ -14,3 +14,39 @@
   font-size: 2rem;
   font-family: 'rye', Arial, Helvetica, sans-serif;
 }
+
+.chatsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.chatItem {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  width: 100%;
+
+  border: none;
+  background-color: inherit;
+}
+
+.profilePicture {
+  grid-row: span 2;
+  align-self: center;
+}
+
+.chatContent {
+  text-align: left;
+  margin-left: 6px;
+  overflow: hidden;
+}
+
+.chatUsernames {
+  composes: chatContent;
+  align-self: flex-end;
+}
+
+.latestMessage {
+  composes: chatContent;
+  align-self: flex-start;
+}

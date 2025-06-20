@@ -45,12 +45,9 @@
 
 -   homepage
     -   chats
-        -   cards on each chat
         -   search bar
-        -   profile pictures
-            -   chat cards
-        -   cards on each title thingy? play around with it
--   extract icon button
+        -   loading
+        -   remove self from usernames
 
 ### TODO LATER
 
