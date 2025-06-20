@@ -21,14 +21,15 @@ const Chats = ({ setChatId }) => {
         </h1>
         <IconButton icon={createChatIcon} alt="create chat icon" />
       </header>
+      <h2 className={`${styles.sectionTitle} ${shared.card} ${shared.marginTopLarge}`}>Chats</h2>
       {isLoading && (
-        <div className={`${styles.loadingWrapper} ${shared.card} ${shared.marginTopLarge}`}>
+        <div className={`${styles.loadingWrapper} ${shared.card} ${shared.marginTopSmall}`}>
           <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />
           <h2>Loading...</h2>
         </div>
       )}
       {chats && (
-        <ul className={`${styles.chatsWrapper} ${shared.marginTopLarge}`}>
+        <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
           {chats.map((chat) => (
             <li key={chat.id} className={`${styles.chatCard} ${shared.card}`}>
               <button

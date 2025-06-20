@@ -44,6 +44,7 @@
 ## TODOS - frontend
 
 -   homepage
+    -   DISPLAY CONTROL LOGIC
     -   chats
         -   search bar
 
