@@ -46,10 +46,10 @@
 -   homepage
     -   chats
         -   cards on each chat
+        -   search bar
         -   profile pictures
             -   chat cards
         -   cards on each title thingy? play around with it
-    -   extract create new chat into it's own page (funny valentine)
 -   extract icon button
 
 ### TODO LATER

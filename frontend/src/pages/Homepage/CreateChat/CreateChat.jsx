@@ -4,6 +4,8 @@ import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
 const CreateChat = () => {
+//        -   extract create new chat into it's own page (funny valentine)
+
   const { users, loading: loadingUsers, error: errorUsers } = useUsers();
   const [selectedUser, setSelectedUser] = useState(null);
 
