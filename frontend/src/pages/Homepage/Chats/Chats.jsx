@@ -14,7 +14,7 @@ const Chats = ({ setChatId }) => {
   const { id, username } = useContext(UserContext);
 
   return (
-    <section className={`${styles.pageLayout} ${shared.background}`}>
+    <section>
       <header className={`${styles.header} ${shared.card}`}>
         <h1 className={`${styles.title} ${shared.card}`}>
           {username ? username : 'Username'}

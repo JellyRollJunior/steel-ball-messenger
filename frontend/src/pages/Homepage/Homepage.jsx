@@ -36,7 +36,7 @@ const Homepage = () => {
 
   return (
     <>
-      <div>
+      <div className={`${styles.pageLayout} ${shared.background}`}>
         <Chats />
         <nav className={`${styles.nav} ${shared.card}`}>
           <IconButton icon={steelBall} size={56}/>
