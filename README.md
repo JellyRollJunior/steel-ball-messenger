@@ -53,6 +53,8 @@
             -   chats button
             -   profile button
             -   indicate which section is currently active (make it darker or color diff or smth)
+        -   move /current fetching into a hook
+            -   just pass the props to children. don't need a provider tbh
     -   chats
         -   search bar
 
@@ -72,3 +74,4 @@
 -   merge get current and chats (?)
 -   getToken util that redirects to login if token expires
 -   slide animations for page change?
+-   homepage overflow scrolling?
