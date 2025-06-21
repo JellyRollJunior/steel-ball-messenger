@@ -48,7 +48,11 @@
         -   homepage -> context with types for each page
         -   switch statement, check type and render which page
             -   perhaps can have a reducer state instead?
-        
+        -   move background to homepage
+        -   create navbar
+            -   chats button
+            -   profile button
+            -   indicate which section is currently active (make it darker or color diff or smth)
     -   chats
         -   search bar
 

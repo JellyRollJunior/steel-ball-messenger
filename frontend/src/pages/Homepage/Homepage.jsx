@@ -1,14 +1,15 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { Chats } from './Chats/Chats.jsx';
-import { Messages } from './Messages/Messages.jsx';
-import { Profiles } from './Profiles/Profiles.jsx';
+import styles from './Homepage.module.css';
+import shared from '../../styles/shared.module.css';
+import { IconButton } from '../../components/IconButton/IconButton.jsx';
+import steelBall from '../../assets/images/steel-ball.png';
+
 
 const Homepage = () => {
-  const [chatId, setChatId] = useState(null);
-  const [userProfileId, setUserProfileId] = useState(null);
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Homepage = () => {
         setUser(data.id, data.username, data.bio);
         return data;
       } catch (error) {
-        console.log(error)
+        console.log(error);
         // todo: throw notification if error
       }
     };
@@ -35,9 +36,14 @@ const Homepage = () => {
 
   return (
     <>
-      <Chats setChatId={setChatId} />
-      <Messages chatId={chatId} setUserProfileId={setUserProfileId} />
-      <Profiles userId={userProfileId} />
+      <div>
+        <Chats />
+        <nav className={`${styles.nav} ${shared.card}`}>
+          <IconButton icon={steelBall} size={56}/>
+          <IconButton icon={steelBall} size={56}/>
+          <IconButton icon={steelBall} size={56}/>
+        </nav>
+      </div>
     </>
   );
 };
