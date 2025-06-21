@@ -45,6 +45,10 @@
 
 -   homepage
     -   DISPLAY CONTROL LOGIC
+        -   homepage -> context with types for each page
+        -   switch statement, check type and render which page
+            -   perhaps can have a reducer state instead?
+        
     -   chats
         -   search bar
 
