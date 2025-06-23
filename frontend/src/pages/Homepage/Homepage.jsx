@@ -2,13 +2,15 @@ import { useContext, useEffect, useReducer } from 'react';
 import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
-import { Chats } from './Chats/Chats.jsx';
 import { IconButton } from '../../components/IconButton/IconButton.jsx';
+import { Chats } from './Chats/Chats.jsx';
+import { CreateChat } from './CreateChat/CreateChat.jsx';
+import { EditProfile } from './EditProfile/EditProfile.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
 import steelBall from '../../assets/images/steel-ball.png';
-import { CreateChat } from './CreateChat/CreateChat.jsx';
-import { EditProfile } from './EditProfile/EditProfile.jsx';
+import tusk from '../../assets/images/tusk.png';
+import steelBallRun from '../../assets/images/SBR.png';
 
 const Homepage = () => {
   const { setUser } = useContext(UserContext);
@@ -70,8 +72,8 @@ const Homepage = () => {
         <div className={styles.contentWrapper}>{renderMainContent()}</div>
         <nav className={`${styles.nav} ${shared.card}`}>
           <IconButton icon={steelBall} size={56} onClick={() => dispatch({ type: 'render_chats'})} />
-          <IconButton icon={steelBall} size={56} onClick={() => dispatch({ type: 'render_create_chat'})} />
-          <IconButton icon={steelBall} size={56} />
+          <IconButton icon={steelBallRun} size={56} onClick={() => dispatch({ type: 'render_create_chat'})} />
+          <IconButton icon={tusk} size={56} />
         </nav>
       </div>
     </>

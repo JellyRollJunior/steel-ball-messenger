@@ -46,17 +46,21 @@
 -   homepage
     -   DISPLAY CONTROL LOGIC
         -   homepage -> context with types for each page
-        -   switch statement, check type and render which page
-            -   perhaps can have a reducer state instead?
-        -   move background to homepage
         -   create navbar
-            -   chats button
-            -   profile button
+            -   navbar button icons
+                -   chats
+                -   new chats
+                    -   Remove new chat button from chats header
+                -   profile
+                    -   put logout in profile section
+            -   add text to icon buttons
             -   indicate which section is currently active (make it darker or color diff or smth)
         -   move /current fetching into a hook
             -   just pass the props to children. don't need a provider tbh
     -   chats
         -   search bar
+        -   overflow
+    -   fix full page form background
 
 ### TODO LATER
 
