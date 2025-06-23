@@ -37,16 +37,25 @@ const Homepage = () => {
     fetchUser();
   }, [setUser]);
 
+  const pages = Object.freeze({
+    CHATS: 'Chats',
+    CREATECHAT: 'Create Chats',
+    EDITPROFILE: 'Edit Profile',
+  });
+
   const reducer = (state, action) => {
     switch (action.type) {
       case 'render_chats': {
-        return { currentPage: 'Chats' };
+        return { currentPage: pages.CHATS };
       }
       case 'render_create_chat': {
-        return { currentPage: 'Create Chats' };
+        return { currentPage: pages.CREATECHAT };
+      }
+      case 'render_edit_profile': {
+        return { currentPage: pages.EDITPROFILE };
       }
       default: {
-        return { currentPage: 'Chats' };
+        return { currentPage: pages.CHATS };
       }
     }
   };
@@ -55,11 +64,11 @@ const Homepage = () => {
 
   const renderMainContent = () => {
     switch (state.currentPage) {
-      case 'Chats':
+      case pages.CHATS:
         return <Chats />;
-      case 'Create Chats':
+      case pages.CREATECHAT:
         return <CreateChat />;
-      case 'Edit Profile':
+      case pages.EDITPROFILE:
         return <EditProfile />;
       default:
         return <Chats />;
@@ -69,11 +78,28 @@ const Homepage = () => {
   return (
     <>
       <div className={`${styles.pageLayout} ${shared.background}`}>
-        <div className={styles.contentWrapper}>{renderMainContent()}</div>
+        <div className={styles.contentWrapper}>
+          {renderMainContent()}
+        </div>
         <nav className={`${styles.nav} ${shared.card}`}>
-          <IconButton onClick={() => dispatch({ type: 'render_chats'})} label='Chats' icon={steelBall} size={52}  />
-          <IconButton onClick={() => dispatch({ type: 'render_create_chat'})} label='New Chat' icon={steelBallRun} size={52} />
-          <IconButton label='Profile' icon={tusk} size={52} />
+          <IconButton
+            onClick={() => dispatch({ type: 'render_chats' })}
+            label="Chats"
+            icon={steelBall}
+            size={52}
+          />
+          <IconButton
+            onClick={() => dispatch({ type: 'render_create_chat' })}
+            label="New Chat"
+            icon={steelBallRun}
+            size={52}
+          />
+          <IconButton
+            onClick={() => dispatch({ type: 'render_edit_profile' })}
+            label="Profile"
+            icon={tusk}
+            size={52}
+          />
         </nav>
       </div>
     </>

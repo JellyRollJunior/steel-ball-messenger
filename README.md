@@ -47,12 +47,8 @@
     -   DISPLAY CONTROL LOGIC
         -   homepage -> context with types for each page
         -   create navbar
-            -   navbar button icons
-                -   chats
-                -   new chats
-                -   profile
-                    -   put logout in profile section
             -   indicate which section is currently active (make it darker or color diff or smth)
+            -   extract reducer
         -   move /current fetching into a hook
             -   just pass the props to children. don't need a provider tbh
     -   chats
@@ -61,8 +57,11 @@
         -   make new chat button link to new chat state thingy
     -   fix full page form background
 
+
 ### TODO LATER
 
+-   edit profile -> remove user context issues
+-   profile: - put logout in profile section
 -   desktop view
 -   signup redirects to login
 -   index redirects to login if user not logged in
