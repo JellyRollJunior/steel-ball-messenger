@@ -2,11 +2,11 @@ import { useContext } from 'react';
 import { UserContext } from '../../../providers/UserContext/UserContext.jsx';
 import { useChats } from '../../../hooks/useChats.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
-import createChatIcon from '../../../assets/icons/new-chat.svg';
+import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
+import steelBallRun from '../../../assets/images/SBR.png';
 import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
-import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 
 const Chats = ({ setChatId }) => {
   // todo: handle error with notifications
@@ -19,7 +19,7 @@ const Chats = ({ setChatId }) => {
         <h1 className={`${styles.title} ${shared.card}`}>
           {username ? username : 'Username'}
         </h1>
-        <IconButton icon={createChatIcon} alt="create chat icon" />
+        <IconButton icon={steelBallRun} alt="create chat icon" size={38} />
       </header>
       <h2 className={`${styles.sectionTitle} ${shared.card} ${shared.marginTopLarge}`}>Chats</h2>
       {isLoading && (

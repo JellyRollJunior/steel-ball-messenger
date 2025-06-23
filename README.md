@@ -50,16 +50,15 @@
             -   navbar button icons
                 -   chats
                 -   new chats
-                    -   Remove new chat button from chats header
                 -   profile
                     -   put logout in profile section
-            -   add text to icon buttons
             -   indicate which section is currently active (make it darker or color diff or smth)
         -   move /current fetching into a hook
             -   just pass the props to children. don't need a provider tbh
     -   chats
         -   search bar
         -   overflow
+        -   make new chat button link to new chat state thingy
     -   fix full page form background
 
 ### TODO LATER
