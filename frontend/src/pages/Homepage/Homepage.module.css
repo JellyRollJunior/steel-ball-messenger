@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 1fr 70px;
+  grid-template-rows: 1fr 88px;
 
   min-height: 100vh;
   min-width: 100vw;

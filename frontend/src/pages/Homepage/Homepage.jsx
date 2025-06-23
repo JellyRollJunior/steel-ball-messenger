@@ -71,9 +71,9 @@ const Homepage = () => {
       <div className={`${styles.pageLayout} ${shared.background}`}>
         <div className={styles.contentWrapper}>{renderMainContent()}</div>
         <nav className={`${styles.nav} ${shared.card}`}>
-          <IconButton icon={steelBall} size={56} onClick={() => dispatch({ type: 'render_chats'})} />
-          <IconButton icon={steelBallRun} size={56} onClick={() => dispatch({ type: 'render_create_chat'})} />
-          <IconButton icon={tusk} size={56} />
+          <IconButton onClick={() => dispatch({ type: 'render_chats'})} label='Chats' icon={steelBall} size={52}  />
+          <IconButton onClick={() => dispatch({ type: 'render_create_chat'})} label='New Chat' icon={steelBallRun} size={52} />
+          <IconButton label='Profile' icon={tusk} size={52} />
         </nav>
       </div>
     </>
