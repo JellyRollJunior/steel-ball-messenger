@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
@@ -12,8 +12,15 @@ import steelBall from '../../assets/images/steel-ball.png';
 import tusk from '../../assets/images/tusk.png';
 import steelBallRun from '../../assets/images/SBR.png';
 
+const pages = Object.freeze({
+  CHATS: 'Chats',
+  CREATECHAT: 'Create Chats',
+  EDITPROFILE: 'Edit Profile',
+});
+
 const Homepage = () => {
   const { setUser } = useContext(UserContext);
+  const [currentPage, setCurrentPage] = useState(pages.CHATS);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -37,33 +44,8 @@ const Homepage = () => {
     fetchUser();
   }, [setUser]);
 
-  const pages = Object.freeze({
-    CHATS: 'Chats',
-    CREATECHAT: 'Create Chats',
-    EDITPROFILE: 'Edit Profile',
-  });
-
-  const reducer = (state, action) => {
-    switch (action.type) {
-      case 'render_chats': {
-        return { currentPage: pages.CHATS };
-      }
-      case 'render_create_chat': {
-        return { currentPage: pages.CREATECHAT };
-      }
-      case 'render_edit_profile': {
-        return { currentPage: pages.EDITPROFILE };
-      }
-      default: {
-        return { currentPage: pages.CHATS };
-      }
-    }
-  };
-
-  const [state, dispatch] = useReducer(reducer, { currentPage: 'Chats' });
-
   const renderMainContent = () => {
-    switch (state.currentPage) {
+    switch (currentPage) {
       case pages.CHATS:
         return <Chats />;
       case pages.CREATECHAT:
@@ -78,24 +60,22 @@ const Homepage = () => {
   return (
     <>
       <div className={`${styles.pageLayout} ${shared.background}`}>
-        <div className={styles.contentWrapper}>
-          {renderMainContent()}
-        </div>
+        <div className={styles.contentWrapper}>{renderMainContent()}</div>
         <nav className={`${styles.nav} ${shared.card}`}>
           <IconButton
-            onClick={() => dispatch({ type: 'render_chats' })}
+            onClick={() => setCurrentPage(pages.CHATS)}
             label="Chats"
             icon={steelBall}
             size={52}
           />
           <IconButton
-            onClick={() => dispatch({ type: 'render_create_chat' })}
+            onClick={() => setCurrentPage(pages.CREATECHAT)}
             label="New Chat"
             icon={steelBallRun}
             size={52}
           />
           <IconButton
-            onClick={() => dispatch({ type: 'render_edit_profile' })}
+            onClick={() => setCurrentPage(pages.EDITPROFILE)}
             label="Profile"
             icon={tusk}
             size={52}

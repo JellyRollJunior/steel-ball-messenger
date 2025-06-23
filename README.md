@@ -51,6 +51,7 @@
             -   extract reducer
         -   move /current fetching into a hook
             -   just pass the props to children. don't need a provider tbh
+        -   mayhaps move render page stuff into a context so we can access it from anywhere (don't need to pass down the set page thingy) 
     -   chats
         -   search bar
         -   overflow
