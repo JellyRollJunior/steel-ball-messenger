@@ -44,9 +44,6 @@
 ## TODOS - frontend
 
 -   homepage
-    -   DISPLAY CONTROL LOGIC
-        -   create navbar
-            -   indicate which section is currently active (make it darker or color diff or smth)
     -   chats
         -   search bar
         -   overflow
@@ -55,7 +52,6 @@
 
 ### TODO LATER
 
--   edit profile -> remove user context issues
 -   profile: - put logout in profile section
 -   desktop view
 -   signup redirects to login
@@ -64,11 +60,8 @@
     -   send message
         -   errors
         -   no token goto login
--   context for controlling homepage display logic
--   context for storing current user data on login
 -   notifications context
     -   set errors in notifications!
 -   merge get current and chats (?)
 -   getToken util that redirects to login if token expires
 -   slide animations for page change?
--   homepage overflow scrolling?

@@ -9,29 +9,30 @@ import tusk from '../../assets/images/tusk.png';
 import steelBallRun from '../../assets/images/SBR.png';
 
 const pages = Object.freeze({
-  CHATS: 'Chats',
-  CREATECHAT: 'New Chat',
-  EDITPROFILE: 'Profile',
+  CHATS: { name: 'Chats', icon: steelBall },
+  CREATECHAT: { name: 'New Chat', icon: steelBallRun },
+  EDITPROFILE: { name: 'Profile', icon: tusk },
 });
 
 const Homepage = () => {
   const { user } = useCurrent();
-  const { pageContent, setPageContent } = usePageContentContext(pages.CHATS);
+  const { pageContent, setPageContent } = usePageContentContext();
 
   const renderMainContent = () => {
     switch (pageContent) {
-      case pages.CREATECHAT:
+      case pages.CREATECHAT.name:
         return <Chats />;
-      case pages.EDITPROFILE:
+      case pages.EDITPROFILE.name:
         return <Chats />;
-      case pages.CHATS:
-      default:
+      case pages.CHATS.name:
         return (
           <Chats
             userId={user ? user.id : null}
             username={user ? user.username : null}
           />
         );
+      default:
+        setPageContent(pages.CHATS.name);
     }
   };
 
@@ -39,31 +40,19 @@ const Homepage = () => {
     <div className={`${styles.pageLayout} ${shared.background}`}>
       <div className={styles.contentWrapper}>{renderMainContent()}</div>
       <nav className={`${styles.nav} ${shared.card}`}>
-        <div className={pageContent == pages.CHATS && styles.selected}>
-          <IconButton
-            onClick={() => setPageContent(pages.CHATS)}
-            label="Chats"
-            icon={steelBall}
-            size={52}
-          />
-        </div>
-        <div className={pageContent == pages.CREATECHAT && styles.selected}>
-          <IconButton
-            onClick={() => setPageContent(pages.CREATECHAT)}
-            label="New Chat"
-            icon={steelBallRun}
-            size={52}
-          />
-        </div>
-        <div className={pageContent == pages.EDITPROFILE && styles.selected}>
-          <IconButton
-            onClick={() => setPageContent(pages.EDITPROFILE)}
-            label="Profile"
-            icon={tusk}
-            size={52}
-            isSelected={true}
-          />
-        </div>
+        {Object.values(pages).map((page) => (
+          <div
+            className={pageContent == page.name ? styles.selected : ''}
+            key={page.name}
+          >
+            <IconButton
+              onClick={() => setPageContent(page.name)}
+              label={page.name}
+              icon={page.icon}
+              size={52}
+            />
+          </div>
+        ))}
       </nav>
     </div>
   );
