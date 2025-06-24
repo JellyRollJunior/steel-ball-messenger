@@ -1,12 +1,7 @@
-import { useContext, useEffect } from 'react';
+import { useCurrent } from '../../hooks/useCurrent.js';
 import { usePageContentContext } from '../../hooks/usePageContentContext.js';
-import { UserContext } from '../../providers/UserContext/UserContext.jsx';
-import { makeRequest } from '../../utils/requests.js';
-import { getUrl } from '../../utils/serverUrl.js';
 import { IconButton } from '../../components/IconButton/IconButton.jsx';
 import { Chats } from './Chats/Chats.jsx';
-import { CreateChat } from './CreateChat/CreateChat.jsx';
-import { EditProfile } from './EditProfile/EditProfile.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
 import steelBall from '../../assets/images/steel-ball.png';
@@ -20,40 +15,23 @@ const pages = Object.freeze({
 });
 
 const Homepage = () => {
-  const { setUser } = useContext(UserContext);
+  const { user } = useCurrent();
   const { pageContent, setPageContent } = usePageContentContext(pages.CHATS);
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const token = localStorage.getItem('token');
-        const data = await makeRequest(getUrl('/current'), {
-          mode: 'cors',
-          method: 'GET',
-          headers: {
-            Authorization: `bearer ${token}`,
-          },
-        });
-        setUser(data.id, data.username, data.bio);
-        return data;
-      } catch (error) {
-        console.log(error);
-        // todo: throw notification if error
-      }
-    };
-
-    fetchUser();
-  }, [setUser]);
-
   const renderMainContent = () => {
-    console.log(pageContent)
+    console.log(pageContent);
     switch (pageContent) {
       case pages.CHATS:
-        return <Chats />;
+        return (
+          <Chats
+            currentUserId={user ? user.id : null}
+            username={user ? user.username : null}
+          />
+        );
       case pages.CREATECHAT:
-        return <CreateChat />;
+        return <Chats />
       case pages.EDITPROFILE:
-        return <EditProfile />;
+        return <Chats />;
     }
   };
 

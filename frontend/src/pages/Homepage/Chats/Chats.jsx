@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import { UserContext } from '../../../providers/UserContext/UserContext.jsx';
 import { useChats } from '../../../hooks/useChats.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
@@ -8,10 +6,8 @@ import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
 
-const Chats = ({ setChatId }) => {
-  // todo: handle error with notifications
+const Chats = ({ currentUserId, username }) => {
   const { chats, isLoading } = useChats();
-  const { id, username } = useContext(UserContext);
 
   return (
     <section>
@@ -34,12 +30,11 @@ const Chats = ({ setChatId }) => {
             <li key={chat.id} className={`${styles.chatCard} ${shared.card}`}>
               <button
                 className={styles.chatItem}
-                onClick={() => setChatId(chat.id)}
               >
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <h3 className={styles.chatUsernames}>
                   {chat.users
-                    .filter((user) => user.id != id)
+                    .filter((user) => user.id != currentUserId)
                     .map((user) => user.username)
                     .join(', ')}
                 </h3>

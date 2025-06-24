@@ -7,31 +7,32 @@ const useMessages = (chatId) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const fetchMessages = useCallback(async (signal) => {
+    const fetchMessages = useCallback(
+        async (signal) => {
             if (!chatId) return;
             setIsLoading(true);
             const token = localStorage.getItem('token');
             try {
-                const data = await makeRequest(
-                    getUrl(`/chats/${chatId}`),
-                    {
-                        mode: 'cors',
-                        method: 'GET',
-                        headers: {
-                            Authorization: `bearer ${token}`,
-                        },
-                        signal
-                    }
-                );
+                const data = await makeRequest(getUrl(`/chats/${chatId}`), {
+                    mode: 'cors',
+                    method: 'GET',
+                    headers: {
+                        Authorization: `bearer ${token}`,
+                    },
+                    signal,
+                });
                 data.messages ? setMessages(data.messages) : setMessages(null);
                 setError(null);
             } catch (error) {
                 console.log(error);
                 setError(error);
+                // todo: throw notification if error
             } finally {
                 setIsLoading(false);
             }
-        }, [chatId])
+        },
+        [chatId]
+    );
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -43,7 +44,7 @@ const useMessages = (chatId) => {
 
     const refetch = () => {
         fetchMessages();
-    }
+    };
 
     return { messages, isLoading, error, refetch };
 };
