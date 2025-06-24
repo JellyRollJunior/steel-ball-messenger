@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
+import { usePageContentContext } from '../../hooks/usePageContentContext.js';
 import { UserContext } from '../../providers/UserContext/UserContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
@@ -20,7 +21,7 @@ const pages = Object.freeze({
 
 const Homepage = () => {
   const { setUser } = useContext(UserContext);
-  const [currentPage, setCurrentPage] = useState(pages.CHATS);
+  const { pageContent, setPageContent } = usePageContentContext(pages.CHATS);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -45,44 +46,41 @@ const Homepage = () => {
   }, [setUser]);
 
   const renderMainContent = () => {
-    switch (currentPage) {
+    console.log(pageContent)
+    switch (pageContent) {
       case pages.CHATS:
         return <Chats />;
       case pages.CREATECHAT:
         return <CreateChat />;
       case pages.EDITPROFILE:
         return <EditProfile />;
-      default:
-        return <Chats />;
     }
   };
 
   return (
-    <>
-      <div className={`${styles.pageLayout} ${shared.background}`}>
-        <div className={styles.contentWrapper}>{renderMainContent()}</div>
-        <nav className={`${styles.nav} ${shared.card}`}>
-          <IconButton
-            onClick={() => setCurrentPage(pages.CHATS)}
-            label="Chats"
-            icon={steelBall}
-            size={52}
-          />
-          <IconButton
-            onClick={() => setCurrentPage(pages.CREATECHAT)}
-            label="New Chat"
-            icon={steelBallRun}
-            size={52}
-          />
-          <IconButton
-            onClick={() => setCurrentPage(pages.EDITPROFILE)}
-            label="Profile"
-            icon={tusk}
-            size={52}
-          />
-        </nav>
-      </div>
-    </>
+    <div className={`${styles.pageLayout} ${shared.background}`}>
+      <div className={styles.contentWrapper}>{renderMainContent()}</div>
+      <nav className={`${styles.nav} ${shared.card}`}>
+        <IconButton
+          onClick={() => setPageContent(pages.CHATS)}
+          label="Chats"
+          icon={steelBall}
+          size={52}
+        />
+        <IconButton
+          onClick={() => setPageContent(pages.CREATECHAT)}
+          label="New Chat"
+          icon={steelBallRun}
+          size={52}
+        />
+        <IconButton
+          onClick={() => setPageContent(pages.EDITPROFILE)}
+          label="Profile"
+          icon={tusk}
+          size={52}
+        />
+      </nav>
+    </div>
   );
 };
 

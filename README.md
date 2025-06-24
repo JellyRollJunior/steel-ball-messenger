@@ -45,10 +45,8 @@
 
 -   homepage
     -   DISPLAY CONTROL LOGIC
-        -   homepage -> context with types for each page
         -   create navbar
             -   indicate which section is currently active (make it darker or color diff or smth)
-            -   extract reducer
         -   move /current fetching into a hook
             -   just pass the props to children. don't need a provider tbh
         -   mayhaps move render page stuff into a context so we can access it from anywhere (don't need to pass down the set page thingy) 
