@@ -51,7 +51,6 @@
         -   search bar
         -   overflow
         -   make new chat button link to new chat state thingy
-    -   fix full page form background
 
 
 ### TODO LATER
