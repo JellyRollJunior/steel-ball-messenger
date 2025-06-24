@@ -19,19 +19,19 @@ const Homepage = () => {
   const { pageContent, setPageContent } = usePageContentContext(pages.CHATS);
 
   const renderMainContent = () => {
-    console.log(pageContent);
     switch (pageContent) {
+      case pages.CREATECHAT:
+        return <Chats />;
+      case pages.EDITPROFILE:
+        return <Chats />;
       case pages.CHATS:
+      default:
         return (
           <Chats
-            currentUserId={user ? user.id : null}
+            userId={user ? user.id : null}
             username={user ? user.username : null}
           />
         );
-      case pages.CREATECHAT:
-        return <Chats />
-      case pages.EDITPROFILE:
-        return <Chats />;
     }
   };
 

@@ -6,7 +6,7 @@ import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
 
-const Chats = ({ currentUserId, username }) => {
+const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
 
   return (
@@ -34,7 +34,7 @@ const Chats = ({ currentUserId, username }) => {
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <h3 className={styles.chatUsernames}>
                   {chat.users
-                    .filter((user) => user.id != currentUserId)
+                    .filter((user) => user.id != userId)
                     .map((user) => user.username)
                     .join(', ')}
                 </h3>
