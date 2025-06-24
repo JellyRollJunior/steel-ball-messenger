@@ -6,11 +6,13 @@ import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
 
+// CHANGE HEADER POSITIONS TO USE GRID PROPERLY
+// Remove scroll bar from scroll
 const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
 
   return (
-    <section>
+    <section className={styles.pageLayout}>
       <header className={`${styles.header} ${shared.card}`}>
         <h1 className={`${styles.title} ${shared.card}`}>
           {username ? username : 'Username'}
@@ -28,9 +30,7 @@ const Chats = ({ userId, username }) => {
         <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
           {chats.map((chat) => (
             <li key={chat.id} className={`${styles.chatCard} ${shared.card}`}>
-              <button
-                className={styles.chatItem}
-              >
+              <button className={styles.chatItem}>
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <h3 className={styles.chatUsernames}>
                   {chat.users
