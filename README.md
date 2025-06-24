@@ -18,22 +18,23 @@
 ### Learning Outcomes
 
 -   Backend
-
-
+    -   using prisma connect to connect two models! neato
 
 -   Frontend
-
+    -   Font face font-weights (didn't know i could set those)
 
 ### Retrospective aka yapping
 
--   using prisma connect to connect two models! neato
+-   I tried implement backend and frontend at the same time again. I would make a basic UI after completing each backend feature (just enough to use the backend).
+    -   pros: 
+        -   Actually using each backend route is useful because it shows what data to return and what is not needed
+    -   cons: 
+        -   I really do not like creating an ugly UI (it hurts my soul)
+        -   I tried incorporating some of the prototype into my final design. (BAD IDEA IT WAS NOT GOOD CODE CUZ IT WAS A PROTOTYPE)
+    -   Takeaways: I will continue this process but treat the basic frontend as a prototype and delete it after backend is "complete"
 -   getting confident using prisma select and include
 -   Proud: custom "liquid glass" card stying
--   Font face font-weights (didn't know i could set those)
 -   as always, color palette pulled from Araki's art
-
-
-
 
 ## TODOS - backend
 
@@ -47,7 +48,7 @@
     -   chats
         -   search bar
         -   overflow
-        -   make new chat button link to new chat state thingy
+    -   new chats section
 
 
 ### TODO LATER
