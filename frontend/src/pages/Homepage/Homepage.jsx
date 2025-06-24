@@ -10,8 +10,8 @@ import steelBallRun from '../../assets/images/SBR.png';
 
 const pages = Object.freeze({
   CHATS: 'Chats',
-  CREATECHAT: 'Create Chats',
-  EDITPROFILE: 'Edit Profile',
+  CREATECHAT: 'New Chat',
+  EDITPROFILE: 'Profile',
 });
 
 const Homepage = () => {
@@ -39,24 +39,31 @@ const Homepage = () => {
     <div className={`${styles.pageLayout} ${shared.background}`}>
       <div className={styles.contentWrapper}>{renderMainContent()}</div>
       <nav className={`${styles.nav} ${shared.card}`}>
-        <IconButton
-          onClick={() => setPageContent(pages.CHATS)}
-          label="Chats"
-          icon={steelBall}
-          size={52}
-        />
-        <IconButton
-          onClick={() => setPageContent(pages.CREATECHAT)}
-          label="New Chat"
-          icon={steelBallRun}
-          size={52}
-        />
-        <IconButton
-          onClick={() => setPageContent(pages.EDITPROFILE)}
-          label="Profile"
-          icon={tusk}
-          size={52}
-        />
+        <div className={pageContent == pages.CHATS && styles.selected}>
+          <IconButton
+            onClick={() => setPageContent(pages.CHATS)}
+            label="Chats"
+            icon={steelBall}
+            size={52}
+          />
+        </div>
+        <div className={pageContent == pages.CREATECHAT && styles.selected}>
+          <IconButton
+            onClick={() => setPageContent(pages.CREATECHAT)}
+            label="New Chat"
+            icon={steelBallRun}
+            size={52}
+          />
+        </div>
+        <div className={pageContent == pages.EDITPROFILE && styles.selected}>
+          <IconButton
+            onClick={() => setPageContent(pages.EDITPROFILE)}
+            label="Profile"
+            icon={tusk}
+            size={52}
+            isSelected={true}
+          />
+        </div>
       </nav>
     </div>
   );
