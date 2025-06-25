@@ -20,3 +20,33 @@
   padding-left: 12px;
   border-radius: 12px;
 }
+
+.chatsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 6px;
+  padding-bottom: 75px;
+  overflow: scroll;
+}
+
+.chatCard {
+  border-radius: 12px;
+}
+
+.chatItem {
+  display: grid;
+  grid-template-columns: 38px 1fr 42px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  border: none;
+  background-color: inherit;
+}
+
+.chatUsernames {
+  text-align: left;
+  margin-left: 18px;
+  overflow: hidden;
+}

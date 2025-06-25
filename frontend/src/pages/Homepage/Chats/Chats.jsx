@@ -1,10 +1,10 @@
 import { useChats } from '../../../hooks/useChats.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
-import steelBallRun from '../../../assets/images/SBR.png';
-import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
+import steelBallRun from '../../../assets/images/SBR.png';
+import steelBall from '../../../assets/images/steel-ball.png';
 
 const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();

@@ -54,6 +54,7 @@
     -   display list of users
     -   allow selecting users
 -   Extract common styles to shared (from chats and newchat)
+-   Extract list item 
 
 
 ### TODO LATER
