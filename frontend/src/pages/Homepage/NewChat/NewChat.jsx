@@ -12,17 +12,18 @@ const NewChat = () => {
         <h1 className={`${styles.title}`}>New Chat</h1>
       </header>
       <h2 className={`${styles.sectionTitle} ${shared.card}`}>Users</h2>
-      <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
-        {users &&
-          users.map((user) => (
-            <li key={user.id} className={`${styles.chatCard} ${shared.card}`}>
-              <button className={styles.chatItem}>
-                <img src={steelBall} alt="" className={styles.profilePicture} />
-                <p className={styles.chatUsernames}>{user.username}</p>
-              </button>
-            </li>
-          ))}
-      </ul>
+        <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
+          {users &&
+            users.map((user) => (
+              <li key={user.id} className={`${styles.chatCard} ${shared.card}`}>
+                <button className={styles.chatItem}>
+                  <img src={steelBall} alt="" className={styles.profilePicture} />
+                  <p className={styles.chatUsernames}>{user.username}</p>
+                </button>
+              </li>
+            ))}
+        </ul>
+      <button className={shared.primaryButton}>Create Chat</button>
     </section>
   );
 };
