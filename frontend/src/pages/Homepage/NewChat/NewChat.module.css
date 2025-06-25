@@ -51,3 +51,18 @@
   margin-left: 18px;
   overflow: hidden;
 }
+
+.valentineButton {
+  composes: button from '../../../styles/shared.module.css';
+  --orange: #f16b0a;
+  --yellow: #f8e299;
+
+  color: var(--yellow);
+  background-color: var(--orange);
+  border-color: var(---yellow);
+}
+
+.valentineButton:hover {
+  background-color: var(--yellow);
+  color: var(--orange);
+}

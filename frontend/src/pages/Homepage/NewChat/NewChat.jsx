@@ -46,7 +46,7 @@ const NewChat = () => {
             </li>
           ))}
       </ul>
-      <button onClick={createChat} className={shared.secondaryButton}>
+      <button onClick={createChat} className={styles.valentineButton}>
         Create Chat
       </button>
     </section>

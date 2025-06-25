@@ -49,10 +49,8 @@
 -   chats
     -   search bar
 -   new chats section
-    -   render new chats
-    -   get list of users
-    -   display list of users
     -   allow selecting users
+    -   submit selected users on click create button
 -   Extract common styles to shared (from chats and newchat)
 -   Extract list item 
 
