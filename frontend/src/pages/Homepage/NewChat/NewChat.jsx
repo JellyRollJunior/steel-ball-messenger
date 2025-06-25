@@ -1,14 +1,17 @@
 import { useUsers } from '../../../hooks/useUsers.js';
+import { makeRequest } from '../../../utils/requests.js';
+import { getUrl } from '../../../utils/serverUrl.js';
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
-import { makeRequest } from '../../../utils/requests.js';
-import { getUrl } from '../../../utils/serverUrl.js';
+import { useState } from 'react';
 
 const NewChat = () => {
   const { users } = useUsers();
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const createChat = async () => {
+    if (!selectedUser) return;
     const token = localStorage.getItem('token');
     try {
       const data = await makeRequest(getUrl('/chats'), {
@@ -19,7 +22,7 @@ const NewChat = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          users: [{ id: 23 }],
+          users: [{id: selectedUser}],
         }),
       });
       console.log(data);
@@ -39,10 +42,11 @@ const NewChat = () => {
         {users &&
           users.map((user) => (
             <li key={user.id} className={`${styles.chatCard} ${shared.card}`}>
-              <button className={styles.chatItem}>
+              <label className={styles.chatItem} for={user.id}>
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <p className={styles.chatUsernames}>{user.username}</p>
-              </button>
+                <input type="radio" name="user" id={user.id} onClick={() => setSelectedUser(user.id)} />
+              </label>
             </li>
           ))}
       </ul>

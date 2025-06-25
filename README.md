@@ -49,8 +49,11 @@
 -   chats
     -   search bar
 -   new chats section
-    -   allow selecting users
-    -   submit selected users on click create button
+    -   allow selecting users (single)
+    -   redirect to messages on create
+    -   style selected radio button
+    -   allow selecting multiple users
+    -   search bar
 -   Extract common styles to shared (from chats and newchat)
 -   Extract list item 
 
