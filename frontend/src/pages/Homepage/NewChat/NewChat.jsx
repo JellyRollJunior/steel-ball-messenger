@@ -1,12 +1,15 @@
+import { useState } from 'react';
 import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
-import { useState } from 'react';
+import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
+import { pages } from '../pages.js';
 
 const NewChat = () => {
+  const { setPageContent } = usePageContentContext();
   const { users } = useUsers();
   const [selectedUser, setSelectedUser] = useState(null);
 
@@ -14,7 +17,7 @@ const NewChat = () => {
     if (!selectedUser) return;
     const token = localStorage.getItem('token');
     try {
-      const data = await makeRequest(getUrl('/chats'), {
+      await makeRequest(getUrl('/chats'), {
         mode: 'cors',
         method: 'POST',
         headers: {
@@ -25,8 +28,8 @@ const NewChat = () => {
           users: [{id: selectedUser}],
         }),
       });
-      console.log(data);
-      // redirect to chats
+      // redirect to chats page
+      setPageContent(pages.CHATS)
     } catch (error) {
       console.log(error);
     }

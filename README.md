@@ -50,9 +50,7 @@
     -   search bar
 -   new chats section
     -   allow selecting users (single)
-    -   redirect to messages on create
     -   style selected radio button
-    -   allow selecting multiple users
     -   search bar
 -   Extract common styles to shared (from chats and newchat)
 -   Extract list item 
@@ -73,3 +71,6 @@
 -   merge get current and chats (?)
 -   getToken util that redirects to login if token expires
 -   slide animations for page change?
+
+
+-   extra: allow selecting multiple users (group chats)
