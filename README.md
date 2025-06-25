@@ -47,7 +47,6 @@
 -   homepage
     -   chats
         -   search bar
-        -   overflow
     -   new chats section
 
 
