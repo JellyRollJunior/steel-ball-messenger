@@ -6,20 +6,18 @@ import steelBall from '../../../assets/images/steel-ball.png';
 import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
 
-// CHANGE HEADER POSITIONS TO USE GRID PROPERLY
-// Remove scroll bar from scroll
 const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
 
   return (
     <section className={styles.pageLayout}>
       <header className={`${styles.header} ${shared.card}`}>
-        <h1 className={`${styles.title} ${shared.card}`}>
+        <h1 className={`${styles.title}`}>
           {username ? username : 'Username'}
         </h1>
         <IconButton icon={steelBallRun} alt="create chat icon" size={38} />
       </header>
-      <h2 className={`${styles.sectionTitle} ${shared.card} ${shared.marginTopLarge}`}>Chats</h2>
+      <h2 className={`${styles.sectionTitle} ${shared.card}`}>Chats</h2>
       {isLoading && (
         <div className={`${styles.loadingWrapper} ${shared.card} ${shared.marginTopSmall}`}>
           <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />

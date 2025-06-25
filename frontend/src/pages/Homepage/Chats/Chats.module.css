@@ -1,14 +1,15 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 60px 65px 1fr;
+  grid-template-rows: 85px 40px 1fr;
   height: 100%;
 }
 
 .header {
+  align-self: start;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 16px 0 12px;
+  padding: 5px 16px 2px 12px;
   border-radius: 12px;
 }
 
