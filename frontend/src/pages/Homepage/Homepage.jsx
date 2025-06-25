@@ -39,7 +39,7 @@ const Homepage = () => {
 
   return (
     <div className={`${styles.pageLayout} ${shared.background}`}>
-      <div className={styles.contentWrapper}>{renderMainContent()}</div>
+      <main className={styles.contentWrapper}>{renderMainContent()}</main>
       <nav className={`${styles.nav} ${shared.card}`}>
         {Object.values(pages).map((page) => (
           <div

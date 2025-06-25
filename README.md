@@ -53,7 +53,7 @@
     -   get list of users
     -   display list of users
     -   allow selecting users
-    -   
+-   Extract common styles to shared (from chats and newchat)
 
 
 ### TODO LATER
