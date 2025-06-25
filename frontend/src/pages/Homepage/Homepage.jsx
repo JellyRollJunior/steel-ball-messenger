@@ -8,16 +8,20 @@ import steelBall from '../../assets/images/steel-ball.png';
 import tusk from '../../assets/images/tusk.png';
 import steelBallRun from '../../assets/images/SBR.png';
 import { NewChat } from './NewChat/NewChat.jsx';
+import { useState } from 'react';
+import valentine from '../../assets/backgroundImages/funny-valentine.png';
+import gyro from '../../assets/backgroundImages/gyro-headshot.png';
 
 const pages = Object.freeze({
-  CHATS: { name: 'Chats', icon: steelBall },
-  NEWCHAT: { name: 'New Chat', icon: steelBallRun },
-  EDITPROFILE: { name: 'Profile', icon: tusk },
+  CHATS: { name: 'Chats', icon: steelBall, backgroundImage: gyro },
+  NEWCHAT: { name: 'New Chat', icon: steelBallRun, backgroundImage: valentine },
+  EDITPROFILE: { name: 'Profile', icon: tusk, backgroundImage: gyro  },
 });
 
 const Homepage = () => {
   const { user } = useCurrent();
   const { pageContent, setPageContent } = usePageContentContext();
+  const [ backgroundImage, setBackgroundImage] = useState(gyro)
 
   const renderMainContent = () => {
     switch (pageContent) {
@@ -38,7 +42,7 @@ const Homepage = () => {
   };
 
   return (
-    <div className={`${styles.pageLayout} ${shared.background}`}>
+    <div className={`${styles.pageLayout} ${shared.background}`} style={{backgroundImage: `url(${backgroundImage})`}}>
       <main className={styles.contentWrapper}>{renderMainContent()}</main>
       <nav className={`${styles.nav} ${shared.card}`}>
         {Object.values(pages).map((page) => (
@@ -47,7 +51,10 @@ const Homepage = () => {
             key={page.name}
           >
             <IconButton
-              onClick={() => setPageContent(page.name)}
+              onClick={() => {
+                setBackgroundImage(page.backgroundImage);
+                setPageContent(page.name)
+              }}
               label={page.name}
               icon={page.icon}
               size={52}
