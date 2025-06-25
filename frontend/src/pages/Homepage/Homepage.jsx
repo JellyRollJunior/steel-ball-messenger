@@ -7,10 +7,11 @@ import shared from '../../styles/shared.module.css';
 import steelBall from '../../assets/images/steel-ball.png';
 import tusk from '../../assets/images/tusk.png';
 import steelBallRun from '../../assets/images/SBR.png';
+import { NewChat } from './NewChat/NewChat.jsx';
 
 const pages = Object.freeze({
   CHATS: { name: 'Chats', icon: steelBall },
-  CREATECHAT: { name: 'New Chat', icon: steelBallRun },
+  NEWCHAT: { name: 'New Chat', icon: steelBallRun },
   EDITPROFILE: { name: 'Profile', icon: tusk },
 });
 
@@ -20,8 +21,8 @@ const Homepage = () => {
 
   const renderMainContent = () => {
     switch (pageContent) {
-      case pages.CREATECHAT.name:
-        return <Chats />;
+      case pages.NEWCHAT.name:
+        return <NewChat />;
       case pages.EDITPROFILE.name:
         return <Chats />;
       case pages.CHATS.name:

@@ -41,13 +41,19 @@
 -   user avatar
 -   refactor to ID validation?
 -   FIX: disallow creating chats that already exist (same users)
+-   return chats by latest creation 
 
 ## TODOS - frontend
 
--   homepage
-    -   chats
-        -   search bar
-    -   new chats section
+
+-   chats
+    -   search bar
+-   new chats section
+    -   render new chats
+    -   get list of users
+    -   display list of users
+    -   allow selecting users
+    -   
 
 
 ### TODO LATER
