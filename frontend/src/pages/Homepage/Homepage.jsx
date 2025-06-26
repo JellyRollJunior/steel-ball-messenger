@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router'
 import { useCurrent } from '../../hooks/useCurrent.js';
 import { usePageContentContext } from '../../hooks/usePageContentContext.js';
 import { pages } from './pages.js';
@@ -11,6 +12,9 @@ import gyro from '../../assets/backgroundImages/gyro-headshot.png'
 const Homepage = () => {
   const { user } = useCurrent();
   const { pageContent, setPageContent } = usePageContentContext();
+  // redirect to login if no token
+  const navigate = useNavigate();
+  if (!localStorage.getItem('token')) navigate('/login');
 
   const renderMainContent = () => {
     switch (pageContent.name) {
