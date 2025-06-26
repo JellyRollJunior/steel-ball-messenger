@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
+import { handleTokenError } from '../utils/handleTokenError.js';
 
 const useUsers = () => {
     const [users, setUsers] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -24,7 +27,8 @@ const useUsers = () => {
                 setUsers(data.users);
                 setError(null);
             } catch (error) {
-                console.log(error);
+                handleTokenError(error, navigate);
+                // todo: throw notification if error
                 setError('Error!');
             } finally {
                 setIsLoading(false);
@@ -34,7 +38,7 @@ const useUsers = () => {
         fetchUsers();
 
         return () => abortController.abort();
-    }, []);
+    }, [navigate]);
 
     return { users, isLoading, error };
 };

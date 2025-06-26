@@ -52,11 +52,7 @@
     -   style selected radio button
     -   search bar
 
--   index redirects to login 
-    -   if user not logged in 
-    -   if token expired
--   getToken util that redirects to login if token expires
-
+-   bug -> login redirects to new chat? ...
 
 ### TODO LATER
 

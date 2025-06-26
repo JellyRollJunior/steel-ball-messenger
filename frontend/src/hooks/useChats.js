@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
+import { useNavigate } from 'react-router';
+import { handleTokenError } from '../utils/handleTokenError.js';
 
 const useChats = () => {
     const [chats, setChats] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const fetchChats = useCallback(async (signal) => {
         setIsLoading(true);
@@ -23,12 +26,13 @@ const useChats = () => {
             setChats(data.chats);
             setError(null);
         } catch (error) {
-            console.log(error);
+            handleTokenError(error, navigate);
+            // create error notification later
             setError('Error!');
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         const abortController = new AbortController();

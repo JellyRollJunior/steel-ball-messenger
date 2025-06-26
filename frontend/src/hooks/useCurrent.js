@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
+import { handleTokenError } from '../utils/handleTokenError.js';
 
 const useCurrent = () => {
     const [user, setUser] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const fetchCurrent = useCallback(async (signal) => {
         setIsLoading(true);
@@ -26,13 +29,13 @@ const useCurrent = () => {
             });
             setError(null);
         } catch (error) {
-            console.log(error);
-            setError(error);
+            handleTokenError(error, navigate)
             // todo: throw notification if error
+            setError('Error!');
         } finally {
             setIsLoading(false);
         }
-    }, []);
+    }, [navigate]);
 
     useEffect(() => {
         const abortController = new AbortController();

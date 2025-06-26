@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
+import { useNavigate } from 'react-router';
+import { handleTokenError } from '../utils/handleTokenError.js';
 
 const useProfiles = (userId) => {
     const [profile, setProfile] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const abortController = new AbortController();
@@ -24,7 +27,8 @@ const useProfiles = (userId) => {
                 setProfile(profile);
                 setError(null);
             } catch (error) {
-                console.log(error);
+                handleTokenError(error, navigate);
+                // todo: throw notification if error
                 setError('Error!');
             } finally {
                 setIsLoading(false);
@@ -34,7 +38,7 @@ const useProfiles = (userId) => {
         if (userId) fetchProfiles();
 
         return () => abortController.abort();
-    }, [userId]);
+    }, [userId, navigate]);
 
     return { profile, isLoading, error, setProfile };
 };

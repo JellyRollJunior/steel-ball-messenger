@@ -1,11 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { makeRequest } from '../utils/requests.js';
 import { getUrl } from '../utils/serverUrl.js';
+import { handleTokenError } from '../utils/handleTokenError.js';
 
 const useMessages = (chatId) => {
     const [messages, setMessages] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     const fetchMessages = useCallback(
         async (signal) => {
@@ -24,14 +27,14 @@ const useMessages = (chatId) => {
                 data.messages ? setMessages(data.messages) : setMessages(null);
                 setError(null);
             } catch (error) {
-                console.log(error);
-                setError(error);
+                handleTokenError(error, navigate);
                 // todo: throw notification if error
+                setError('Error!');
             } finally {
                 setIsLoading(false);
             }
         },
-        [chatId]
+        [chatId, navigate]
     );
 
     useEffect(() => {
