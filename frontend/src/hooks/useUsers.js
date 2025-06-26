@@ -4,13 +4,13 @@ import { getUrl } from '../utils/serverUrl.js';
 
 const useUsers = () => {
     const [users, setUsers] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
     useEffect(() => {
         const abortController = new AbortController();
         const fetchUsers = async () => {
-            setLoading(true);
+            setIsLoading(true);
             const token = localStorage.getItem('token');
             try {
                 const data = await makeRequest(getUrl('/users'), {
@@ -27,7 +27,7 @@ const useUsers = () => {
                 console.log(error);
                 setError('Error!');
             } finally {
-                setLoading(false);
+                setIsLoading(false);
             }
         };
 
@@ -36,7 +36,7 @@ const useUsers = () => {
         return () => abortController.abort();
     }, []);
 
-    return { users, loading, error };
+    return { users, isLoading, error };
 };
 
 export { useUsers };

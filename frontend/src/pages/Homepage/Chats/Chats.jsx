@@ -19,7 +19,7 @@ const Chats = ({ userId, username }) => {
       </header>
       <h2 className={`${styles.sectionTitle} ${shared.card}`}>Chats</h2>
       {isLoading && (
-        <div className={`${styles.loadingWrapper} ${shared.card} ${shared.marginTopSmall}`}>
+        <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
           <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />
           <h2>Loading...</h2>
         </div>
