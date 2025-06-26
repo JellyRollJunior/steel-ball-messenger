@@ -15,7 +15,7 @@ const Chats = ({ userId, username }) => {
         <h1 className={`${shared.title}`}>
           {username ? username : 'Username'}
         </h1>
-        <IconButton icon={steelBallRun} alt="create chat icon" size={38} />
+        <IconButton icon={steelBallRun} alt="create chat icon" size={34} />
       </header>
       <h2 className={`${styles.sectionTitle} ${shared.card}`}>Chats</h2>
       {isLoading && (
@@ -25,7 +25,7 @@ const Chats = ({ userId, username }) => {
         </div>
       )}
       {chats && (
-        <ul className={`${shared.vertContainer} ${shared.marginTopSmall}`}>
+        <ul className={`${shared.vertContainer}`}>
           {chats.map((chat) => (
             <li key={chat.id} className={shared.vertContainerItem}>
               <button className={styles.chatItem}>

@@ -41,7 +41,7 @@ const NewChat = () => {
         <h1 className={`${shared.title}`}>New Chat</h1>
       </header>
       <h2 className={`${styles.sectionTitle}`}>Users</h2>
-      <ul className={`${shared.vertContainer} ${shared.marginTopSmall}`}>
+      <ul className={`${shared.vertContainer}`}>
         {users &&
           users.map((user) => (
             <li key={user.id} className={`${shared.vertContainerItem}`}>

@@ -51,8 +51,6 @@
 -   new chats section
     -   style selected radio button
     -   search bar
--   Extract common styles to shared (from chats and newchat)
--   Extract list item 
 
 
 ### TODO LATER

@@ -1,22 +1,22 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 80px 40px 1fr 40px;
-  gap: 6px;
+  grid-template-rows: 85px 40px 1fr 40px;
+  gap: 12px;
   height: 100%;
 }
 
 .header {
   composes: card from '../../../styles/shared.module.css';
   align-self: start;
+  padding: 0px 16px 0px 12px;
   border-radius: 12px;
-  text-align: center;
 }
 
 .sectionTitle {
   composes: card from '../../../styles/shared.module.css';
   padding-left: 12px;
   border-radius: 12px;
-  text-align: start;
+  text-align: center;
 }
 
 .userItem {
@@ -41,6 +41,9 @@
   --orange: #f16b0a;
   --yellow: #f8e299;
 
+  justify-self: center;
+  width: fit-content;
+  padding: 0 24px;
   color: var(--yellow);
   background-color: var(--orange);
   border-color: var(---yellow);
