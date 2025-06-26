@@ -1,19 +1,19 @@
 import { useState } from 'react';
+import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
+import { pages } from '../pages.js';
 import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
-import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
-import { pages } from '../pages.js';
-import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 
 const NewChat = () => {
-  const { setPageContent } = usePageContentContext();
-  const { users, isLoading } = useUsers();
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
+  const { users, isLoading } = useUsers();
+  const { setPageContent } = usePageContentContext();
 
   const createChat = async () => {
     if (!selectedUser) return;

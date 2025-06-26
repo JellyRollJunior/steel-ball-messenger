@@ -1,4 +1,6 @@
 import { useChats } from '../../../hooks/useChats.js';
+import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
+import { pages } from '../pages.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 import styles from './Chats.module.css';
@@ -8,19 +10,29 @@ import steelBall from '../../../assets/images/steel-ball.png';
 
 const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
+  const { setPageContent } = usePageContentContext();
 
   return (
     <section className={styles.pageLayout}>
       <header className={`${styles.header}`}>
         <h1 className={`${shared.title}`}>
-          {username ? username : 'Username'}
+          {username ? username : 'Username'}  
         </h1>
-        <IconButton icon={steelBallRun} alt="create chat icon" size={34} />
+        <IconButton
+          onClick={() => setPageContent(pages.NEWCHAT)}
+          icon={steelBallRun}
+          alt="create chat icon"
+          size={34}
+        />
       </header>
       <h2 className={`${styles.sectionTitle} ${shared.card}`}>Chats</h2>
       {isLoading && (
         <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
-          <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />
+          <LoadingElement
+            isVisible={isLoading}
+            isAnimating={isLoading}
+            style={{ maxWidth: 150 }}
+          />
           <h2>Loading...</h2>
         </div>
       )}

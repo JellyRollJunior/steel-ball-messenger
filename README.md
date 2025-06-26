@@ -52,21 +52,22 @@
     -   style selected radio button
     -   search bar
 
+-   index redirects to login 
+    -   if user not logged in 
+    -   if token expired
+-   getToken util that redirects to login if token expires
+
 
 ### TODO LATER
 
 -   profile: - put logout in profile section
 -   desktop view
--   signup redirects to login
--   index redirects to login if user not logged in
 -   error handling
     -   send message
         -   errors
         -   no token goto login
 -   notifications context
     -   set errors in notifications!
--   merge get current and chats (?)
--   getToken util that redirects to login if token expires
 -   slide animations for page change?
 
 
