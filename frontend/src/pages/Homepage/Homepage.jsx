@@ -5,6 +5,7 @@ import { pages } from './pages.js';
 import { IconButton } from '../../components/IconButton/IconButton.jsx';
 import { Chats } from './Chats/Chats.jsx';
 import { NewChat } from './NewChat/NewChat.jsx';
+import { Profile } from './Profile/Profile.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
 import gyro from '../../assets/backgroundImages/gyro-headshot.png'
@@ -20,8 +21,8 @@ const Homepage = () => {
     switch (pageContent.name) {
       case pages.NEWCHAT.name:
         return <NewChat />;
-      case pages.EDITPROFILE.name:
-        return <Chats />;
+      case pages.PROFILE.name:
+        return <Profile />;
       case pages.CHATS.name:
         return (
           <Chats
