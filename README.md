@@ -49,7 +49,6 @@
 -   chats
     -   search bar
 -   new chats section
-    -   allow selecting users (single)
     -   style selected radio button
     -   search bar
 -   Extract common styles to shared (from chats and newchat)

@@ -37,17 +37,17 @@ const NewChat = () => {
 
   return (
     <section className={styles.pageLayout}>
-      <header className={`${styles.header} ${shared.card}`}>
-        <h1 className={`${styles.title}`}>New Chat</h1>
+      <header className={`${styles.header}`}>
+        <h1 className={`${shared.title}`}>New Chat</h1>
       </header>
-      <h2 className={`${styles.sectionTitle} ${shared.card}`}>Users</h2>
-      <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
+      <h2 className={`${styles.sectionTitle}`}>Users</h2>
+      <ul className={`${shared.vertContainer} ${shared.marginTopSmall}`}>
         {users &&
           users.map((user) => (
-            <li key={user.id} className={`${styles.chatCard} ${shared.card}`}>
-              <label className={styles.chatItem} for={user.id}>
+            <li key={user.id} className={`${shared.vertContainerItem}`}>
+              <label className={styles.userItem} htmlFor={user.id}>
                 <img src={steelBall} alt="" className={styles.profilePicture} />
-                <p className={styles.chatUsernames}>{user.username}</p>
+                <p className={styles.username}>{user.username}</p>
                 <input type="radio" name="user" id={user.id} onClick={() => setSelectedUser(user.id)} />
               </label>
             </li>

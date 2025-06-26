@@ -6,36 +6,20 @@
 }
 
 .header {
+  composes: card from '../../../styles/shared.module.css';
   align-self: start;
   border-radius: 12px;
   text-align: center;
 }
 
-.title {
-  font-size: 2rem;
-  font-family: 'rye', Arial, Helvetica, sans-serif;
-}
-
 .sectionTitle {
-  text-align: start;
+  composes: card from '../../../styles/shared.module.css';
   padding-left: 12px;
   border-radius: 12px;
+  text-align: start;
 }
 
-.chatsWrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-right: 6px;
-  padding-bottom: 32px;
-  overflow: scroll;
-}
-
-.chatCard {
-  border-radius: 12px;
-}
-
-.chatItem {
+.userItem {
   display: grid;
   grid-template-columns: 38px 1fr 42px;
   align-items: center;
@@ -46,7 +30,7 @@
   background-color: inherit;
 }
 
-.chatUsernames {
+.username {
   text-align: left;
   margin-left: 18px;
   overflow: hidden;

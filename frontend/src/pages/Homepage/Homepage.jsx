@@ -6,6 +6,7 @@ import { Chats } from './Chats/Chats.jsx';
 import { NewChat } from './NewChat/NewChat.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
+import gyro from '../../assets/backgroundImages/gyro-headshot.png'
 
 const Homepage = () => {
   const { user } = useCurrent();
@@ -32,13 +33,13 @@ const Homepage = () => {
   return (
     <div
       className={`${styles.pageLayout} ${shared.background}`}
-      style={{ backgroundImage: `url(${pageContent.backgroundImage})` }}
+      style={{ backgroundImage: `url(${pageContent ? pageContent.backgroundImage : gyro})` }}
     >
       <main className={styles.contentWrapper}>{renderMainContent()}</main>
       <nav className={`${styles.nav} ${shared.card}`}>
         {Object.values(pages).map((page) => (
           <div
-            className={pageContent == page.name ? styles.selected : ''}
+            className={pageContent.name == page.name ? styles.selected : ''}
             key={page.name}
           >
             <IconButton

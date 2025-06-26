@@ -1,8 +1,8 @@
 import { useChats } from '../../../hooks/useChats.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
-import shared from '../../../styles/shared.module.css';
 import styles from './Chats.module.css';
+import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
 import steelBall from '../../../assets/images/steel-ball.png';
 
@@ -11,8 +11,8 @@ const Chats = ({ userId, username }) => {
 
   return (
     <section className={styles.pageLayout}>
-      <header className={`${styles.header} ${shared.card}`}>
-        <h1 className={`${styles.title}`}>
+      <header className={`${styles.header}`}>
+        <h1 className={`${shared.title}`}>
           {username ? username : 'Username'}
         </h1>
         <IconButton icon={steelBallRun} alt="create chat icon" size={38} />
@@ -25,9 +25,9 @@ const Chats = ({ userId, username }) => {
         </div>
       )}
       {chats && (
-        <ul className={`${styles.chatsWrapper} ${shared.marginTopSmall}`}>
+        <ul className={`${shared.vertContainer} ${shared.marginTopSmall}`}>
           {chats.map((chat) => (
-            <li key={chat.id} className={`${styles.chatCard} ${shared.card}`}>
+            <li key={chat.id} className={shared.vertContainerItem}>
               <button className={styles.chatItem}>
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <h3 className={styles.chatUsernames}>
