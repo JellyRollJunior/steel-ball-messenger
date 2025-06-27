@@ -55,8 +55,6 @@
 -   bug -> login redirects to new chat? ...
 
 -   profile
-    -   render usernamer
-    -   render bio
     -   edit bio
     -   logout
 
