@@ -2,10 +2,35 @@ import { useState } from 'react';
 import styles from './Profile.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
+import { handleTokenError } from '../../../utils/handleTokenError.js';
+import { useNavigate } from 'react-router';
+import { makeRequest } from '../../../utils/requests.js';
+import { getUrl } from '../../../utils/serverUrl.js';
 
-const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
+const Profile = ({ username = 'Username', bio = 'oops no bio!', refetchUser }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [bioEdit, setBioEdit] = useState(bio);
+  const navigate = useNavigate();
+
+  const editBio = async () => {
+    const token = localStorage.getItem('token');
+    try {
+      await makeRequest(getUrl('/current'), {
+        mode: 'cors',
+        method: 'PATCH',
+        headers: {
+          Authorization: `bearer ${token}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          bio: bioEdit,
+        }),
+      });
+      refetchUser();
+    } catch (error) {
+      handleTokenError(error, navigate);
+    }
+  };
 
   return (
     <section className={styles.pageLayout}>
@@ -28,11 +53,11 @@ const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
               <p>{bio}</p>
               <div className={styles.buttonHolder}>
                 <button
+                  className={styles.primaryButton}
                   onClick={() => {
                     setIsEditing(true);
                     setBioEdit(bio);
                   }}
-                  className={styles.primaryButton}
                 >
                   Edit
                 </button>
@@ -46,12 +71,22 @@ const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
                 className={styles.bioTextarea}
                 value={bioEdit}
                 onChange={(event) => setBioEdit(event.target.value)}
-              ></textarea>
+                minLength={1}
+                maxLength={500}
+              />
               <div className={styles.buttonHolder}>
-                <button className={styles.primaryButton}>Confirm</button>
+                <button 
+                  className={styles.primaryButton} 
+                  onClick={() => {
+                    editBio();
+                    setIsEditing(false);
+                  }}
+                >
+                  Confirm
+                </button>
                 <button
-                  onClick={() => setIsEditing(false)}
                   className={styles.secondaryButton}
+                  onClick={() => setIsEditing(false)}
                 >
                   Cancel
                 </button>

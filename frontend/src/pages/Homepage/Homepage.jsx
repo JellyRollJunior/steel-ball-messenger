@@ -11,7 +11,7 @@ import shared from '../../styles/shared.module.css';
 import gyro from '../../assets/backgroundImages/gyro-headshot.png';
 
 const Homepage = () => {
-  const { user } = useCurrent();
+  const { user, refetch } = useCurrent();
   const { pageContent, setPageContent } = usePageContentContext();
   // redirect to login if no token
   const navigate = useNavigate();
@@ -26,6 +26,7 @@ const Homepage = () => {
           <Profile
             username={user ? user.username : 'Username'}
             bio={user ? user.bio : 'Oops no bio!'}
+            refetchUser={refetch}
           />
         );
       case pages.CHATS.name:

@@ -56,7 +56,7 @@
 
 -   profile
     -   edit bio
-        -   confirm button && make request
+        -   show error
     -   logout
 
 ### TODO LATER
