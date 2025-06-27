@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router'
+import { useNavigate } from 'react-router';
 import { useCurrent } from '../../hooks/useCurrent.js';
 import { usePageContentContext } from '../../hooks/usePageContentContext.js';
 import { pages } from './pages.js';
@@ -8,7 +8,7 @@ import { NewChat } from './NewChat/NewChat.jsx';
 import { Profile } from './Profile/Profile.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
-import gyro from '../../assets/backgroundImages/gyro-headshot.png'
+import gyro from '../../assets/backgroundImages/gyro-headshot.png';
 
 const Homepage = () => {
   const { user } = useCurrent();
@@ -22,7 +22,12 @@ const Homepage = () => {
       case pages.NEWCHAT.name:
         return <NewChat />;
       case pages.PROFILE.name:
-        return <Profile />;
+        return (
+          <Profile
+            username={user ? user.username : 'Username'}
+            bio={user ? user.bio : 'Oops no bio!'}
+          />
+        );
       case pages.CHATS.name:
         return (
           <Chats
@@ -38,7 +43,7 @@ const Homepage = () => {
   return (
     <div
       className={`${styles.pageLayout} ${shared.background}`}
-      style={{ backgroundImage: `url(${pageContent ? pageContent.backgroundImage : gyro})` }}
+      style={{ backgroundImage: `url(${ pageContent ? pageContent.backgroundImage : gyro })`}}
     >
       <main className={styles.contentWrapper}>{renderMainContent()}</main>
       <nav className={`${styles.nav} ${shared.card}`}>

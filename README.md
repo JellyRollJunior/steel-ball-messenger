@@ -54,9 +54,14 @@
 
 -   bug -> login redirects to new chat? ...
 
+-   profile
+    -   render usernamer
+    -   render bio
+    -   edit bio
+    -   logout
+
 ### TODO LATER
 
--   profile: - put logout in profile section
 -   desktop view
 -   error handling
     -   send message
