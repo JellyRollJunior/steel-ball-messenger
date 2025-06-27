@@ -51,9 +51,6 @@
 -   new chats section
     -   style selected radio button
     -   search bar
-
--   bug -> login redirects to new chat? ...
-
 -   profile
     -   edit bio
         -   show error
@@ -69,6 +66,7 @@
         -   no token goto login
 -   notifications context
     -   set errors in notifications!
+    -   success notifications!
 -   slide animations for page change?
 -   redesign the homepage buttons. they dont fit the design
 
