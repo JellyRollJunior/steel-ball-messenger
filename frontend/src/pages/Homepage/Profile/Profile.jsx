@@ -17,14 +17,42 @@ const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
           <h2>{username}</h2>
         </div>
       </div>
-      <div className={styles.bioHeader}>
+      <div className={styles.header}>
         <h2 className={shared.title}>Bio</h2>
-        <button onClick={() => setIsEditing(!isEditing)} className={styles.headerButton}>Edit</button>
       </div>
       <div className={styles.contentWrapper}>
         <div className={styles.bio}>
-          {!isEditing && <p>{bio}</p>}
-          {isEditing && <textarea autoFocus className={styles.editBio} defaultValue={bio}></textarea>}
+          {!isEditing && (
+            <>
+              <p>{bio}</p>
+              <div className={styles.buttonHolder}>
+                <button
+                  onClick={() => setIsEditing(true)}
+                  className={styles.primaryButton}
+                >
+                  Edit
+                </button>
+              </div>
+            </>
+          )}
+          {isEditing && (
+            <>
+              <textarea
+                autoFocus
+                className={styles.bioTextarea}
+                defaultValue={bio}
+              ></textarea>
+              <div className={styles.buttonHolder}>
+                <button className={styles.primaryButton}>Confirm</button>
+                <button
+                  onClick={() => setIsEditing(false)}
+                  className={styles.secondaryButton}
+                >
+                  Cancel
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

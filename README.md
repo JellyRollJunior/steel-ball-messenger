@@ -56,6 +56,7 @@
 
 -   profile
     -   edit bio
+        -   confirm button && make request
     -   logout
 
 ### TODO LATER
@@ -68,6 +69,6 @@
 -   notifications context
     -   set errors in notifications!
 -   slide animations for page change?
-
+-   redesign the homepage buttons. they dont fit the design
 
 -   extra: allow selecting multiple users (group chats)

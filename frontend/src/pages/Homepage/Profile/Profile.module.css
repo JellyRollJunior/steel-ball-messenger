@@ -32,29 +32,37 @@
   width: 130px;
 }
 
-.bioHeader {
-  composes: header;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.headerButton {
-  composes: primaryButton from '../../../styles/shared.module.css';
-  height: fit-content;
-  padding: 3px 16px;
-}
-
 .bio {
   composes: card from '../../../styles/shared.module.css';
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
   height: 100%;
-  padding: 5px 12px;
+  padding: 8px 12px 5px 12px;
   border-radius: 24px;
 }
 
-.editBio {
+.bioTextarea {
   height: 100%;
   width: 100%;
+  padding: 2px 6px;
   background-color: inherit;
   border: none;
+}
+
+.buttonHolder {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.primaryButton {
+  composes: primaryButton from '../../../styles/shared.module.css';
+  width: 100%;
+}
+
+.secondaryButton {
+  composes: secondaryButton from '../../../styles/shared.module.css';
+  width: 100%;
 }
