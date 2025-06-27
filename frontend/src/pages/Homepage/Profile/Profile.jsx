@@ -5,6 +5,7 @@ import steelBall from '../../../assets/images/steel-ball.png';
 
 const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [bioEdit, setBioEdit] = useState(bio);
 
   return (
     <section className={styles.pageLayout}>
@@ -27,7 +28,10 @@ const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
               <p>{bio}</p>
               <div className={styles.buttonHolder}>
                 <button
-                  onClick={() => setIsEditing(true)}
+                  onClick={() => {
+                    setIsEditing(true);
+                    setBioEdit(bio);
+                  }}
                   className={styles.primaryButton}
                 >
                   Edit
@@ -40,7 +44,8 @@ const Profile = ({ username = 'Username', bio = 'oops no bio!' }) => {
               <textarea
                 autoFocus
                 className={styles.bioTextarea}
-                defaultValue={bio}
+                value={bioEdit}
+                onChange={(event) => setBioEdit(event.target.value)}
               ></textarea>
               <div className={styles.buttonHolder}>
                 <button className={styles.primaryButton}>Confirm</button>

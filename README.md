@@ -61,6 +61,7 @@
 
 ### TODO LATER
 
+-   wrap homepage pages in a light opacity card (redesign)
 -   desktop view
 -   error handling
     -   send message
