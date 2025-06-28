@@ -3,6 +3,7 @@ import { IconButton } from "../../../components/IconButton/IconButton.jsx";
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
+import { format} from 'date-fns'
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
 
@@ -18,13 +19,11 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
         {messages && messages.map((message) => (
           <li key={message.id} className={message.sender && message.sender.id == userId ? styles.myMessage : styles.theirMessage}>
             <div>{message.content}</div>
-            <div>{message.sendTime}</div>
-            <div>{message.sender.username}</div>
+            <div>{format(new Date(message.sendTime), 'LLL d, yyyy - h:mmaaa')}</div>
           </li>
         ))}
       </ul>
       <form action=""></form>
-      {/* {messages} */}
     </section>
   )
 };
