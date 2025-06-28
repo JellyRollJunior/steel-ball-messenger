@@ -56,7 +56,7 @@
 -   messages
     -   style messages
         -   make time less noticeable
-        -   add date bubbles
+        -   scroll to bottom on render
     -   form to create messages
 
 ### TODO LATER

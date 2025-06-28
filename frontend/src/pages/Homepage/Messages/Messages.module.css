@@ -27,6 +27,15 @@
   overflow: scroll;
 }
 
+.date {
+  composes: card from '../../../styles/shared.module.css';
+  align-self: center;
+  width: fit-content;
+  padding: 3px 12px;
+  margin-top: 16px;
+  border-radius: 24px;
+}
+
 .message {
   --offset: 68px;
   composes: vertContainerItem from '../../../styles/shared.module.css';

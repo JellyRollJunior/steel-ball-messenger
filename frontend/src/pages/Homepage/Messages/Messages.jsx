@@ -16,11 +16,21 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
       </header>
       <ul className={styles.messagesWrapper}>
-        {messages && messages.map((message) => (
-          <li key={message.id} className={message.sender && message.sender.id == userId ? styles.myMessage : styles.theirMessage}>
-            <div>{message.content}</div>
-            <div className={styles.time}>{format(new Date(message.sendTime), 'LLL d, yyyy - h:mmaaa')}</div>
-          </li>
+        {messages && messages.map((message, index) => (
+          <>
+            {(index == 0 
+              || (new Date(message.sendTime)) - new Date(messages[index - 1].sendTime) >= 43200000) && ( // Show date if last day was >= 12hr ago
+              <div className={styles.date}>
+                {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
+              </div>
+            )}
+            <li key={message.id} className={message.sender && message.sender.id == userId ? styles.myMessage : styles.theirMessage}>
+              <div>{message.content}</div>
+              <div className={styles.time}>
+                {format(new Date(message.sendTime), 'h:mmaaa')}
+              </div>
+            </li>
+          </>
         ))}
       </ul>
       <form action=""></form>
