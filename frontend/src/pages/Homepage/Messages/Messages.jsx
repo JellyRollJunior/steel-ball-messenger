@@ -14,8 +14,16 @@ const Messages = ({ chatPartnerUsernames, chatId, returnToChats }) => {
         <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
       </header>
-      <ul></ul>
-      <form action="">➤</form>
+      <ul className={shared.vertContainer}>
+        {messages && messages.map((message) => (
+          <li className={styles.message}>
+            <div>{message.content}</div>
+            <div>{message.sendTime}</div>
+            <div>{message.sender.username}</div>
+          </li>
+        ))}
+      </ul>
+      <form action=""></form>
       {/* {messages} */}
     </section>
   )

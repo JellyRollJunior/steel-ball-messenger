@@ -13,3 +13,8 @@
   background-color: inherit;
   border: none;
 }
+
+.message {
+  composes: vertContainerItem from '../../../styles/shared.module.css';
+  padding: 3px 12px;
+}
