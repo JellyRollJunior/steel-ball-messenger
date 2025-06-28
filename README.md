@@ -52,18 +52,16 @@
     -   style selected radio button
     -   search bar
 -   profile
-    -   edit bio
-        -   show error
     -   logout
+-   messages
+    -   display messages
+    -   style messages
+    -   form to create messages
 
 ### TODO LATER
 
 -   wrap homepage pages in a light opacity card (redesign)
 -   desktop view
--   error handling
-    -   send message
-        -   errors
-        -   no token goto login
 -   notifications context
     -   set errors in notifications!
     -   success notifications!
