@@ -15,13 +15,14 @@ const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
   const { setPageContent } = usePageContentContext();
   const [chatId, setChatId] = useState(null);
+  const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
 
   const returnToChats = () => {
     setChatId(null);
-  }
+  };
 
   if (chatId) {
-    return <Messages chatId={chatId} returnToChats={returnToChats} />
+    return <Messages chatId={chatId} chatPartnerUsernames={chatPartnerUsernames} returnToChats={returnToChats} />;
   }
 
   if (!chatId) {
@@ -53,7 +54,18 @@ const Chats = ({ userId, username }) => {
           <ul className={`${shared.vertContainer}`}>
             {chats.map((chat) => (
               <li key={chat.id} className={shared.vertContainerItem}>
-                <button className={styles.chatItem} onClick={() => setChatId(chat.id)}>
+                <button
+                  className={styles.chatItem}
+                  onClick={() => {
+                    setChatId(chat.id);
+                    setChatPartnerUsernames(
+                      chat.users
+                        .filter((user) => user.id != userId)
+                        .map((user) => user.username)
+                        .join(', ')
+                    );
+                  }}
+                >
                   <img
                     src={steelBall}
                     alt=""

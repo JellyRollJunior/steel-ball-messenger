@@ -1,0 +1,15 @@
+.header {
+  composes: card from '../../../styles/shared.module.css';
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 6px;
+
+  padding: 0px 16px 0px 12px;
+  border-radius: 12px;
+}
+
+.backButton {
+  background-color: inherit;
+  border: none;
+}
