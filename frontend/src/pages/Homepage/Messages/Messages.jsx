@@ -1,9 +1,10 @@
+import { format} from 'date-fns'
 import { useMessages } from "../../../hooks/useMessages.js";
 import { IconButton } from "../../../components/IconButton/IconButton.jsx";
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
-import { format} from 'date-fns'
+import bug from '../../../assets/images/bug.png';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
 
@@ -33,7 +34,10 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           </>
         ))}
       </ul>
-      <form action=""></form>
+      <form className={styles.send}>
+        <input type="text" />
+        <IconButton icon={bug} size={32} />
+      </form>
     </section>
   )
 };

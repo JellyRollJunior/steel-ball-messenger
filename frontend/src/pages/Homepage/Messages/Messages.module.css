@@ -1,7 +1,8 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 50px 1fr 45px;
   gap: 12px;
+  height: 100%;
 }
 
 .header {
@@ -58,4 +59,23 @@
 .time {
   color: gray;
   font-size: 0.8rem;
+}
+
+.send {
+  composes: card from '../../../styles/shared.module.css';
+  display: grid;
+  grid-template-columns: 1fr 32px;
+  align-items: center;
+  
+  height: 100%;
+  padding: 3px 12px;
+  border-radius: 12px;
+}
+
+.send input {
+  background: inherit;
+  border: 2px solid white;
+  padding-left: 6px;
+  border-radius: 6px;
+  margin-right: 6px;
 }
