@@ -19,7 +19,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
         {messages && messages.map((message) => (
           <li key={message.id} className={message.sender && message.sender.id == userId ? styles.myMessage : styles.theirMessage}>
             <div>{message.content}</div>
-            <div>{format(new Date(message.sendTime), 'LLL d, yyyy - h:mmaaa')}</div>
+            <div className={styles.time}>{format(new Date(message.sendTime), 'LLL d, yyyy - h:mmaaa')}</div>
           </li>
         ))}
       </ul>

@@ -30,8 +30,8 @@
 .message {
   --offset: 68px;
   composes: vertContainerItem from '../../../styles/shared.module.css';
-  padding: 3px 12px;
   width: fit-content;
+  padding: 3px 12px;
 }
 
 .myMessage {
@@ -44,4 +44,9 @@
   composes: message;
   align-self: start;
   text-align: start;
+}
+
+.time {
+  color: gray;
+  font-size: 0.8rem;
 }

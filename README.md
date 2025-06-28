@@ -54,8 +54,9 @@
 -   profile
     -   logout
 -   messages
-    -   display messages
     -   style messages
+        -   make time less noticeable
+        -   add date bubbles
     -   form to create messages
 
 ### TODO LATER
