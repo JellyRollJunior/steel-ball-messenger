@@ -55,7 +55,7 @@ const NewChat = () => {
       )}
       {users && (
         <>
-          <ul className={`${shared.vertContainer}`}>
+          <ul className={styles.usersWrapper}>
             {users.map((user) => (
               <li key={user.id} className={`${shared.vertContainerItem}`}>
                 <label className={styles.userItem} htmlFor={user.id}>

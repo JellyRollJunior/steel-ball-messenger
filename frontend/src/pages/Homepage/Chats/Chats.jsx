@@ -22,7 +22,7 @@ const Chats = ({ userId, username }) => {
   };
 
   if (chatId) {
-    return <Messages chatId={chatId} chatPartnerUsernames={chatPartnerUsernames} returnToChats={returnToChats} />;
+    return <Messages userId={userId} chatId={chatId} chatPartnerUsernames={chatPartnerUsernames} returnToChats={returnToChats} />;
   }
 
   if (!chatId) {
@@ -51,7 +51,7 @@ const Chats = ({ userId, username }) => {
           </div>
         )}
         {chats && (
-          <ul className={`${shared.vertContainer}`}>
+          <ul className={styles.chatWrapper}>
             {chats.map((chat) => (
               <li key={chat.id} className={shared.vertContainerItem}>
                 <button

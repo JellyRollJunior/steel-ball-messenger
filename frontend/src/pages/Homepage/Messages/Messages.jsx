@@ -4,7 +4,7 @@ import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
 
-const Messages = ({ chatPartnerUsernames, chatId, returnToChats }) => {
+const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
 
   const { messages } = useMessages(chatId);
 
@@ -14,9 +14,9 @@ const Messages = ({ chatPartnerUsernames, chatId, returnToChats }) => {
         <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
       </header>
-      <ul className={shared.vertContainer}>
+      <ul className={styles.messagesWrapper}>
         {messages && messages.map((message) => (
-          <li className={styles.message}>
+          <li key={message.id} className={message.sender && message.sender.id == userId ? styles.myMessage : styles.theirMessage}>
             <div>{message.content}</div>
             <div>{message.sendTime}</div>
             <div>{message.sender.username}</div>

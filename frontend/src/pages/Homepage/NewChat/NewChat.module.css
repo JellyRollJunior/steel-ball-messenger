@@ -30,6 +30,11 @@
   text-align: center;
 }
 
+.usersWrapper {
+  composes: vertContainer from '../../../styles/shared.module.css';
+  padding: 0 16px 36px 16px;
+}
+
 .userItem {
   display: grid;
   grid-template-columns: 38px 1fr 42px;

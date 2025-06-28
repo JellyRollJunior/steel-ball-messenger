@@ -32,6 +32,11 @@
   text-align: center;
 }
 
+.chatWrapper {
+  composes: vertContainer from '../../../styles/shared.module.css';
+  padding: 0 16px 36px 16px;
+}
+
 .chatItem {
   display: grid;
   grid-template-columns: 72px 1fr;

@@ -1,3 +1,9 @@
+.pageLayout {
+  display: grid;
+  grid-template-rows: 50px 1fr 50px;
+  gap: 12px;
+}
+
 .header {
   composes: card from '../../../styles/shared.module.css';
   display: flex;
@@ -14,7 +20,26 @@
   border: none;
 }
 
+.messagesWrapper {
+  composes: vertContainer from '../../../styles/shared.module.css';
+  height: 100%;
+  padding: 0;
+  overflow: scroll;
+}
+
 .message {
+  --offset: 68px;
   composes: vertContainerItem from '../../../styles/shared.module.css';
   padding: 3px 12px;
+  width: fit-content;
+}
+
+.myMessage {
+  composes: message;
+  align-self: end;
+}
+
+.theirMessage {
+  composes: message;
+  align-self: start;
 }
