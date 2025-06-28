@@ -18,6 +18,7 @@
 ### Learning Outcomes
 
 -   Backend
+
     -   using prisma connect to connect two models! neato
 
 -   Frontend
@@ -26,9 +27,9 @@
 ### Retrospective aka yapping
 
 -   I tried implement backend and frontend at the same time again. I would make a basic UI after completing each backend feature (just enough to use the backend).
-    -   pros: 
+    -   pros:
         -   Actually using each backend route is useful because it shows what data to return and what is not needed
-    -   cons: 
+    -   cons:
         -   I really do not like creating an ugly UI (it hurts my soul)
         -   I tried incorporating some of the prototype into my final design. (BAD IDEA IT WAS NOT GOOD CODE CUZ IT WAS A PROTOTYPE)
     -   Takeaways: I will continue this process but treat the basic frontend as a prototype and delete it after backend is "complete"
@@ -41,10 +42,9 @@
 -   user avatar
 -   refactor to ID validation?
 -   FIX: disallow creating chats that already exist (same users)
--   return chats by latest creation 
+-   return chats by latest creation
 
 ## TODOS - frontend
-
 
 -   chats
     -   search bar
@@ -54,9 +54,12 @@
 -   profile
     -   logout
 -   messages
+    -   send message
+        -   refetch messages
+        -   disable send button
+        -   clear text area
     -   style messages
-        -   make time less noticeable
-        -   scroll to bottom on render
+        -   send button feedback
     -   form to create messages
 
 ### TODO LATER

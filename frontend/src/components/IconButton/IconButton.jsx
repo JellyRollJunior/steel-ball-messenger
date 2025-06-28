@@ -6,7 +6,7 @@ const IconButton = ({ icon, alt, onClick, label = '', size = 30 }) => {
       <button
         onClick={onClick}
         style={{ height: size, width: size }}
-        className={`${styles.createChatBtn} ${styles.iconButton}`}
+        className={styles.iconButton}
       >
         <img src={icon} alt={alt} />
       </button>

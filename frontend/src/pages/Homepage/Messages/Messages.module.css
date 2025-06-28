@@ -41,6 +41,7 @@
   --offset: 68px;
   composes: vertContainerItem from '../../../styles/shared.module.css';
   width: fit-content;
+  max-width: 200px;
   padding: 3px 12px;
 }
 
