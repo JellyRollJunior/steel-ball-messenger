@@ -22,9 +22,12 @@
 }
 
 .messagesWrapper {
-  composes: vertContainer from '../../../styles/shared.module.css';
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 12px;
+
   height: 100%;
-  padding: 0;
+  padding: 0 8px;
   overflow: scroll;
 }
 

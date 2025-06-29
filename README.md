@@ -23,6 +23,7 @@
 
 -   Frontend
     -   Font face font-weights (didn't know i could set those)
+    -   "Scroll" to newest message by using flex column-reverse and rendering messages in reverse order
 
 ### Retrospective aka yapping
 
@@ -56,7 +57,6 @@
 -   messages
     -   style messages
         -   send button feedback
-    -   messages scroll to bottom
 
 ### TODO LATER
 

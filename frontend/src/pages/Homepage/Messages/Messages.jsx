@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { useMessages } from '../../../hooks/useMessages.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
@@ -13,6 +13,7 @@ import { getUrl } from '../../../utils/serverUrl.js';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const { messages, refetch: refetchMessages } = useMessages(chatId);
+  const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
@@ -39,6 +40,12 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
     }
   };
 
+  useEffect(() => {
+    if (Array.isArray(messages)) {
+      setReverseMessages(messages.slice(0).reverse());
+    }
+  }, [messages]);
+
   return (
     <section className={styles.pageLayout}>
       <header className={styles.header}>
@@ -46,18 +53,9 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
       </header>
       <ul className={styles.messagesWrapper}>
-        {messages &&
-          messages.map((message, index) => (
+        {reversedMessages &&
+          reversedMessages.map((message, index) => (
             <>
-              {(index == 0 ||
-                new Date(message.sendTime) -
-                  new Date(messages[index - 1].sendTime) >=
-                  43200000) && (
-                // Show datetime if last day was >= 12hr ago
-                <div key={message.sendTime} className={styles.date}>
-                  {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
-                </div>
-              )}
               <li
                 key={message.id}
                 className={
@@ -71,6 +69,16 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
                   {format(new Date(message.sendTime), 'h:mmaaa')}
                 </div>
               </li>
+              {(index == reversedMessages.length - 1 ||
+                (reversedMessages[index + 1] &&
+                  new Date(message.sendTime) -
+                    new Date(reversedMessages[index + 1].sendTime) >=
+                    43200000)) && (
+                // Create datetime bubble if last day was >= 12hr ago
+                <div key={message.sendTime} className={styles.date}>
+                  {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
+                </div>
+              )}
             </>
           ))}
       </ul>
@@ -82,7 +90,12 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           minLength={1}
           maxLength={250}
         />
-        <IconButton icon={bug} size={32} onClick={() => console.log('clicked')} alt='send button' />
+        <IconButton
+          icon={bug}
+          size={32}
+          onClick={() => console.log('clicked')}
+          alt="send button"
+        />
       </form>
     </section>
   );
