@@ -12,12 +12,13 @@ import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
-  const { messages } = useMessages(chatId);
+  const { messages, refetch: refetchMessages } = useMessages(chatId);
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
 
   const sendMessage = async (event) => {
     event.preventDefault();
+    if (message.trim() == '') return;
     const token = localStorage.getItem('token');
     try {
       await makeRequest(getUrl(`/chats/${chatId}/messages`), {
@@ -31,6 +32,8 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           content: message,
         }),
       });
+      refetchMessages();
+      setMessage('');
     } catch (error) {
       handleTokenError(error, navigate);
     }
@@ -51,7 +54,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
                   new Date(messages[index - 1].sendTime) >=
                   43200000) && (
                 // Show datetime if last day was >= 12hr ago
-                <div className={styles.date}>
+                <div key={message.sendTime} className={styles.date}>
                   {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
                 </div>
               )}

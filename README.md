@@ -54,13 +54,9 @@
 -   profile
     -   logout
 -   messages
-    -   send message
-        -   refetch messages
-        -   disable send button
-        -   clear text area
     -   style messages
         -   send button feedback
-    -   form to create messages
+    -   messages scroll to bottom
 
 ### TODO LATER
 
@@ -71,5 +67,6 @@
     -   success notifications!
 -   slide animations for page change?
 -   redesign the homepage buttons. they dont fit the design
+-   latest message not updated on returning to chat page (refetch all chats)
 
 -   extra: allow selecting multiple users (group chats)
