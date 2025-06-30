@@ -43,12 +43,9 @@ const Profile = ({
 
   return (
     <section className={styles.pageLayout}>
-      <div className={styles.horizontalWidgetGroup}>
-        <div className={styles.usernameWidget}>
-          <h2 className={styles.title}>Username</h2>
-          <h1 className={styles.username}>{username}</h1>
-        </div>
-        <div className={styles.widget}>Logout</div>
+      <div className={styles.widget}>
+        <h2 className={styles.title}>Username</h2>
+        <h1 className={styles.username}>{username}</h1>
       </div>
       <div className={styles.widget}>
         <h2 className={styles.title}>Bio</h2>
@@ -100,13 +97,16 @@ const Profile = ({
           </form>
         )}
       </div>
-      <div className={styles.widget}>
-        <h2 className={styles.title}>Icon</h2>
-        <img
-          className={`${styles.profileImg} ${shared.marginTopSmall}`}
-          src={steelBall}
-          alt="User icon"
-        />
+      <div className={styles.horizontalWidgetGroup}>
+        <div className={styles.widget}>Logout</div>
+        <div className={styles.widget}>
+          <h2 className={styles.title}>Icon</h2>
+          <img
+            className={`${styles.profileImg} ${shared.marginTopSmall}`}
+            src={steelBall}
+            alt="User icon"
+          />
+        </div>
       </div>
     </section>
   );

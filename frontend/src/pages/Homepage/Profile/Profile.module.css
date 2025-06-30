@@ -6,10 +6,10 @@
 }
 
 .horizontalWidgetGroup {
-  display: flex;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   width: 100%;
-  max-width: 100%;
+  gap: 12px;
 }
 
 .widget {
@@ -19,6 +19,7 @@
   align-items: center;
 
   height: 100%;
+  width: 100%;
   padding: 6px 10px 8px 10px;
   border-radius: 24px;
 }
@@ -26,12 +27,6 @@
 .title {
   align-self: start;
   font-family: 'rye', Arial, Helvetica, sans-serif;
-}
-
-.usernameWidget {
-  composes: widget;
-  width: 100%;
-  overflow: wrap;
 }
 
 .username {
@@ -53,6 +48,8 @@
 
   height: 100%;
   width: 100%;
+  padding: 1px;
+  overflow-wrap: break-word;
 }
 
 .bioTextarea {

@@ -61,22 +61,19 @@
 -   redesign
     -   newchat - final
     -   profile
-        -   username overflow
         -   logout
     -   extract common csss
     -   extract vert list to component?
 
 ### TODO LATER
 
--   wrap homepage pages in a light opacity card (redesign)
 -   desktop view
 -   notifications context
     -   set errors in notifications!
     -   success notifications!
 -   slide animations for page change?
--   redesign the homepage buttons. they dont fit the design
 -   latest message not updated on returning to chat page (refetch all chats)
-    -   latest message long message overflow?
 -   socket
-
+-   newchat username overflow
+-   bug: profile -> bio + username overflow
 -   extra: allow selecting multiple users (group chats)
