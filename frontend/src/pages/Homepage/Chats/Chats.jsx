@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { useChats } from '../../../hooks/useChats.js';
 import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
 import { pages } from '../pages.js';
+import { Messages } from '../Messages/Messages.jsx';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 import styles from './Chats.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
 import steelBall from '../../../assets/images/steel-ball.png';
-
-import { Messages } from '../Messages/Messages.jsx';
 
 const Chats = ({ userId, username }) => {
   const { chats, isLoading } = useChats();
@@ -28,8 +27,8 @@ const Chats = ({ userId, username }) => {
   if (!chatId) {
     return (
       <section className={styles.pageLayout}>
-        <header className={`${styles.header}`}>
-          <h1 className={`${shared.title}`}>
+        <header className={styles.header}>
+          <h1 className={shared.title}>
             {username ? username : 'Username'}
           </h1>
           <IconButton
@@ -50,7 +49,7 @@ const Chats = ({ userId, username }) => {
           </div>
         )}
         {chats && (
-          <ul className={styles.chatWrapper}>
+          <ul className={`${styles.chatWrapper} ${shared.marginTopMedium}`}>
             {chats.map((chat) => (
               <li key={chat.id} className={styles.chatItemWrapper}>
                 <button
@@ -67,7 +66,7 @@ const Chats = ({ userId, username }) => {
                 >
                   <img
                     src={steelBall}
-                    alt=""
+                    alt="Profile picture"
                     className={styles.profilePicture}
                   />
                   <h3 className={styles.chatUsernames}>

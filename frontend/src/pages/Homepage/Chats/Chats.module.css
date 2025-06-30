@@ -1,7 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 60px 1fr;
-  gap: 12px;
+  grid-template-rows: 50px 1fr;
   height: 100%;
 }
 
@@ -31,7 +30,6 @@
 .chatWrapper {
   composes: vertContainer from '../../../styles/shared.module.css';
   padding: 0 8px;
-  margin-top: 16px;
   align-items: start;
 }
 
