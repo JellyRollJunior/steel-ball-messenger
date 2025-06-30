@@ -44,13 +44,13 @@ const Profile = ({
   return (
     <section className={styles.pageLayout}>
       <div className={styles.horizontalWidgetGroup}>
-        <div className={styles.username}>
+        <div className={styles.usernameWidget}>
           <h2 className={styles.title}>Username</h2>
-          <h1>{username}</h1>
+          <h1 className={styles.username}>{username}</h1>
         </div>
         <div className={styles.widget}>Logout</div>
       </div>
-      <div className={styles.bioWidget}>
+      <div className={styles.widget}>
         <h2 className={styles.title}>Bio</h2>
         {!isEditing && (
           <div className={styles.bio}>
@@ -100,12 +100,12 @@ const Profile = ({
           </form>
         )}
       </div>
-      <div className={styles.bioWidget}>
+      <div className={styles.widget}>
         <h2 className={styles.title}>Icon</h2>
         <img
           className={`${styles.profileImg} ${shared.marginTopSmall}`}
           src={steelBall}
-          alt=""
+          alt="User icon"
         />
       </div>
     </section>

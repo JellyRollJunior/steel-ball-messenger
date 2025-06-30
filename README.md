@@ -61,6 +61,9 @@
 -   redesign
     -   newchat - final
     -   profile
+        -   username overflow
+        -   logout
+    -   extract common csss
     -   extract vert list to component?
 
 ### TODO LATER

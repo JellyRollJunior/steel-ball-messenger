@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: repeat(3, 1fr);
+  grid-template-rows: 2fr 3fr 3fr;
   height: 100%;
   gap: 12px;
 }
@@ -9,6 +9,7 @@
   display: flex;
   gap: 12px;
   width: 100%;
+  max-width: 100%;
 }
 
 .widget {
@@ -22,22 +23,27 @@
   border-radius: 24px;
 }
 
-.username {
-  composes: widget;
-  width: 100%;
-}
-
 .title {
   align-self: start;
   font-family: 'rye', Arial, Helvetica, sans-serif;
 }
 
-.profileImg {
-  width: 110px;
+.usernameWidget {
+  composes: widget;
+  width: 100%;
+  overflow: wrap;
 }
 
-.bioWidget {
-  composes: widget;
+.username {
+  composes: title from '../../../styles/shared.module.css';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.profileImg {
+  width: 110px;
 }
 
 .bio {
@@ -46,6 +52,7 @@
   justify-content: space-between;
 
   height: 100%;
+  width: 100%;
 }
 
 .bioTextarea {
