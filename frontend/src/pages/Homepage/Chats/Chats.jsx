@@ -79,7 +79,7 @@ const Chats = ({ userId, username }) => {
                   <p className={styles.latestMessage}>
                     {chat.latestMessage
                       ? chat.latestMessage.content
-                      : 'Click to send a message'}
+                      : 'Send a message'}
                   </p>
                 </button>
               </li>

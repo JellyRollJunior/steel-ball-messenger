@@ -60,6 +60,9 @@
 
 -   redesign
     -   reduce top padding
+    -   chats
+    -   newchat
+    -   profile
 
 ### TODO LATER
 

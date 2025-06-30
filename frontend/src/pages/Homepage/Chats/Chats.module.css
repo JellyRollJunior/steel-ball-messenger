@@ -30,8 +30,9 @@
 
 .chatWrapper {
   composes: vertContainer from '../../../styles/shared.module.css';
-  padding: 0 8px 36px 8px;
-  margin-top: 24px;
+  padding: 0 8px;
+  margin-top: 16px;
+  align-items: start;
 }
 
 .chatItemWrapper {
@@ -42,6 +43,7 @@
 .chatItem {
   display: grid;
   grid-template-columns: 46px 1fr;
+  column-gap: 6px;
   
   width: fit-content;
   padding: 0;
