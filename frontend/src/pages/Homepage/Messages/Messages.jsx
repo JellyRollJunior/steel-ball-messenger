@@ -55,9 +55,18 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
       <ul className={styles.messagesWrapper}>
         {reversedMessages &&
           reversedMessages.map((message, index) => (
-            <>
-              <li
-                key={message.id}
+            <li key={message.id} className={styles.messageWrapper} >
+              {(index == reversedMessages.length - 1 ||
+                (reversedMessages[index + 1] &&
+                  new Date(message.sendTime) -
+                    new Date(reversedMessages[index + 1].sendTime) >=
+                    43200000)) && (
+                // Create datetime bubble if last day was >= 12hr ago
+                <div className={styles.date}>
+                  {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
+                </div>
+              )}
+              <div
                 className={
                   message.sender && message.sender.id == userId
                     ? styles.myMessage
@@ -68,18 +77,8 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
                 <div className={styles.time}>
                   {format(new Date(message.sendTime), 'h:mmaaa')}
                 </div>
-              </li>
-              {(index == reversedMessages.length - 1 ||
-                (reversedMessages[index + 1] &&
-                  new Date(message.sendTime) -
-                    new Date(reversedMessages[index + 1].sendTime) >=
-                    43200000)) && (
-                // Create datetime bubble if last day was >= 12hr ago
-                <div key={message.sendTime} className={styles.date}>
-                  {format(new Date(message.sendTime), 'EEEE LLLL do - h:mmaaa')}
-                </div>
-              )}
-            </>
+              </div>
+            </li>
           ))}
       </ul>
       <form onSubmit={sendMessage} className={styles.send}>
@@ -90,12 +89,14 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           minLength={1}
           maxLength={250}
         />
-        <IconButton
-          icon={bug}
-          size={32}
-          onClick={() => console.log('clicked')}
-          alt="send button"
-        />
+        <div className={styles.selected}>
+          <IconButton
+            icon={bug}
+            size={32}
+            onClick={() => console.log('clicked')}
+            alt="send button"
+          />
+        </div>
       </form>
     </section>
   );

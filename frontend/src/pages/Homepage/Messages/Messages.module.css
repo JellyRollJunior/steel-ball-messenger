@@ -31,6 +31,13 @@
   overflow: scroll;
 }
 
+.messageWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
 .date {
   composes: card from '../../../styles/shared.module.css';
   align-self: center;
@@ -51,7 +58,7 @@
 .myMessage {
   composes: message;
   align-self: end;
-  text-align: end;
+  text-align: start;
 }
 
 .theirMessage {
@@ -63,12 +70,13 @@
 .time {
   color: gray;
   font-size: 0.8rem;
+  text-align: end;
 }
 
 .send {
   composes: card from '../../../styles/shared.module.css';
   display: grid;
-  grid-template-columns: 1fr 32px;
+  grid-template-columns: 1fr 42px;
   align-items: center;
   
   height: 100%;
@@ -82,4 +90,12 @@
   padding-left: 6px;
   border-radius: 6px;
   margin-right: 6px;
+}
+
+.selected {
+  border-radius: 5px;
+}
+
+.selected:active {
+  background-color: rgb(0, 0, 0, 0.25);
 }
