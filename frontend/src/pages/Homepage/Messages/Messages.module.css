@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 50px 1fr 45px;
+  grid-template-rows: 50px 1fr 46px;
   gap: 12px;
   height: 100%;
 }
@@ -78,22 +78,23 @@
   display: grid;
   grid-template-columns: 1fr 42px;
   align-items: center;
-  
+
   height: 100%;
-  padding: 3px 12px;
+  padding: 0px 12px;
   border-radius: 12px;
 }
 
 .send input {
+  margin: 5px 6px 5px 0;
+  padding-left: 6px;
   background: inherit;
   border: 2px solid white;
-  padding-left: 6px;
   border-radius: 6px;
-  margin-right: 6px;
 }
 
 .selected {
-  border-radius: 5px;
+  padding: 3px;
+  border-radius: 12px;
 }
 
 .selected:active {

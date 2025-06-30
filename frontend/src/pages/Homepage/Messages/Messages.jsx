@@ -55,7 +55,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
       <ul className={styles.messagesWrapper}>
         {reversedMessages &&
           reversedMessages.map((message, index) => (
-            <li key={message.id} className={styles.messageWrapper} >
+            <li key={message.id} className={styles.messageWrapper}>
               {(index == reversedMessages.length - 1 ||
                 (reversedMessages[index + 1] &&
                   new Date(message.sendTime) -
@@ -93,7 +93,6 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           <IconButton
             icon={bug}
             size={32}
-            onClick={() => console.log('clicked')}
             alt="send button"
           />
         </div>

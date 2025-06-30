@@ -54,9 +54,7 @@
     -   search bar
 -   profile
     -   logout
--   messages
-    -   style messages
-        -   send button feedback
+
 
 ### TODO LATER
 
@@ -68,5 +66,6 @@
 -   slide animations for page change?
 -   redesign the homepage buttons. they dont fit the design
 -   latest message not updated on returning to chat page (refetch all chats)
+-   socket
 
 -   extra: allow selecting multiple users (group chats)
