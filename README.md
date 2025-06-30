@@ -59,10 +59,9 @@
 
 
 -   redesign
-    -   reduce top padding
-    -   chats
     -   newchat
     -   profile
+    -   extract vert list to component?
 
 ### TODO LATER
 

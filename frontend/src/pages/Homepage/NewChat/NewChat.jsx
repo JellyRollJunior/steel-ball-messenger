@@ -28,11 +28,11 @@ const NewChat = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          users: [{id: selectedUser}],
+          users: [{ id: selectedUser }],
         }),
       });
       // redirect to chats page
-      setPageContent(pages.CHATS)
+      setPageContent(pages.CHATS);
     } catch (error) {
       console.log(error);
       // error notification
@@ -43,30 +43,46 @@ const NewChat = () => {
 
   return (
     <section className={styles.pageLayout}>
-      <header className={`${styles.header}`}>
-        <h1 className={`${shared.title}`}>New Chat</h1>
+      <header className={shared.header}>
+        <h1 className={shared.title}>Users</h1>
       </header>
-      <h2 className={`${styles.sectionTitle}`}>Users</h2>
       {isLoading && (
         <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
-          <LoadingElement isVisible={isLoading} isAnimating={isLoading} style={{maxWidth: 150}} />
+          <LoadingElement
+            isVisible={isLoading}
+            isAnimating={isLoading}
+            style={{ maxWidth: 150 }}
+          />
           <h2>Loading...</h2>
         </div>
       )}
       {users && (
         <>
-          <ul className={styles.usersWrapper}>
+          <ul className={`${styles.usersWrapper} ${shared.marginTopMedium}`}>
             {users.map((user) => (
-              <li key={user.id} className={`${shared.vertContainerItem}`}>
+              <li key={user.id} className={styles.userItemWrapper}>
                 <label className={styles.userItem} htmlFor={user.id}>
-                  <img src={steelBall} alt="" className={styles.profilePicture} />
-                  <p className={styles.username}>{user.username}</p>
-                  <input type="radio" name="user" id={user.id} onClick={() => setSelectedUser(user.id)} />
+                  <img
+                    src={steelBall}
+                    alt=""
+                    className={styles.profilePicture}
+                  />
+                  <h3 className={styles.username}>{user.username}</h3>
+                  <input
+                    type="radio"
+                    name="user"
+                    id={user.id}
+                    onClick={() => setSelectedUser(user.id)}
+                  />
                 </label>
               </li>
             ))}
           </ul>
-          <button onClick={createChat} className={styles.valentineButton} disabled={isDisabled}>
+          <button
+            onClick={createChat}
+            className={`${styles.valentineButton} ${shared.marginTopMedium}`}
+            disabled={isDisabled}
+          >
             Create Chat
           </button>
         </>

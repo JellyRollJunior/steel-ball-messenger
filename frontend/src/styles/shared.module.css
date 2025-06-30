@@ -17,11 +17,6 @@
   background-blend-mode: lighten;
 }
 
-.title {
-  font-size: 2rem;
-  font-family: 'rye', Arial, Helvetica, sans-serif;
-}
-
 /* my own ghetto liquid glass card styling */
 .card {
   border: 2px solid rgba(255, 255, 255, 0.75);
@@ -36,6 +31,20 @@
   );
 }
 
+/* text */
+.title {
+  font-size: 2rem;
+  font-family: 'rye', Arial, Helvetica, sans-serif;
+}
+
+.header {
+  composes: card;
+  align-self: start;
+  height: 100%;
+  padding: 0px 16px 0px 12px;
+  border-radius: 12px;
+}
+
 /* containers */
 .vertContainer {
   display: flex;
@@ -46,7 +55,7 @@
 
 .vertContainerItem {
   composes: card;
-  border-radius: 24px;
+  border-radius: 18px;
   width: fit-content;
 }
 

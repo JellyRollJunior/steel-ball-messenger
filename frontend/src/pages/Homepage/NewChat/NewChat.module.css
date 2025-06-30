@@ -1,22 +1,7 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 85px 40px 1fr 40px;
-  gap: 12px;
+  grid-template-rows: 50px 1fr 54px;
   height: 100%;
-}
-
-.header {
-  composes: card from '../../../styles/shared.module.css';
-  align-self: start;
-  padding: 0px 16px 0px 12px;
-  border-radius: 12px;
-}
-
-.sectionTitle {
-  composes: card from '../../../styles/shared.module.css';
-  padding-left: 12px;
-  border-radius: 12px;
-  text-align: center;
 }
 
 .loadingWrapper {
@@ -32,15 +17,21 @@
 
 .usersWrapper {
   composes: vertContainer from '../../../styles/shared.module.css';
-  padding: 0 16px 36px 16px;
+  padding: 0 8px;
+  align-items: start;
+}
+
+.userItemWrapper {
+  composes: vertContainerItem from '../../../styles/shared.module.css';
+  padding: 1px 4px 1px 4px;
 }
 
 .userItem {
   display: grid;
-  grid-template-columns: 38px 1fr 42px;
+  grid-template-columns: 46px 1fr 24px;
+  column-gap: 6px; 
   align-items: center;
   justify-content: center;
-  width: 100%;
 
   border: none;
   background-color: inherit;
@@ -48,7 +39,7 @@
 
 .username {
   text-align: left;
-  margin-left: 18px;
+  font-weight: lighter;
   overflow: hidden;
 }
 

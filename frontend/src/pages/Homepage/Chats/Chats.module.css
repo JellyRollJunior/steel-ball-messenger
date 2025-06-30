@@ -5,15 +5,11 @@
 }
 
 .header {
-  composes: card from '../../../styles/shared.module.css';
+  composes: header from '../../../styles/shared.module.css';
   align-self: start;
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  height: 100%;
-  padding: 0px 16px 0px 12px;
-  border-radius: 12px;
 }
 
 .loadingWrapper {
