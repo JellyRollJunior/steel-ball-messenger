@@ -43,19 +43,15 @@ const Profile = ({
 
   return (
     <section className={styles.pageLayout}>
-      <header className={styles.header}>
-        <h1 className={shared.title}>Profile</h1>
-      </header>
-      <div className={styles.contentWrapper}>
-        <div className={styles.userInfo}>
-          <img className={styles.profileImg} src={steelBall} alt="" />
-          <h2>{username}</h2>
+      <div className={styles.horizontalWidgetGroup}>
+        <div className={styles.username}>
+          <h2 className={styles.title}>Username</h2>
+          <h1>{username}</h1>
         </div>
+        <div className={styles.widget}>Logout</div>
       </div>
-      <div className={styles.header}>
-        <h2 className={shared.title}>Bio</h2>
-      </div>
-      <div className={styles.contentWrapper}>
+      <div className={styles.bioWidget}>
+        <h2 className={styles.title}>Bio</h2>
         {!isEditing && (
           <div className={styles.bio}>
             <p>{bio}</p>
@@ -103,6 +99,14 @@ const Profile = ({
             </div>
           </form>
         )}
+      </div>
+      <div className={styles.bioWidget}>
+        <h2 className={styles.title}>Icon</h2>
+        <img
+          className={`${styles.profileImg} ${shared.marginTopSmall}`}
+          src={steelBall}
+          alt=""
+        />
       </div>
     </section>
   );

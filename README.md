@@ -59,7 +59,7 @@
 
 
 -   redesign
-    -   newchat
+    -   newchat - final
     -   profile
     -   extract vert list to component?
 

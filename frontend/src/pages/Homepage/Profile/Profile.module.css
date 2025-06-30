@@ -1,46 +1,51 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 55px 1fr 55px 1fr;
-  gap: 12px;
+  grid-template-rows: repeat(3, 1fr);
   height: 100%;
+  gap: 12px;
 }
 
-.header {
-  composes: card from '../../../styles/shared.module.css';
-  align-self: start;
-  padding: 0px 16px 0px 12px;
-  border-radius: 12px;
+.horizontalWidgetGroup {
+  display: flex;
+  gap: 12px;
+  width: 100%;
 }
 
-.contentWrapper {
-  padding: 0 24px 20px 24px;
-}
-
-.userInfo {
+.widget {
   composes: card from '../../../styles/shared.module.css';
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 
   height: 100%;
+  padding: 6px 10px 8px 10px;
   border-radius: 24px;
-  text-align: center;
+}
+
+.username {
+  composes: widget;
+  width: 100%;
+}
+
+.title {
+  align-self: start;
+  font-family: 'rye', Arial, Helvetica, sans-serif;
 }
 
 .profileImg {
-  width: 130px;
+  width: 110px;
+}
+
+.bioWidget {
+  composes: widget;
 }
 
 .bio {
-  composes: card from '../../../styles/shared.module.css';
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
   height: 100%;
-  padding: 8px 12px 5px 12px;
-  border-radius: 24px;
 }
 
 .bioTextarea {
