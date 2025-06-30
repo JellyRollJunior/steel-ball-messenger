@@ -78,13 +78,15 @@ const NewChat = () => {
               </li>
             ))}
           </ul>
-          <button
-            onClick={createChat}
-            className={`${styles.valentineButton} ${shared.marginTopMedium}`}
-            disabled={isDisabled}
-          >
-            Create Chat
-          </button>
+          <div className={`${styles.buttonHolder} ${shared.marginTopSmall}`}>
+            <button
+              onClick={createChat}
+              className={`${styles.valentineButton} `}
+              disabled={isDisabled}
+            >
+              Create Chat
+            </button>
+          </div>
         </>
       )}
     </section>

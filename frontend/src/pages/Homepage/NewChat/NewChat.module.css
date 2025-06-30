@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 50px 1fr 54px;
+  grid-template-rows: 50px 1fr 50px;
   height: 100%;
 }
 
@@ -43,6 +43,15 @@
   overflow: hidden;
 }
 
+.buttonHolder {
+  composes: card from '../../../styles/shared.module.css';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 6px 0;
+  border-radius: 12px;
+}
+
 .valentineButton {
   composes: button from '../../../styles/shared.module.css';
   --orange: #f16b0a;
@@ -50,7 +59,7 @@
 
   justify-self: center;
   width: fit-content;
-  padding: 0 24px;
+  padding: 3px 24px;
   color: var(--yellow);
   background-color: var(--orange);
   border-color: var(---yellow);
