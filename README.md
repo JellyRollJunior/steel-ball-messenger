@@ -54,7 +54,12 @@
     -   search bar
 -   profile
     -   logout
+-   messages
+    -   no messages text
 
+
+-   redesign
+    -   reduce top padding
 
 ### TODO LATER
 
@@ -66,6 +71,7 @@
 -   slide animations for page change?
 -   redesign the homepage buttons. they dont fit the design
 -   latest message not updated on returning to chat page (refetch all chats)
+    -   latest message long message overflow?
 -   socket
 
 -   extra: allow selecting multiple users (group chats)

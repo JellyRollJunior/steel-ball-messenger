@@ -39,7 +39,6 @@ const Chats = ({ userId, username }) => {
             size={34}
           />
         </header>
-        <h2 className={`${styles.sectionTitle} ${shared.card}`}>Chats</h2>
         {isLoading && (
           <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
             <LoadingElement
@@ -53,7 +52,7 @@ const Chats = ({ userId, username }) => {
         {chats && (
           <ul className={styles.chatWrapper}>
             {chats.map((chat) => (
-              <li key={chat.id} className={shared.vertContainerItem}>
+              <li key={chat.id} className={styles.chatItemWrapper}>
                 <button
                   className={styles.chatItem}
                   onClick={() => {
