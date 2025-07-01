@@ -5,10 +5,10 @@ import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
+import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
-import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 
 const NewChat = () => {
   const { users, isLoading } = useUsers();
@@ -53,21 +53,21 @@ const NewChat = () => {
   };
 
   return (
-    <section className={styles.pageLayout}>
+    <section className={shared.headerContentInputLayout}>
       <header className={shared.header}>
         <h1 className={shared.title}>Users</h1>
       </header>
-      {isLoading && (
-        <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
-          <LoadingElement
-            isVisible={isLoading}
-            isAnimating={isLoading}
-            style={{ maxWidth: 150 }}
-          />
-          <h2>Loading...</h2>
-        </div>
-      )}
-      <ul className={`${styles.usersWrapper} ${shared.marginTopMedium}`}>
+      <ul className={shared.contentWrapper}>
+        {isLoading && (
+          <li className={shared.loadingContainer}>
+            <LoadingElement
+              isVisible={isLoading}
+              isAnimating={isLoading}
+              style={{ maxWidth: 150 }}
+            />
+            <h2>Loading...</h2>
+          </li>
+        )}
         {filteredUsers &&
           filteredUsers.map((user) => (
             <li key={user.id} className={styles.userItemWrapper}>

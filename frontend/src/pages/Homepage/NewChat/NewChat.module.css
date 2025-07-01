@@ -1,38 +1,16 @@
-.pageLayout {
-  display: grid;
-  grid-template-rows: 50px 1fr 54px;
-  height: 100%;
-}
-
-.loadingWrapper {
-  composes: card from '../../../styles/shared.module.css';
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: fit-content;
-  padding: 24px 0;
-  border-radius: 12px;
-  text-align: center;
-}
-
-.usersWrapper {
-  composes: vertContainer from '../../../styles/shared.module.css';
-  padding: 0 8px;
-  align-items: start;
-}
-
 .userItemWrapper {
-  composes: vertContainerItem from '../../../styles/shared.module.css';
-  padding: 1px 4px 1px 4px;
+  composes: contentItem from '../../../styles/shared.module.css';
+  padding: 1px 8px 1px 8px;
 }
 
 .userItem {
   display: grid;
   grid-template-columns: 46px 1fr 24px;
-  column-gap: 6px;
   align-items: center;
   justify-content: center;
+  column-gap: 6px;
 
+  padding: 0;
   border: none;
   background-color: inherit;
 }

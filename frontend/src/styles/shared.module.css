@@ -52,13 +52,6 @@
 }
 
 /* containers */
-.vertContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow: scroll;
-}
-
 .contentWrapper {
   display: flex;
   flex-direction: column;
@@ -76,12 +69,6 @@
   width: fit-content;
 }
 
-.vertContainerItem {
-  composes: card;
-  border-radius: 18px;
-  width: fit-content;
-}
-
 .loadingContainer {
   composes: card;
   align-self: center;
@@ -91,7 +78,7 @@
   justify-content: center;
 
   padding: 12px 32px;
-  border-radius: 12px;
+  border-radius: 18px;
   text-align: center;
 }
 
