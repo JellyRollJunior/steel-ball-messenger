@@ -80,7 +80,7 @@ const NewChat = () => {
               </li>
             ))}
           </ul>
-          <TextInput value={search} setValue={setSearch} label='Create Chat' />
+          <TextInput value={search} setValue={setSearch} label='Create Chat' isDisabled={isDisabled} onClick={createChat} />
         </>
       )}
     </section>

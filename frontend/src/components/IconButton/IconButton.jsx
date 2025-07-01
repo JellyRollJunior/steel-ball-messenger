@@ -1,6 +1,14 @@
 import styles from './IconButton.module.css';
 
-const IconButton = ({ icon, alt, onClick, label = '', size = 30, style, isDisabled = false }) => {
+const IconButton = ({
+  style,
+  icon,
+  alt,
+  onClick,
+  label = '',
+  size = 30,
+  isDisabled = false,
+}) => {
   return (
     <div className={styles.wrapper} style={style ? style : {}}>
       <button
