@@ -5,6 +5,7 @@ import { pages } from '../pages.js';
 import { Messages } from '../Messages/Messages.jsx';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
+import { SearchBar } from '../../../components/SearchBar/SearchBar.jsx';
 import styles from './Chats.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
@@ -15,6 +16,7 @@ const Chats = ({ userId, username }) => {
   const { setPageContent } = usePageContentContext();
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
+  const [search, setSearch] = useState('');
 
   const returnToChats = () => {
     setChatId(null);
@@ -39,7 +41,7 @@ const Chats = ({ userId, username }) => {
           />
         </header>
         {isLoading && (
-          <div className={`${styles.loadingWrapper} ${shared.marginTopSmall}`}>
+          <div className={`${styles.loadingWrapper}`}>
             <LoadingElement
               isVisible={isLoading}
               isAnimating={isLoading}
@@ -49,7 +51,7 @@ const Chats = ({ userId, username }) => {
           </div>
         )}
         {chats && (
-          <ul className={`${styles.chatWrapper} ${shared.marginTopMedium}`}>
+          <ul className={`${styles.chatWrapper}`}>
             {chats.map((chat) => (
               <li key={chat.id} className={styles.chatItemWrapper}>
                 <button
@@ -85,6 +87,8 @@ const Chats = ({ userId, username }) => {
             ))}
           </ul>
         )}
+        <SearchBar value={search} setValue={setSearch} />
+
       </section>
     );
   }

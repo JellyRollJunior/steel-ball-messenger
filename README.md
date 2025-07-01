@@ -53,6 +53,10 @@
 -   new chats section
     -   style selected radio button
     -   search bar
+        -   search bar component
+        -   extract search from messages
+        -   chats search link
+        -   users search link
 -   profile
     -   logout
 -   messages
