@@ -5,15 +5,8 @@
   align-items: center;
 }
 
-.chatWrapper {
-  composes: vertContainer from '../../../styles/shared.module.css';
-  padding: 0 8px;
-  align-items: start;
-  flex: 1;
-}
-
 .chatItemWrapper {
-  composes: vertContainerItem from '../../../styles/shared.module.css';
+  composes: contentItem from '../../../styles/shared.module.css';
   padding: 1px 16px 1px 8px;
 }
 
@@ -22,7 +15,6 @@
   grid-template-columns: 46px 1fr;
   column-gap: 6px;
 
-  width: fit-content;
   padding: 0;
   border: none;
   background-color: inherit;

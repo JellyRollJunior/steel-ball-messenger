@@ -30,7 +30,7 @@ const useChats = () => {
             // create error notification later
             setError('Error!');
         } finally {
-            setIsLoading(true);
+            setIsLoading(false);
         }
     }, [navigate]);
 

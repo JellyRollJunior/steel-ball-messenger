@@ -68,7 +68,7 @@ const Chats = ({ userId, username }) => {
             size={34}
           />
         </header>
-        <ul className={styles.chatWrapper}>
+        <ul className={shared.contentWrapper}>
           {isLoading && (
             <li className={shared.loadingContainer}>
               <LoadingElement
