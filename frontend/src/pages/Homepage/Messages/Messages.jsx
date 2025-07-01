@@ -47,7 +47,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   }, [messages]);
 
   return (
-    <section className={styles.pageLayout}>
+    <section className={shared.headerContentInputLayout}>
       <header className={styles.header}>
         <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>

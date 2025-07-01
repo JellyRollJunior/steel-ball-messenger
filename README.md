@@ -56,10 +56,6 @@
 -   messages
     -   no messages text (show a message)
 
-
--   extract
-    -   title - vert - search layout
-
 ### TODO LATER
 
 -   desktop view

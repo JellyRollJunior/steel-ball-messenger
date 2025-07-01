@@ -1,19 +1,9 @@
-.pageLayout {
-  display: grid;
-  grid-template-rows: 50px 1fr 46px;
-  gap: 12px;
-  height: 100%;
-}
-
 .header {
-  composes: card from '../../../styles/shared.module.css';
+  composes: header from '../../../styles/shared.module.css';
   display: flex;
   justify-content: start;
   align-items: center;
   gap: 6px;
-
-  padding: 0px 16px 0px 12px;
-  border-radius: 12px;
 }
 
 .backButton {
@@ -48,9 +38,7 @@
 }
 
 .message {
-  --offset: 68px;
-  composes: vertContainerItem from '../../../styles/shared.module.css';
-  width: fit-content;
+  composes: contentItem from '../../../styles/shared.module.css';
   max-width: 200px;
   padding: 3px 12px;
 }
