@@ -5,7 +5,7 @@ import { pages } from '../pages.js';
 import { Messages } from '../Messages/Messages.jsx';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
-import { SearchBar } from '../../../components/SearchBar/SearchBar.jsx';
+import { TextInput } from '../../../components/SearchBar/SearchBar.jsx';
 import styles from './Chats.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
@@ -115,7 +115,7 @@ const Chats = ({ userId, username }) => {
             ))}
           </ul>
         )}
-        <SearchBar value={search} setValue={setSearch} placeholder='Search Chats' />
+        <TextInput value={search} setValue={setSearch} placeholder='Search Chats' />
       </section>
     );
   }

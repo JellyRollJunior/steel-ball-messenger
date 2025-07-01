@@ -3,7 +3,7 @@ import bug from '../../assets/images/bug.png';
 import styles from './SearchBar.module.css';
 import { useRef } from 'react';
 
-const SearchBar = ({ value, setValue, placeholder }) => {
+const TextInput = ({ value, setValue, placeholder }) => {
   const inputRef = useRef(null);
 
   const focusInput = () => {
@@ -25,11 +25,11 @@ const SearchBar = ({ value, setValue, placeholder }) => {
         maxLength={250}
         placeholder={placeholder}
       />
-      <label className={styles.searchBtn} htmlFor="input">
+      <label className={styles.button} htmlFor="input">
         <IconButton onClick={focusInput} icon={bug} size={32} alt="send button" />
       </label>
     </div>
   );
 };
 
-export { SearchBar };
+export { TextInput };
