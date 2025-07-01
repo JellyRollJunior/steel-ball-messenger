@@ -37,6 +37,7 @@
 -   getting confident using prisma select and include
 -   Proud: custom "liquid glass" card stying
 -   as always, color palette pulled from Araki's art
+-   Learning to prioritize fixes. Critical first, non pertinent later
 
 ## TODOS - backend
 
@@ -56,14 +57,6 @@
     -   logout
 -   messages
     -   no messages text
-
-
--   redesign
-    -   newchat - final
-    -   profile
-        -   logout
-    -   extract common csss
-    -   extract vert list to component?
 
 ### TODO LATER
 

@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 50px 1fr 50px;
+  grid-template-rows: 50px 1fr 65px;
   height: 100%;
 }
 
@@ -45,10 +45,12 @@
 
 .buttonHolder {
   composes: card from '../../../styles/shared.module.css';
+  justify-self: center;
   display: flex;
-  justify-content: center;
+  justify-content: end;
   align-items: center;
-  padding: 6px 0;
+  width: fit-content;
+  padding: 6px 20px;
   border-radius: 12px;
 }
 
@@ -57,8 +59,6 @@
   --orange: #f16b0a;
   --yellow: #f8e299;
 
-  justify-self: center;
-  width: fit-content;
   padding: 3px 24px;
   color: var(--yellow);
   background-color: var(--orange);

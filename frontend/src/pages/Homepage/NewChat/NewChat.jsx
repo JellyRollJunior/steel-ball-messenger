@@ -78,7 +78,7 @@ const NewChat = () => {
               </li>
             ))}
           </ul>
-          <div className={`${styles.buttonHolder} ${shared.marginTopSmall}`}>
+          <div className={`${styles.buttonHolder} ${shared.marginTopMedium}`}>
             <button
               onClick={createChat}
               className={`${styles.valentineButton} `}
