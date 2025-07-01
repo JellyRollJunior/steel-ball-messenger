@@ -48,12 +48,15 @@
 
 ## TODOS - frontend
 
--   chats
-    -   search bar
+-   search bar
+    -   disable button
+    -   IconButton
+        -   Disabled styling
 -   new chats section
     -   style selected radio button
     -   search bar
         -   users search link
+
 -   profile
     -   logout
 -   messages

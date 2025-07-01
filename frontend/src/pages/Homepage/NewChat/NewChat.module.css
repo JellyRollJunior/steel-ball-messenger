@@ -29,7 +29,7 @@
 .userItem {
   display: grid;
   grid-template-columns: 46px 1fr 24px;
-  column-gap: 6px; 
+  column-gap: 6px;
   align-items: center;
   justify-content: center;
 
@@ -41,35 +41,4 @@
   text-align: left;
   font-weight: lighter;
   overflow: hidden;
-}
-
-.buttonHolder {
-  composes: card from '../../../styles/shared.module.css';
-  justify-self: center;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  width: fit-content;
-  padding: 6px 20px;
-  border-radius: 12px;
-}
-
-.valentineButton {
-  composes: button from '../../../styles/shared.module.css';
-  --orange: #f16b0a;
-  --yellow: #f8e299;
-
-  padding: 3px 24px;
-  color: var(--yellow);
-  background-color: var(--orange);
-  border-color: var(---yellow);
-}
-
-.valentineButton:hover {
-  background-color: var(--yellow);
-  color: var(--orange);
-}
-
-.valentineButton:disabled {
-  filter: grayscale(60%);
 }
