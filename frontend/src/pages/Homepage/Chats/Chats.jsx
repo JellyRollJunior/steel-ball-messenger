@@ -58,7 +58,7 @@ const Chats = ({ userId, username }) => {
 
   if (!chatId) {
     return (
-      <section className={styles.pageLayout}>
+      <section className={shared.headerContentInputLayout}>
         <header className={styles.header}>
           <h1 className={shared.title}>{username ? username : 'Username'}</h1>
           <IconButton
@@ -68,17 +68,17 @@ const Chats = ({ userId, username }) => {
             size={34}
           />
         </header>
-        {isLoading && (
-          <div className={`${styles.loadingWrapper}`}>
-            <LoadingElement
-              isVisible={isLoading}
-              isAnimating={isLoading}
-              style={{ maxWidth: 150 }}
-            />
-            <h2>Loading...</h2>
-          </div>
-        )}
-        <ul className={`${styles.chatWrapper}`}>
+        <ul className={styles.chatWrapper}>
+          {isLoading && (
+            <li className={shared.loadingContainer}>
+              <LoadingElement
+                isVisible={isLoading}
+                isAnimating={isLoading}
+                style={{ maxWidth: 150 }}
+              />
+              <h2>Loading...</h2>
+            </li>
+          )}
           {filteredChats &&
             filteredChats.map((chat) => (
               <li key={chat.id} className={styles.chatItemWrapper}>
