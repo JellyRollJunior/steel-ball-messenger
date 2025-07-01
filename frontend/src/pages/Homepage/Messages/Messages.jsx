@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 import { format } from 'date-fns';
 import { useMessages } from '../../../hooks/useMessages.js';
-import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { handleTokenError } from '../../../utils/handleTokenError.js';
-import { useNavigate } from 'react-router';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import { IconButton } from '../../../components/IconButton/IconButton.jsx';
+import { TextInput } from '../../../components/SearchBar/SearchBar.jsx';
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
-import bug from '../../../assets/images/bug.png';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const { messages, refetch: refetchMessages } = useMessages(chatId);
@@ -81,21 +81,8 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
             </li>
           ))}
       </ul>
-      <form onSubmit={sendMessage} className={styles.send}>
-        <input
-          type="text"
-          value={message}
-          onChange={(event) => setMessage(event.target.value)}
-          minLength={1}
-          maxLength={250}
-        />
-        <div className={styles.selected}>
-          <IconButton
-            icon={bug}
-            size={32}
-            alt="send button"
-          />
-        </div>
+      <form onSubmit={sendMessage}>
+        <TextInput value={message} setValue={setMessage} />
       </form>
     </section>
   );
