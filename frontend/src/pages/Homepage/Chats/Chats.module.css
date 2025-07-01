@@ -1,6 +1,6 @@
 .pageLayout {
   display: grid;
-  grid-template-rows: 50px  1fr 50px;
+  grid-template-rows: 50px 1fr 46px;
   gap: 12px;
   height: 100%;
 }
@@ -39,7 +39,7 @@
   display: grid;
   grid-template-columns: 46px 1fr;
   column-gap: 6px;
-  
+
   width: fit-content;
   padding: 0;
   border: none;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useChats } from '../../../hooks/useChats.js';
 import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
 import { pages } from '../pages.js';
@@ -17,22 +17,50 @@ const Chats = ({ userId, username }) => {
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
   const [search, setSearch] = useState('');
+  const [filteredChats, setFilteredChats] = useState([]);
+
+  useEffect(() => {
+    setFilteredChats(chats);
+
+    //  filter chats by username
+    //    rule 1: Exclude our own username from search filter
+    //    rule 2: UNLESS the chat contains only current user (self chat)!
+    if (search && search.trim() != '' && Array.isArray(chats)) {
+      setFilteredChats(
+        chats.filter((chat) =>
+          chat.users.reduce(
+            (accumulator, user) =>
+              accumulator ||
+              (user.id != userId
+                ? user.username.includes(search)
+                : chat.users.length == 1 && user.username.includes(search)),
+            false
+          )
+        )
+      );
+    }
+  }, [search, setFilteredChats, chats, userId]);
 
   const returnToChats = () => {
     setChatId(null);
   };
 
   if (chatId) {
-    return <Messages userId={userId} chatId={chatId} chatPartnerUsernames={chatPartnerUsernames} returnToChats={returnToChats} />;
+    return (
+      <Messages
+        userId={userId}
+        chatId={chatId}
+        chatPartnerUsernames={chatPartnerUsernames}
+        returnToChats={returnToChats}
+      />
+    );
   }
 
   if (!chatId) {
     return (
       <section className={styles.pageLayout}>
         <header className={styles.header}>
-          <h1 className={shared.title}>
-            {username ? username : 'Username'}
-          </h1>
+          <h1 className={shared.title}>{username ? username : 'Username'}</h1>
           <IconButton
             onClick={() => setPageContent(pages.NEWCHAT)}
             icon={steelBallRun}
@@ -50,9 +78,9 @@ const Chats = ({ userId, username }) => {
             <h2>Loading...</h2>
           </div>
         )}
-        {chats && (
+        {filteredChats && (
           <ul className={`${styles.chatWrapper}`}>
-            {chats.map((chat) => (
+            {filteredChats.map((chat) => (
               <li key={chat.id} className={styles.chatItemWrapper}>
                 <button
                   className={styles.chatItem}
@@ -88,7 +116,6 @@ const Chats = ({ userId, username }) => {
           </ul>
         )}
         <SearchBar value={search} setValue={setSearch} />
-
       </section>
     );
   }

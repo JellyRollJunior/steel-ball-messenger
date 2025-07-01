@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 import { useMessages } from '../../../hooks/useMessages.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
-import styles from './Messages.module.css';
-import shared from '../../../styles/shared.module.css';
-import leftArrow from '../../../assets/icons/left-arrow.svg';
-import bug from '../../../assets/images/bug.png';
 import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { useNavigate } from 'react-router';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import styles from './Messages.module.css';
+import shared from '../../../styles/shared.module.css';
+import leftArrow from '../../../assets/icons/left-arrow.svg';
+import bug from '../../../assets/images/bug.png';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const { messages, refetch: refetchMessages } = useMessages(chatId);

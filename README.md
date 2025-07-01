@@ -53,14 +53,16 @@
 -   new chats section
     -   style selected radio button
     -   search bar
-        -   search bar component
         -   extract search from messages
-        -   chats search link
         -   users search link
 -   profile
     -   logout
 -   messages
     -   no messages text
+
+-   extract
+    -   search from messages
+    -   title - vert - search layout
 
 ### TODO LATER
 
@@ -72,5 +74,8 @@
 -   latest message not updated on returning to chat page (refetch all chats)
 -   socket
 -   newchat username overflow
+
 -   bug: profile -> bio + username overflow
+-   bug: self chat no chats username
+-   bug: consistent padding on list items
 -   extra: allow selecting multiple users (group chats)
