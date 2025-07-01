@@ -115,7 +115,7 @@ const Chats = ({ userId, username }) => {
             ))}
           </ul>
         )}
-        <SearchBar value={search} setValue={setSearch} />
+        <SearchBar value={search} setValue={setSearch} placeholder='Search Chats' />
       </section>
     );
   }
