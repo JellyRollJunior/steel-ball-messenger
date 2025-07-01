@@ -55,9 +55,10 @@
     -   logout
 -   messages
     -   no messages text (show a message)
+
+
 -   extract
     -   title - vert - search layout
-        -   convert from grid to flex (?)
 
 ### TODO LATER
 

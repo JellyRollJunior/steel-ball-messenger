@@ -1,12 +1,18 @@
 .pageLayout {
-  display: grid;
-  grid-template-rows: 50px 1fr 46px;
+  display: flex;
+  flex-direction: column;
   gap: 12px;
   height: 100%;
 }
 
 .header {
-  composes: header from '../../../styles/shared.module.css';
+  composes: card from '../../../styles/shared.module.css';
+
+  align-self: start;
+  width: 100%;
+  padding: 0px 16px 0px 12px;
+  border-radius: 12px;
+  
   align-self: start;
   display: flex;
   justify-content: space-between;
@@ -28,6 +34,7 @@
   composes: vertContainer from '../../../styles/shared.module.css';
   padding: 0 8px;
   align-items: start;
+  flex: 1;
 }
 
 .chatItemWrapper {

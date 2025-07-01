@@ -22,7 +22,7 @@ const TextInput = ({
   };
 
   return (
-    <div className={styles.search}>
+    <div className={styles.holder}>
       <input
         ref={inputRef}
         id="input"
