@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
 import { pages } from '../pages.js';
 import { useUsers } from '../../../hooks/useUsers.js';
@@ -11,11 +11,20 @@ import steelBall from '../../../assets/images/steel-ball.png';
 import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 
 const NewChat = () => {
-  const [selectedUser, setSelectedUser] = useState(null);
-  const [isDisabled, setIsDisabled] = useState(false);
-  const [search, setSearch] = useState('');
   const { users, isLoading } = useUsers();
   const { setPageContent } = usePageContentContext();
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [filteredUsers, setFilteredUsers] = useState([]);
+  const [search, setSearch] = useState('');
+
+  useEffect(() => {
+    setFilteredUsers(users);
+
+    if (search && search.trim() != '' && Array.isArray(users)) {
+      setFilteredUsers(users.filter((user) => user.username.includes(search)));
+    }
+  }, [users, search, setFilteredUsers]);
 
   const createChat = async () => {
     if (!selectedUser) return;
@@ -58,31 +67,30 @@ const NewChat = () => {
           <h2>Loading...</h2>
         </div>
       )}
-      {users && (
-        <>
-          <ul className={`${styles.usersWrapper} ${shared.marginTopMedium}`}>
-            {users.map((user) => (
-              <li key={user.id} className={styles.userItemWrapper}>
-                <label className={styles.userItem} htmlFor={user.id}>
-                  <img
-                    src={steelBall}
-                    alt=""
-                    className={styles.profilePicture}
-                  />
-                  <h3 className={styles.username}>{user.username}</h3>
-                  <input
-                    type="radio"
-                    name="user"
-                    id={user.id}
-                    onClick={() => setSelectedUser(user.id)}
-                  />
-                </label>
-              </li>
-            ))}
-          </ul>
-          <TextInput value={search} setValue={setSearch} label='Create Chat' isDisabled={isDisabled} onClick={createChat} />
-        </>
-      )}
+      <ul className={`${styles.usersWrapper} ${shared.marginTopMedium}`}>
+        {filteredUsers &&
+          filteredUsers.map((user) => (
+            <li key={user.id} className={styles.userItemWrapper}>
+              <label className={styles.userItem} htmlFor={user.id}>
+                <img src={steelBall} alt="" className={styles.profilePicture} />
+                <h3 className={styles.username}>{user.username}</h3>
+                <input
+                  type="radio"
+                  name="user"
+                  id={user.id}
+                  onClick={() => setSelectedUser(user.id)}
+                />
+              </label>
+            </li>
+          ))}
+      </ul>
+      <TextInput
+        value={search}
+        setValue={setSearch}
+        label="Create Chat"
+        isDisabled={isDisabled}
+        onClick={createChat}
+      />
     </section>
   );
 };

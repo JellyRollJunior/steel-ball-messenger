@@ -48,20 +48,13 @@
 
 ## TODOS - frontend
 
--   search bar
-    -   disable button
-    -   IconButton
-        -   Disabled styling
+-   disable for chats and messages
 -   new chats section
     -   style selected radio button
-    -   search bar
-        -   users search link
-
 -   profile
     -   logout
 -   messages
-    -   no messages text (send a message)
-
+    -   no messages text (show a message)
 -   extract
     -   title - vert - search layout
         -   convert from grid to flex (?)

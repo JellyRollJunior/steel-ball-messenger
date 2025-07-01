@@ -78,9 +78,9 @@ const Chats = ({ userId, username }) => {
             <h2>Loading...</h2>
           </div>
         )}
-        {filteredChats && (
-          <ul className={`${styles.chatWrapper}`}>
-            {filteredChats.map((chat) => (
+        <ul className={`${styles.chatWrapper}`}>
+          {filteredChats &&
+            filteredChats.map((chat) => (
               <li key={chat.id} className={styles.chatItemWrapper}>
                 <button
                   className={styles.chatItem}
@@ -113,9 +113,12 @@ const Chats = ({ userId, username }) => {
                 </button>
               </li>
             ))}
-          </ul>
-        )}
-        <TextInput value={search} setValue={setSearch} placeholder='Search Chats' />
+        </ul>
+        <TextInput
+          value={search}
+          setValue={setSearch}
+          placeholder="Search Chats"
+        />
       </section>
     );
   }
