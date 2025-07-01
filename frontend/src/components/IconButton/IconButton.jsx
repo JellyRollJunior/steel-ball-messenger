@@ -1,8 +1,8 @@
 import styles from './IconButton.module.css';
 
-const IconButton = ({ icon, alt, onClick, label = '', size = 30 }) => {
+const IconButton = ({ icon, alt, onClick, label = '', size = 30, style }) => {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.wrapper} style={style ? style : {}}>
       <button
         onClick={onClick}
         style={{ height: size, width: size }}

@@ -57,11 +57,11 @@
 -   profile
     -   logout
 -   messages
-    -   no messages text
+    -   no messages text (send a message)
 
 -   extract
-    -   search from messages
     -   title - vert - search layout
+        -   convert from grid to flex (?)
 
 ### TODO LATER
 

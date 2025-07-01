@@ -8,10 +8,12 @@ import { LoadingElement } from '../../../components/LoadingElement/LoadingElemen
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
+import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 
 const NewChat = () => {
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
+  const [search, setSearch] = useState('');
   const { users, isLoading } = useUsers();
   const { setPageContent } = usePageContentContext();
 
@@ -78,15 +80,7 @@ const NewChat = () => {
               </li>
             ))}
           </ul>
-          <div className={`${styles.buttonHolder} ${shared.marginTopMedium}`}>
-            <button
-              onClick={createChat}
-              className={`${styles.valentineButton} `}
-              disabled={isDisabled}
-            >
-              Create Chat
-            </button>
-          </div>
+          <TextInput value={search} setValue={setSearch} label='Create Chat' />
         </>
       )}
     </section>
