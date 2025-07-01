@@ -1,9 +1,9 @@
 import { IconButton } from '../IconButton/IconButton.jsx';
 import bug from '../../assets/images/bug.png';
-import styles from './SearchBar.module.css';
+import styles from './TextInput.module.css';
 import { useRef } from 'react';
 
-const TextInput = ({ value, setValue, placeholder }) => {
+const TextInput = ({ value, setValue, placeholder, minLength = 0, maxLength = 24 }) => {
   const inputRef = useRef(null);
 
   const focusInput = () => {
@@ -21,8 +21,8 @@ const TextInput = ({ value, setValue, placeholder }) => {
         type="text"
         value={value}
         onChange={(event) => setValue(event.target.value)}
-        minLength={1}
-        maxLength={250}
+        minLength={minLength}
+        maxLength={maxLength}
         placeholder={placeholder}
       />
       <label className={styles.button} htmlFor="input">

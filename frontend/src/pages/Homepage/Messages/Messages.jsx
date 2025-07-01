@@ -6,7 +6,7 @@ import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
-import { TextInput } from '../../../components/SearchBar/SearchBar.jsx';
+import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
@@ -82,7 +82,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           ))}
       </ul>
       <form onSubmit={sendMessage}>
-        <TextInput value={message} setValue={setMessage} />
+        <TextInput value={message} setValue={setMessage} minLength={1} maxLength={250} />
       </form>
     </section>
   );
