@@ -51,8 +51,6 @@
 -   disable for chats and messages
 -   new chats section
     -   style selected radio button
--   profile
-    -   logout
 -   messages
     -   no messages text (show a message)
 

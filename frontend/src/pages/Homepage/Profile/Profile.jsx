@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import styles from './Profile.module.css';
-import shared from '../../../styles/shared.module.css';
-import steelBall from '../../../assets/images/steel-ball.png';
 import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { useNavigate } from 'react-router';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import { IconButton } from '../../../components/IconButton/IconButton.jsx';
+import { logout } from '../../../utils/logout.js';
+import styles from './Profile.module.css';
+import shared from '../../../styles/shared.module.css';
+import steelBall from '../../../assets/images/steel-ball.png';
+import horseshoe from '../../../assets/images/horseshoe.png';
 
 const Profile = ({
   username = 'Username',
@@ -98,7 +101,18 @@ const Profile = ({
         )}
       </div>
       <div className={styles.horizontalWidgetGroup}>
-        <div className={styles.widget}>Logout</div>
+        <div className={styles.logout}>
+          <div className={styles.buttonWrapper}>
+            <IconButton
+              onClick={() => logout(navigate)}
+              icon={horseshoe}
+              label="Logout"
+              size={52}
+              alt="Logout button"
+              style={{fontWeight: 'bold'}}
+            />
+          </div>
+        </div>
         <div className={styles.widget}>
           <h2 className={styles.title}>Icon</h2>
           <img
