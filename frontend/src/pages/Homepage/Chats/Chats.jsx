@@ -56,6 +56,15 @@ const Chats = ({ userId, username }) => {
     );
   }
 
+  const getUsernames = (chat) => {
+    return chat.users.length > 1
+      ? chat.users
+          .filter((user) => user.id != userId)
+          .map((user) => user.username)
+          .join(', ')
+      : chat.users[0].username;
+  };
+
   if (!chatId) {
     return (
       <section className={shared.headerContentInputLayout}>
@@ -86,12 +95,7 @@ const Chats = ({ userId, username }) => {
                   className={styles.chatItem}
                   onClick={() => {
                     setChatId(chat.id);
-                    setChatPartnerUsernames(
-                      chat.users
-                        .filter((user) => user.id != userId)
-                        .map((user) => user.username)
-                        .join(', ')
-                    );
+                    setChatPartnerUsernames(getUsernames(chat));
                   }}
                 >
                   <img
@@ -99,12 +103,7 @@ const Chats = ({ userId, username }) => {
                     alt="Profile picture"
                     className={styles.profilePicture}
                   />
-                  <h3 className={styles.chatUsernames}>
-                    {chat.users
-                      .filter((user) => user.id != userId)
-                      .map((user) => user.username)
-                      .join(', ')}
-                  </h3>
+                  <h3 className={styles.chatUsernames}>{getUsernames(chat)}</h3>
                   <p className={styles.latestMessage}>
                     {chat.latestMessage
                       ? chat.latestMessage.content

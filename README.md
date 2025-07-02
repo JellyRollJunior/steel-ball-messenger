@@ -64,5 +64,4 @@
 -   newchat username overflow
 
 -   bug: profile -> bio + username overflow
--   bug: self chat no chats username
 -   extra: allow selecting multiple users (group chats)
