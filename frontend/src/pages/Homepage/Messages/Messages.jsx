@@ -80,9 +80,21 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
               </div>
             </li>
           ))}
+        {reversedMessages && reversedMessages.length == 0 && (
+          <li className={styles.messageWrapper}>
+            <div className={styles.date}>
+              Start the conversation!
+            </div>
+          </li>
+        )}
       </ul>
       <form onSubmit={sendMessage}>
-        <TextInput value={message} setValue={setMessage} minLength={1} maxLength={250} />
+        <TextInput
+          value={message}
+          setValue={setMessage}
+          minLength={1}
+          maxLength={250}
+        />
       </form>
     </section>
   );

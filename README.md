@@ -51,8 +51,6 @@
 -   disable for chats and messages
 -   new chats section
     -   style selected radio button
--   messages
-    -   no messages text (show a message)
 
 ### TODO LATER
 
@@ -67,5 +65,4 @@
 
 -   bug: profile -> bio + username overflow
 -   bug: self chat no chats username
--   bug: consistent padding on list items
 -   extra: allow selecting multiple users (group chats)
