@@ -59,7 +59,6 @@
     -   set errors in notifications!
     -   success notifications!
 -   slide animations for page change?
--   latest message not updated on returning to chat page (refetch all chats)
 -   socket
 -   newchat username overflow
 

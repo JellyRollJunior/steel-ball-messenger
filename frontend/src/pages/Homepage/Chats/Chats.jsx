@@ -12,7 +12,7 @@ import steelBallRun from '../../../assets/images/SBR.png';
 import steelBall from '../../../assets/images/steel-ball.png';
 
 const Chats = ({ userId, username }) => {
-  const { chats, isLoading } = useChats();
+  const { chats, isLoading, refetch } = useChats();
   const { setPageContent } = usePageContentContext();
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
@@ -43,6 +43,7 @@ const Chats = ({ userId, username }) => {
 
   const returnToChats = () => {
     setChatId(null);
+    refetch();
   };
 
   if (chatId) {
