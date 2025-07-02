@@ -15,13 +15,15 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const { messages, refetch: refetchMessages } = useMessages(chatId);
   const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
+  const [isDisabled, setIsDisabled] = useState(false);
   const navigate = useNavigate();
 
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() == '') return;
-    const token = localStorage.getItem('token');
     try {
+      setIsDisabled(true)
+      const token = localStorage.getItem('token');
       await makeRequest(getUrl(`/chats/${chatId}/messages`), {
         mode: 'cors',
         method: 'POST',
@@ -37,6 +39,8 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
       setMessage('');
     } catch (error) {
       handleTokenError(error, navigate);
+    } finally {
+      setIsDisabled(false)
     }
   };
 
@@ -94,6 +98,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           setValue={setMessage}
           minLength={1}
           maxLength={250}
+          isDisabled={isDisabled}
         />
       </form>
     </section>

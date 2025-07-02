@@ -42,13 +42,11 @@
 ## TODOS - backend
 
 -   user avatar
--   refactor to ID validation?
 -   FIX: disallow creating chats that already exist (same users)
 -   return chats by latest creation
 
 ## TODOS - frontend
 
--   disable for chats and messages
 -   new chats section
     -   style selected radio button
 
@@ -60,7 +58,7 @@
     -   success notifications!
 -   slide animations for page change?
 -   socket
--   newchat username overflow
 
 -   bug: profile -> bio + username overflow
+
 -   extra: allow selecting multiple users (group chats)
