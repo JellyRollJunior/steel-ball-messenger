@@ -66,6 +66,8 @@ const Chats = ({ userId, username }) => {
       : chat.users[0].username;
   };
 
+  const nullChats = [];
+
   if (!chatId) {
     return (
       <section className={shared.headerContentInputLayout}>
@@ -90,29 +92,67 @@ const Chats = ({ userId, username }) => {
             </li>
           )}
           {filteredChats &&
-            filteredChats.map((chat) => (
-              <li key={chat.id} className={styles.chatItemWrapper}>
-                <button
-                  className={styles.chatItem}
-                  onClick={() => {
-                    setChatId(chat.id);
-                    setChatPartnerUsernames(getUsernames(chat));
-                  }}
-                >
-                  <img
-                    src={steelBall}
-                    alt="Profile picture"
-                    className={styles.profilePicture}
-                  />
-                  <h3 className={styles.chatUsernames}>{getUsernames(chat)}</h3>
-                  <p className={styles.latestMessage}>
-                    {chat.latestMessage
-                      ? chat.latestMessage.content
-                      : 'Send a message'}
-                  </p>
-                </button>
-              </li>
-            ))}
+            filteredChats.map((chat) => {
+              if (chat.latestMessage) {
+                return (
+                  <li key={chat.id} className={styles.chatItemWrapper}>
+                    <button
+                      className={styles.chatItem}
+                      onClick={() => {
+                        setChatId(chat.id);
+                        setChatPartnerUsernames(getUsernames(chat));
+                      }}
+                    >
+                      <img
+                        src={steelBall}
+                        alt="Profile picture"
+                        className={styles.profilePicture}
+                      />
+                      <h3 className={styles.chatUsernames}>
+                        {getUsernames(chat)}
+                      </h3>
+                      <p className={styles.latestMessage}>
+                        {chat.latestMessage
+                          ? chat.latestMessage.content
+                          : 'Send a message'}
+                      </p>
+                    </button>
+                  </li>
+                );
+              } else {
+                nullChats.push(chat.id);
+              }
+            })}
+          {filteredChats &&
+            nullChats &&
+            filteredChats.map(
+              (chat) =>
+                nullChats.includes(chat.id) && (
+                  <li key={chat.id} className={styles.chatItemWrapper}>
+                    <button
+                      className={styles.chatItem}
+                      onClick={() => {
+                        setChatId(chat.id);
+                        setChatPartnerUsernames(getUsernames(chat));
+                      }}
+                    >
+                      <img
+                        src={steelBall}
+                        alt="Profile picture"
+                        className={styles.profilePicture}
+                      />
+                      <h3 className={styles.chatUsernames}>
+                        {getUsernames(chat)}
+                      </h3>
+                      <p className={styles.latestMessage}>
+                        {chat.latestMessage
+                          ? chat.latestMessage.content
+                          : 'Send a message'}
+                      </p>
+                    </button>
+                  </li>
+                )
+            )}
         </ul>
         <TextInput
           value={search}

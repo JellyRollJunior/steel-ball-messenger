@@ -41,14 +41,11 @@
 
 ## TODOS - backend
 
--   user avatar
 -   FIX: disallow creating chats that already exist (same users)
 -   return chats by latest creation
 
 ## TODOS - frontend
 
--   new chats section
-    -   style selected radio button
 
 ### TODO LATER
 
