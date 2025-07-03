@@ -1,5 +1,5 @@
 import steelBall from '../../../assets/images/steel-ball.png';
-import styles from './Chats.module.css';
+import styles from './ChatItem.module.css';
 
 const ChatItem = ({ usernames, latestMessage, onClick }) => {
   return (

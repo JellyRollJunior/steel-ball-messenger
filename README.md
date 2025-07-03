@@ -42,7 +42,6 @@
 ## TODOS - backend
 
 -   FIX: disallow creating chats that already exist (same users)
--   return chats by latest creation
 
 ## TODOS - frontend
 

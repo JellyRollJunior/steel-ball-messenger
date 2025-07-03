@@ -4,38 +4,3 @@
   justify-content: space-between;
   align-items: center;
 }
-
-.chatItemWrapper {
-  composes: contentItem from '../../../styles/shared.module.css';
-  padding: 1px 16px 1px 8px;
-}
-
-.chatItem {
-  display: grid;
-  grid-template-columns: 46px 1fr;
-  column-gap: 6px;
-
-  padding: 0;
-  border: none;
-  background-color: inherit;
-}
-
-.profilePicture {
-  grid-row: span 2;
-  align-self: center;
-}
-
-.chatContent {
-  text-align: left;
-  overflow: hidden;
-}
-
-.chatUsernames {
-  composes: chatContent;
-  align-self: flex-end;
-}
-
-.latestMessage {
-  composes: chatContent;
-  align-self: flex-start;
-}
