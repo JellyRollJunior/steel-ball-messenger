@@ -5,11 +5,11 @@ import { pages } from '../pages.js';
 import { Messages } from '../Messages/Messages.jsx';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
+import { ChatItem } from './ChatItem.jsx';
 import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './Chats.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
-import steelBall from '../../../assets/images/steel-ball.png';
 
 const Chats = ({ userId, username }) => {
   const { chats, isLoading, refetch } = useChats();
@@ -46,6 +46,20 @@ const Chats = ({ userId, username }) => {
     refetch();
   };
 
+  const navigateToMessages = (id, chatName) => {
+    setChatId(id);
+    setChatPartnerUsernames(chatName);
+  };
+
+  const getUsernames = (chat) => {
+    return chat.users.length > 1
+      ? chat.users
+          .filter((user) => user.id != userId)
+          .map((user) => user.username)
+          .join(', ')
+      : chat.users[0].username;
+  };
+
   if (chatId) {
     return (
       <Messages
@@ -57,17 +71,7 @@ const Chats = ({ userId, username }) => {
     );
   }
 
-  const getUsernames = (chat) => {
-    return chat.users.length > 1
-      ? chat.users
-          .filter((user) => user.id != userId)
-          .map((user) => user.username)
-          .join(', ')
-      : chat.users[0].username;
-  };
-
   const nullChats = [];
-
   if (!chatId) {
     return (
       <section className={shared.headerContentInputLayout}>
@@ -95,29 +99,11 @@ const Chats = ({ userId, username }) => {
             filteredChats.map((chat) => {
               if (chat.latestMessage) {
                 return (
-                  <li key={chat.id} className={styles.chatItemWrapper}>
-                    <button
-                      className={styles.chatItem}
-                      onClick={() => {
-                        setChatId(chat.id);
-                        setChatPartnerUsernames(getUsernames(chat));
-                      }}
-                    >
-                      <img
-                        src={steelBall}
-                        alt="Profile picture"
-                        className={styles.profilePicture}
-                      />
-                      <h3 className={styles.chatUsernames}>
-                        {getUsernames(chat)}
-                      </h3>
-                      <p className={styles.latestMessage}>
-                        {chat.latestMessage
-                          ? chat.latestMessage.content
-                          : 'Send a message'}
-                      </p>
-                    </button>
-                  </li>
+                  <ChatItem
+                    usernames={getUsernames(chat)}
+                    latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
+                    onClick={() => navigateToMessages(chat.id, getUsernames(chat))}
+                  />
                 );
               } else {
                 nullChats.push(chat.id);
@@ -128,29 +114,11 @@ const Chats = ({ userId, username }) => {
             filteredChats.map(
               (chat) =>
                 nullChats.includes(chat.id) && (
-                  <li key={chat.id} className={styles.chatItemWrapper}>
-                    <button
-                      className={styles.chatItem}
-                      onClick={() => {
-                        setChatId(chat.id);
-                        setChatPartnerUsernames(getUsernames(chat));
-                      }}
-                    >
-                      <img
-                        src={steelBall}
-                        alt="Profile picture"
-                        className={styles.profilePicture}
-                      />
-                      <h3 className={styles.chatUsernames}>
-                        {getUsernames(chat)}
-                      </h3>
-                      <p className={styles.latestMessage}>
-                        {chat.latestMessage
-                          ? chat.latestMessage.content
-                          : 'Send a message'}
-                      </p>
-                    </button>
-                  </li>
+                  <ChatItem
+                    usernames={getUsernames(chat)}
+                    latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
+                    onClick={() => navigateToMessages(chat.id, getUsernames(chat))}
+                  />
                 )
             )}
         </ul>
