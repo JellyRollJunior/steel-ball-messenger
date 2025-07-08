@@ -100,6 +100,7 @@ const Chats = ({ userId, username }) => {
               if (chat.latestMessage) {
                 return (
                   <ChatItem
+                    key={chat.id}
                     usernames={getUsernames(chat)}
                     latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
                     onClick={() => navigateToMessages(chat.id, getUsernames(chat))}
@@ -115,6 +116,7 @@ const Chats = ({ userId, username }) => {
               (chat) =>
                 nullChats.includes(chat.id) && (
                   <ChatItem
+                    key={chat.id}
                     usernames={getUsernames(chat)}
                     latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
                     onClick={() => navigateToMessages(chat.id, getUsernames(chat))}

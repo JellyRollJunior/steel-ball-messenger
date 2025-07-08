@@ -55,6 +55,7 @@
         -   animations
     -   set errors in notifications!
     -   success notifications!
+    -   move page content context functions to provider
 
 ### TODO LATER
 
