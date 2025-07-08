@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { PageContentContext } from '../providers/MainContentContext/PageContentContext.jsx';
+import { PageContentContext } from '../providers/PageContentContext/PageContentContext.jsx';
 
 const usePageContentContext = () => {
     const context = useContext(PageContentContext);

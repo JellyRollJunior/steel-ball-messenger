@@ -45,13 +45,21 @@
 
 ## TODOS - frontend
 
+-   notifications
+    -   Create notification context
+        -   just log notifications to console for now
+    -   Display notifications
+        -   absolute positions flex wrapper
+        -   success: display for a couple seconds then disappear
+        -   fail: display with x button to delete it
+        -   animations
+    -   set errors in notifications!
+    -   success notifications!
 
 ### TODO LATER
 
+-   view other profiles
 -   desktop view
--   notifications context
-    -   set errors in notifications!
-    -   success notifications!
 -   slide animations for page change?
 -   socket
 
