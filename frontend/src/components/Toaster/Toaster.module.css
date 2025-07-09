@@ -19,6 +19,7 @@
   text-align: left;
   animation: fade-in-fade-out 2s ease-out;
   opacity: 0;
+  text-wrap: nowrap;
 }
 
 .toast {

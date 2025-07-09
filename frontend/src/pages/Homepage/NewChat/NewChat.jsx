@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
-import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
+import { PageContentContext } from '../../../providers/PageContentContext/PageContentContext.jsx';
 import { pages } from '../pages.js';
 import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
@@ -17,7 +17,7 @@ const NewChat = () => {
   const navigate = useNavigate();
   const { users, isLoading, error } = useUsers();
   const { createToast } = useContext(ToastContext);
-  const { setPageContent } = usePageContentContext();
+  const { setPageContent } = useContext(PageContentContext);
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
   const [filteredUsers, setFilteredUsers] = useState([]);

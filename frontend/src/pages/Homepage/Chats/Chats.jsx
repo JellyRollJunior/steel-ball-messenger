@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { useChats } from '../../../hooks/useChats.js';
 import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
-import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
+import { PageContentContext } from '../../../providers/PageContentContext/PageContentContext.jsx';
 import { pages } from '../pages.js';
 import { Messages } from '../Messages/Messages.jsx';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
@@ -15,7 +15,7 @@ import steelBallRun from '../../../assets/images/SBR.png';
 const Chats = ({ userId, username }) => {
   const { chats, isLoading, error, refetch } = useChats();
   const { createToast } = useContext(ToastContext);
-  const { setPageContent } = usePageContentContext();
+  const { setPageContent } = useContext(PageContentContext);
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
   const [search, setSearch] = useState('');

@@ -14,8 +14,8 @@ import leftArrow from '../../../assets/icons/left-arrow.svg';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const navigate = useNavigate();
-  const { messages, error, refetch: refetchMessages } = useMessages(chatId);
   const { createToast } = useContext(ToastContext);
+  const { messages, error, refetch: refetchMessages } = useMessages(chatId);
   const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);

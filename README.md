@@ -46,8 +46,6 @@
 ## TODOS - frontend
 
 -   notifications
-    -   move page content context functions to provider
-    -   make text not wrap
     -   remove error from full page form
 
 ### TODO LATER
@@ -58,6 +56,8 @@
 -   socket
 -   chats
     -   no chats text
+
 -   bug: profile -> bio + username overflow
+-   bug: login button should be disabled when logging in (also signup)
 
 -   extra: allow selecting multiple users (group chats)

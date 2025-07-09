@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContext } from '../../providers/ToastContext/ToastContext.jsx';
 import { useCurrent } from '../../hooks/useCurrent.js';
-import { usePageContentContext } from '../../hooks/usePageContentContext.js';
+import { PageContentContext } from '../../providers/PageContentContext/PageContentContext.jsx';
 import { pages } from './pages.js';
 import { IconButton } from '../../components/IconButton/IconButton.jsx';
 import { Chats } from './Chats/Chats.jsx';
@@ -15,7 +15,8 @@ import gyro from '../../assets/backgroundImages/gyro-headshot.png';
 const Homepage = () => {
   const { user, error, refetch } = useCurrent();
   const { createToast } = useContext(ToastContext);
-  const { pageContent, setPageContent } = usePageContentContext();
+  const { pageContent, setPageContent } = useContext(PageContentContext);
+
   // redirect to login if no token
   const navigate = useNavigate();
   if (!localStorage.getItem('token')) navigate('/login');
