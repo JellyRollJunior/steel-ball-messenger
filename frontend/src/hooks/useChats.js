@@ -27,8 +27,7 @@ const useChats = () => {
             setError(null);
         } catch (error) {
             handleTokenError(error, navigate);
-            // create error notification later
-            setError('Error!');
+            setError(error.message ? error.message : error.name);
         } finally {
             setIsLoading(false);
         }

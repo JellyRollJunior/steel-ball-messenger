@@ -28,8 +28,7 @@ const useProfiles = (userId) => {
                 setError(null);
             } catch (error) {
                 handleTokenError(error, navigate);
-                // todo: throw notification if error
-                setError('Error!');
+                setError(error.message ? error.message : error.name);
             } finally {
                 setIsLoading(false);
             }

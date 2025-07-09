@@ -32,7 +32,7 @@ const ToastContextProvider = ({ children }) => {
 
   return (
     <ToastContext.Provider
-      value={{ toasts, createToast, deleteToast }}
+      value={{ toasts, createToast }}
     >
       {children}
     </ToastContext.Provider>

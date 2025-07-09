@@ -10,32 +10,34 @@ const useCurrent = () => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
 
-    const fetchCurrent = useCallback(async (signal) => {
-        setIsLoading(true);
-        const token = localStorage.getItem('token');
-        try {
-            const data = await makeRequest(getUrl('/current'), {
-                mode: 'cors',
-                method: 'GET',
-                headers: {
-                    Authorization: `bearer ${token}`,
-                },
-                signal,
-            });
-            setUser({
-                id: data.id,
-                username: data.username,
-                bio: data.bio,
-            });
-            setError(null);
-        } catch (error) {
-            handleTokenError(error, navigate)
-            // todo: throw notification if error
-            setError('Error!');
-        } finally {
-            setIsLoading(false);
-        }
-    }, [navigate]);
+    const fetchCurrent = useCallback(
+        async (signal) => {
+            setIsLoading(true);
+            const token = localStorage.getItem('token');
+            try {
+                const data = await makeRequest(getUrl('/current'), {
+                    mode: 'cors',
+                    method: 'GET',
+                    headers: {
+                        Authorization: `bearer ${token}`,
+                    },
+                    signal,
+                });
+                setUser({
+                    id: data.id,
+                    username: data.username,
+                    bio: data.bio,
+                });
+                setError(null);
+            } catch (error) {
+                handleTokenError(error, navigate);
+                setError(error.message ? error.message : error.name);
+            } finally {
+                setIsLoading(false);
+            }
+        },
+        [navigate]
+    );
 
     useEffect(() => {
         const abortController = new AbortController();
