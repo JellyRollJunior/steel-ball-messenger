@@ -46,9 +46,9 @@
 ## TODOS - frontend
 
 -   notifications
-    -   Create notification context
-        -   just log notifications to console for now
     -   Display notifications
+        -   root relative
+            -   toaster in app.jsx
         -   absolute positions flex wrapper
         -   success: display for a couple seconds then disappear
         -   fail: display with x button to delete it

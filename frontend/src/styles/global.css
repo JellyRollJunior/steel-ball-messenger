@@ -4,6 +4,8 @@
   --purple: #8f5bdd;
   --mountain-dew: #ffff9c;
   --green: #5bbd1e;
+  
+  position: relative;
 }
 
 ul {
