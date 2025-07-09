@@ -5,6 +5,7 @@
 
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 6px;
   width: fit-content;
 }
@@ -12,15 +13,28 @@
 .toastBase {
   position: relative;
   left: -50%;
+  width: fit-content;
   padding: 2px 24px;
   border-radius: 10px;
+  text-align: left;
 }
 
 .toast {
-  composes: card from '../../styles/shared.module.css';
   composes: toastBase;
+  --r: 103;
+  --g: 193;
+  --b: 34;
 
-  outline: 1px solid rgb(155, 155, 155);
+  border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
+  background-image: linear-gradient(
+    45deg,
+    rgba(var(--r), var(--g), var(--b), 0.6),
+    rgba(var(--r), var(--g), var(--b), 0.7),
+    rgba(var(--r), var(--g), var(--b), 0.85),
+    rgba(var(--r), var(--g), var(--b), 0.85),
+    rgba(var(--r), var(--g), var(--b), 0.7),
+    rgba(var(--r), var(--g), var(--b), 0.6)
+  );
   opacity: 0;
   animation: fade-in-fade-out 2s ease-out;
 }
@@ -34,12 +48,12 @@
   border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
   background-image: linear-gradient(
     45deg,
-    rgba(var(--r), var(--g), var(--b), 0.55),
-    rgba(var(--r), var(--g), var(--b), 0.65),
+    rgba(var(--r), var(--g), var(--b), 0.6),
+    rgba(var(--r), var(--g), var(--b), 0.8),
     rgba(var(--r), var(--g), var(--b), 0.85),
     rgba(var(--r), var(--g), var(--b), 0.85),
-    rgba(var(--r), var(--g), var(--b), 0.65),
-    rgba(var(--r), var(--g), var(--b), 0.55)
+    rgba(var(--r), var(--g), var(--b), 0.8),
+    rgba(var(--r), var(--g), var(--b), 0.6)
   );
   animation: fade-in 0.25s ease-out;
 }
