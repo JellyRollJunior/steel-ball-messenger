@@ -1,5 +1,12 @@
 .toaster {
   position: absolute;
-  top: 54px;
+  top: 24px;
   left: 50%;
+  
+  width: fit-content;
+}
+
+.toasts {
+  position: relative;
+  left: -50%;
 }

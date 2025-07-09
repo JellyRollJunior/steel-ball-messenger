@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ToastContext } from './ToastContext.jsx';
 
 const ToastContextProvider = ({ children }) => {
   const [toasts, setToasts] = useState([]);
+
+  useEffect(() => {
+    createToast('hello')
+    createErrorToast('error hello')
+  }, [])
 
   const addToastToList = (content, isError) => {
     const id = crypto.randomUUID();
