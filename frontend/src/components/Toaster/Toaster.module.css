@@ -1,6 +1,6 @@
 .toaster {
   position: absolute;
-  top: 24px;
+  top: 8px;
   left: 50%;
 
   display: flex;
@@ -17,6 +17,8 @@
   padding: 2px 24px;
   border-radius: 10px;
   text-align: left;
+  animation: fade-in-fade-out 2s ease-out;
+  opacity: 0;
 }
 
 .toast {
@@ -35,8 +37,6 @@
     rgba(var(--r), var(--g), var(--b), 0.7),
     rgba(var(--r), var(--g), var(--b), 0.6)
   );
-  opacity: 0;
-  animation: fade-in-fade-out 2s ease-out;
 }
 
 .errorToast {
@@ -55,7 +55,6 @@
     rgba(var(--r), var(--g), var(--b), 0.8),
     rgba(var(--r), var(--g), var(--b), 0.6)
   );
-  animation: fade-in 0.25s ease-out;
 }
 
 @keyframes fade-in-fade-out {
@@ -70,14 +69,5 @@
   }
   to {
     opacity: 0;
-  }
-}
-
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 100;
   }
 }

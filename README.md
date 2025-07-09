@@ -47,8 +47,6 @@
 
 -   notifications
     -   Display notifications
-        -   fail: display with x button to delete it
-        -   animations
         -   styling
     -   set errors in notifications!
     -   success notifications!
@@ -60,7 +58,8 @@
 -   desktop view
 -   slide animations for page change?
 -   socket
-
+-   chats
+    -   no chats text
 -   bug: profile -> bio + username overflow
 
 -   extra: allow selecting multiple users (group chats)

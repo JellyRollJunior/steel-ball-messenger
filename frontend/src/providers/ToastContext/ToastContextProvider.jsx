@@ -18,16 +18,12 @@ const ToastContextProvider = ({ children }) => {
     return id;
   };
 
-  const createToast = async (content) => {
-    const id = addToastToList(content, false);
+  const createToast = async (content, isError = false) => {
+    const id = addToastToList(content, isError);
 
     // persist for 2s
     await new Promise((resolve) => setTimeout(resolve, 2000));
     deleteToast(id);
-  };
-
-  const createErrorToast = async (content) => {
-    addToastToList(content, true);
   };
 
   const deleteToast = (id) => {
@@ -36,7 +32,7 @@ const ToastContextProvider = ({ children }) => {
 
   return (
     <ToastContext.Provider
-      value={{ toasts, createToast, createErrorToast, deleteToast }}
+      value={{ toasts, createToast, deleteToast }}
     >
       {children}
     </ToastContext.Provider>
