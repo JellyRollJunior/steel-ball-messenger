@@ -1,15 +1,16 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
 import { Link, useNavigate } from 'react-router';
 import shared from '../../styles/shared.module.css';
+import { ToastContext } from '../../providers/ToastContext/ToastContext.jsx';
 
 const Login = () => {
   const navigate = useNavigate();
+  const { createToast } = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const submitLogin = async (event) => {
@@ -37,13 +38,13 @@ const Login = () => {
     } catch {
       setTimeout(() => {
         setIsLoading(false);
-        setError('Unable to authenticate user.');
+        createToast('Unable to authenticate user');
       }, 2000);
     }
   };
 
   return (
-    <FullPageForm onSubmit={submitLogin} error={error} isLoading={isLoading}>
+    <FullPageForm onSubmit={submitLogin} isLoading={isLoading}>
       <label htmlFor="username">Username</label>
       <input
         type="text"

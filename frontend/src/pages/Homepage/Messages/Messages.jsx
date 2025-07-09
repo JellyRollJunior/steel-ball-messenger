@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { format } from 'date-fns';
 import { useMessages } from '../../../hooks/useMessages.js';
+import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
 import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
@@ -12,17 +13,24 @@ import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
-  const { messages, refetch: refetchMessages } = useMessages(chatId);
+  const navigate = useNavigate();
+  const { messages, error, refetch: refetchMessages } = useMessages(chatId);
+  const { createToast } = useContext(ToastContext);
   const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
-  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (error) {
+      createToast('Unable to fetch messages', true);
+    }
+  }, [error, createToast]);
 
   const sendMessage = async (event) => {
     event.preventDefault();
     if (message.trim() == '') return;
     try {
-      setIsDisabled(true)
+      setIsDisabled(true);
       const token = localStorage.getItem('token');
       await makeRequest(getUrl(`/chats/${chatId}/messages`), {
         mode: 'cors',
@@ -39,8 +47,9 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
       setMessage('');
     } catch (error) {
       handleTokenError(error, navigate);
+      createToast('Unable to send message', true);
     } finally {
-      setIsDisabled(false)
+      setIsDisabled(false);
     }
   };
 
@@ -86,9 +95,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           ))}
         {reversedMessages && reversedMessages.length == 0 && (
           <li className={styles.messageWrapper}>
-            <div className={styles.date}>
-              Start the conversation!
-            </div>
+            <div className={styles.date}>Start the conversation!</div>
           </li>
         )}
       </ul>

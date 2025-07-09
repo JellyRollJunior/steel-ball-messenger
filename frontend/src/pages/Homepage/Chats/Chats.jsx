@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useChats } from '../../../hooks/useChats.js';
+import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
 import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
 import { pages } from '../pages.js';
 import { Messages } from '../Messages/Messages.jsx';
@@ -12,7 +13,8 @@ import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
 
 const Chats = ({ userId, username }) => {
-  const { chats, isLoading, refetch } = useChats();
+  const { chats, isLoading, error, refetch } = useChats();
+  const { createToast } = useContext(ToastContext);
   const { setPageContent } = usePageContentContext();
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
@@ -39,7 +41,11 @@ const Chats = ({ userId, username }) => {
         )
       );
     }
-  }, [search, setFilteredChats, chats, userId]);
+
+    if (error) {
+      createToast('Unable to retrieve chats', true);
+    }
+  }, [userId, chats, search, setFilteredChats, error, createToast]);
 
   const returnToChats = () => {
     setChatId(null);
@@ -102,8 +108,12 @@ const Chats = ({ userId, username }) => {
                   <ChatItem
                     key={chat.id}
                     usernames={getUsernames(chat)}
-                    latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
-                    onClick={() => navigateToMessages(chat.id, getUsernames(chat))}
+                    latestMessage={
+                      chat.latestMessage ? chat.latestMessage.content : null
+                    }
+                    onClick={() =>
+                      navigateToMessages(chat.id, getUsernames(chat))
+                    }
                   />
                 );
               } else {
@@ -118,8 +128,12 @@ const Chats = ({ userId, username }) => {
                   <ChatItem
                     key={chat.id}
                     usernames={getUsernames(chat)}
-                    latestMessage={chat.latestMessage ? chat.latestMessage.content : null}
-                    onClick={() => navigateToMessages(chat.id, getUsernames(chat))}
+                    latestMessage={
+                      chat.latestMessage ? chat.latestMessage.content : null
+                    }
+                    onClick={() =>
+                      navigateToMessages(chat.id, getUsernames(chat))
+                    }
                   />
                 )
             )}

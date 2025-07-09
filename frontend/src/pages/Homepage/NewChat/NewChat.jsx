@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
 import { usePageContentContext } from '../../../hooks/usePageContentContext.js';
 import { pages } from '../pages.js';
 import { useUsers } from '../../../hooks/useUsers.js';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { LoadingElement } from '../../../components/LoadingElement/LoadingElement.jsx';
 import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './NewChat.module.css';
@@ -11,7 +14,9 @@ import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
 
 const NewChat = () => {
-  const { users, isLoading } = useUsers();
+  const navigate = useNavigate();
+  const { users, isLoading, error } = useUsers();
+  const { createToast } = useContext(ToastContext);
   const { setPageContent } = usePageContentContext();
   const [selectedUser, setSelectedUser] = useState(null);
   const [isDisabled, setIsDisabled] = useState(false);
@@ -24,7 +29,11 @@ const NewChat = () => {
     if (search && search.trim() != '' && Array.isArray(users)) {
       setFilteredUsers(users.filter((user) => user.username.includes(search)));
     }
-  }, [users, search, setFilteredUsers]);
+
+    if (error) {
+      createToast('Unable to fetch users', true);
+    }
+  }, [users, search, setFilteredUsers, error, createToast]);
 
   const createChat = async () => {
     if (!selectedUser) return;
@@ -44,9 +53,10 @@ const NewChat = () => {
       });
       // redirect to chats page
       setPageContent(pages.CHATS);
+      createToast('Chat created successfully!');
     } catch (error) {
-      console.log(error);
-      // error notification
+      handleTokenError(error, navigate);
+      createToast('Unable to create chat', true);
     } finally {
       setIsDisabled(false);
     }

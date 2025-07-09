@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
+import { ToastContext } from '../../providers/ToastContext/ToastContext.jsx';
 import { makeRequest } from '../../utils/requests.js';
 import { getUrl } from '../../utils/serverUrl.js';
 import { FullPageForm } from '../../components/FullPageForm/FullPageForm.jsx';
@@ -8,17 +9,17 @@ import diego from '../../assets/backgroundImages/diego-world.png';
 
 const Signup = () => {
   const navigate = useNavigate();
+  const { createToast } = useContext(ToastContext);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const submitSignup = async (event) => {
     event.preventDefault();
     setIsLoading(true);
     if (password != passwordConfirm) {
-      setError('Passwords do not match.');
+      createToast('Passwords do not match.');
       return;
     }
     try {
@@ -41,16 +42,18 @@ const Signup = () => {
       setTimeout(() => {
         setIsLoading(false);
         if (error.validationErrors) {
-          setError(error.validationErrors);
+          error.validationErrors.forEach((error) => {
+            createToast(error.msg, true);
+          })
         } else {
-          setError(error.message);
+          createToast(error.message, true)
         }
       }, 2000);
     }
   };
 
   return (
-    <FullPageForm onSubmit={submitSignup} isLoading={isLoading} error={error} backgroundImage={diego}>
+    <FullPageForm onSubmit={submitSignup} isLoading={isLoading} backgroundImage={diego}>
       <label htmlFor="username">Username</label>
       <input
         type="text"

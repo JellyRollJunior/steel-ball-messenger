@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import { handleTokenError } from '../../../utils/handleTokenError.js';
+import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
+import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
 import { makeRequest } from '../../../utils/requests.js';
 import { getUrl } from '../../../utils/serverUrl.js';
+import { handleTokenError } from '../../../utils/handleTokenError.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import { logout } from '../../../utils/logout.js';
 import styles from './Profile.module.css';
@@ -15,10 +16,11 @@ const Profile = ({
   bio = 'oops no bio!',
   refetchUser,
 }) => {
+  const navigate = useNavigate();
+  const { createToast } = useContext(ToastContext);
   const [isEditing, setIsEditing] = useState(false);
   const [bioEdit, setBioEdit] = useState(bio);
   const [isDisabled, setIsDisabled] = useState(false);
-  const navigate = useNavigate();
 
   const editBio = async (event) => {
     event.preventDefault();
@@ -39,6 +41,7 @@ const Profile = ({
       refetchUser();
     } catch (error) {
       handleTokenError(error, navigate);
+      createToast('Unable to edit bio', true);
     } finally {
       setIsDisabled(false);
     }
@@ -109,7 +112,7 @@ const Profile = ({
               label="Logout"
               size={52}
               alt="Logout button"
-              style={{fontWeight: 'bold'}}
+              style={{ fontWeight: 'bold' }}
             />
           </div>
         </div>

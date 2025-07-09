@@ -46,11 +46,9 @@
 ## TODOS - frontend
 
 -   notifications
-    -   Display notifications
-        -   styling
-    -   set errors in notifications!
-    -   success notifications!
     -   move page content context functions to provider
+    -   make text not wrap
+    -   remove error from full page form
 
 ### TODO LATER
 
