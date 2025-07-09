@@ -47,12 +47,9 @@
 
 -   notifications
     -   Display notifications
-        -   root relative
-            -   toaster in app.jsx
-        -   absolute positions flex wrapper
-        -   success: display for a couple seconds then disappear
         -   fail: display with x button to delete it
         -   animations
+        -   styling
     -   set errors in notifications!
     -   success notifications!
     -   move page content context functions to provider

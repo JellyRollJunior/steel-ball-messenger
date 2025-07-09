@@ -2,11 +2,68 @@
   position: absolute;
   top: 24px;
   left: 50%;
-  
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
   width: fit-content;
 }
 
-.toasts {
+.toastBase {
   position: relative;
   left: -50%;
+  padding: 2px 24px;
+  border-radius: 10px;
+}
+
+.toast {
+  composes: card from '../../styles/shared.module.css';
+  composes: toastBase;
+
+  outline: 1px solid rgb(155, 155, 155);
+  opacity: 0;
+  animation: fade-in-fade-out 2s ease-out;
+}
+
+.errorToast {
+  composes: toastBase;
+  --r: 255;
+  --g: 148;
+  --b: 148;
+
+  border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
+  background-image: linear-gradient(
+    45deg,
+    rgba(var(--r), var(--g), var(--b), 0.55),
+    rgba(var(--r), var(--g), var(--b), 0.65),
+    rgba(var(--r), var(--g), var(--b), 0.85),
+    rgba(var(--r), var(--g), var(--b), 0.85),
+    rgba(var(--r), var(--g), var(--b), 0.65),
+    rgba(var(--r), var(--g), var(--b), 0.55)
+  );
+  animation: fade-in 0.25s ease-out;
+}
+
+@keyframes fade-in-fade-out {
+  from {
+    opacity: 0;
+  }
+  15% {
+    opacity: 100;
+  }
+  85% {
+    opacity: 100;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100;
+  }
 }
