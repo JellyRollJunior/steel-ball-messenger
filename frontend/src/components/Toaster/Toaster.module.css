@@ -24,9 +24,9 @@
 
 .toast {
   composes: toastBase;
-  --r: 103;
-  --g: 193;
-  --b: 34;
+  --r: 91;
+  --g: 189;
+  --b: 30;
 
   border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
   background-image: linear-gradient(
@@ -43,8 +43,8 @@
 .errorToast {
   composes: toastBase;
   --r: 255;
-  --g: 148;
-  --b: 148;
+  --g: 132;
+  --b: 173;
 
   border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
   background-image: linear-gradient(

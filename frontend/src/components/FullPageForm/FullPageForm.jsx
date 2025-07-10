@@ -5,18 +5,11 @@ import gyroHeadshot from '../../assets/backgroundImages/gyro-headshot.png';
 
 const FullPageForm = ({
   onSubmit,
-  error,
   isLoading = false,
   backgroundImage = gyroHeadshot,
   children,
 }) => {
   const backgroundImageStyling = { backgroundImage: `url(${backgroundImage})` };
-
-  // format errors
-  let errorArray = error;
-  if (!Array.isArray(error)) {
-    errorArray = [{ msg: error }];
-  }
 
   return (
     <div className={`${styles.pageLayout} ${shared.background}`} style={backgroundImageStyling}>
@@ -32,12 +25,6 @@ const FullPageForm = ({
           <span>Steel Ball Messenger</span>
         </h1>
         <form onSubmit={onSubmit} className={styles.form}>
-          {errorArray &&
-            errorArray.map((errorObject) => (
-              <p key={errorObject.msg} className={styles.error}>
-                {errorObject.msg}
-              </p>
-            ))}
           {children}
         </form>
       </main>

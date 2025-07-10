@@ -45,9 +45,6 @@
 
 ## TODOS - frontend
 
--   notifications
-    -   remove error from full page form
-
 ### TODO LATER
 
 -   view other profiles
