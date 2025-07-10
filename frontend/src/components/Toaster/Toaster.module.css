@@ -8,6 +8,7 @@
   align-items: center;
   gap: 6px;
   width: fit-content;
+  z-index: 999;
 }
 
 .toastBase {
@@ -15,11 +16,10 @@
   left: -50%;
   width: fit-content;
   padding: 2px 24px;
-  border-radius: 10px;
   text-align: left;
-  animation: fade-in-fade-out 2s ease-out;
-  opacity: 0;
   text-wrap: nowrap;
+  border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
+  border-radius: 10px;
 }
 
 .toast {
@@ -28,7 +28,6 @@
   --g: 189;
   --b: 30;
 
-  border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
   background-image: linear-gradient(
     45deg,
     rgba(var(--r), var(--g), var(--b), 0.6),
@@ -46,7 +45,6 @@
   --g: 132;
   --b: 173;
 
-  border: 2px solid rgba(var(--r), var(--g), var(--b), 0.75);
   background-image: linear-gradient(
     45deg,
     rgba(var(--r), var(--g), var(--b), 0.6),
@@ -56,19 +54,4 @@
     rgba(var(--r), var(--g), var(--b), 0.8),
     rgba(var(--r), var(--g), var(--b), 0.6)
   );
-}
-
-@keyframes fade-in-fade-out {
-  from {
-    opacity: 0;
-  }
-  15% {
-    opacity: 100;
-  }
-  85% {
-    opacity: 100;
-  }
-  to {
-    opacity: 0;
-  }
 }

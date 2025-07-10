@@ -45,10 +45,6 @@
 
 ## TODOS - frontend
 
--   motion
-    -   notification animations
-    -   loading spinner animation motion
-
 ### TODO LATER
 
 -   view other profiles
