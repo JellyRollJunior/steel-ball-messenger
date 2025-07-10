@@ -12,6 +12,7 @@ import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
+import d4c from '../../../assets/images/D4C.png';
 
 const NewChat = () => {
   const navigate = useNavigate();
@@ -24,7 +25,7 @@ const NewChat = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    setFilteredUsers(users);
+    setFilteredUsers([]);
 
     if (search && search.trim() != '' && Array.isArray(users)) {
       setFilteredUsers(users.filter((user) => user.username.includes(search)));
@@ -93,6 +94,16 @@ const NewChat = () => {
               </label>
             </li>
           ))}
+        {filteredUsers && filteredUsers.length == 0 && (
+          <li className={shared.loadingContainer}>
+            <img
+              src={d4c}
+              alt="Dirty Deeds Done Dirty Cheap"
+              style={{ width: 160 }}
+            />
+            <h3>No Users Available</h3>
+          </li>
+        )}
       </ul>
       <TextInput
         value={search}

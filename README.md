@@ -51,8 +51,6 @@
 -   desktop view
 -   slide animations for page change?
 -   socket
--   chats
-    -   no chats text
 
 -   bug: profile -> bio + username overflow
 -   bug: login button should be disabled when logging in (also signup)

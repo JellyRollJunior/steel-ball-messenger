@@ -137,6 +137,16 @@ const Chats = ({ userId, username }) => {
                   />
                 )
             )}
+          {filteredChats && filteredChats.length == 0 && (
+            <li className={shared.loadingContainer}>
+              <img
+                src={steelBallRun}
+                alt="Cowboy riding a horse icon"
+                style={{ width: 64 }}
+              />
+              <h3>No Chats Available</h3>
+            </li>
+          )}
         </ul>
         <TextInput
           value={search}
