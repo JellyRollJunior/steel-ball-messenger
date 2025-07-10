@@ -10,6 +10,8 @@ import styles from './Profile.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
 import horseshoe from '../../../assets/images/horseshoe.png';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'motion/react';
 
 const Profile = ({
   username = 'Username',
@@ -48,7 +50,17 @@ const Profile = ({
   };
 
   return (
-    <section className={styles.pageLayout}>
+    <motion.section
+      className={styles.pageLayout}
+      initial={{ x: '100%' }}
+      animate={{ x: 0 }}
+      transition={{
+        type: 'spring',
+        visualDuration: 0.2,
+        bounce: 0.3,
+      }}
+      layout
+    >
       <div className={styles.widget}>
         <h2 className={styles.title}>Username</h2>
         <h1 className={styles.username}>{username}</h1>
@@ -125,7 +137,7 @@ const Profile = ({
           />
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

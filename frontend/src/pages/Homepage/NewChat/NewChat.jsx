@@ -13,6 +13,8 @@ import styles from './NewChat.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBall from '../../../assets/images/steel-ball.png';
 import d4c from '../../../assets/images/D4C.png';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'motion/react';
 
 const NewChat = () => {
   const navigate = useNavigate();
@@ -25,7 +27,7 @@ const NewChat = () => {
   const [search, setSearch] = useState('');
 
   useEffect(() => {
-    setFilteredUsers([]);
+    setFilteredUsers(users);
 
     if (search && search.trim() != '' && Array.isArray(users)) {
       setFilteredUsers(users.filter((user) => user.username.includes(search)));
@@ -64,7 +66,17 @@ const NewChat = () => {
   };
 
   return (
-    <section className={shared.headerContentInputLayout}>
+    <motion.section
+      className={shared.headerContentInputLayout}
+      initial={{ y: '-100%' }}
+      animate={{ y: 0 }}
+      transition={{
+        type: 'spring',
+        visualDuration: 0.2,
+        bounce: 0.2,
+      }}
+      layout
+    >
       <header className={shared.header}>
         <h1 className={shared.title}>Users</h1>
       </header>
@@ -112,7 +124,7 @@ const NewChat = () => {
         isDisabled={isDisabled}
         onClick={createChat}
       />
-    </section>
+    </motion.section>
   );
 };
 

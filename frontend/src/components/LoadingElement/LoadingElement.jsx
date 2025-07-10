@@ -7,7 +7,7 @@ const LoadingElement = ({ isVisible = false, isAnimating = false, style }) => {
   return (
     <img
       style={style}
-      className={isAnimating && styles.animate}
+      className={isAnimating ? styles.animate : null}
       src={steelBall}
       alt="Gyro's green steel ball rotating (loading animation)"
     />

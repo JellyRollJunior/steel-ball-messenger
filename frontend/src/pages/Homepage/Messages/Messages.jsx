@@ -11,6 +11,8 @@ import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'motion/react';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const navigate = useNavigate();
@@ -60,7 +62,17 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   }, [messages]);
 
   return (
-    <section className={shared.headerContentInputLayout}>
+    <motion.section
+      className={shared.headerContentInputLayout}
+      initial={{ x: '100%' }}
+      animate={{ x: 0 }}
+      transition={{
+        type: 'spring',
+        visualDuration: 0.2,
+        bounce: 0.3,
+      }}
+      layout
+    >
       <header className={styles.header}>
         <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
@@ -108,7 +120,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
           isDisabled={isDisabled}
         />
       </form>
-    </section>
+    </motion.section>
   );
 };
 

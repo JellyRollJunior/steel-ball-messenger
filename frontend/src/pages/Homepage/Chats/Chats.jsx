@@ -11,6 +11,8 @@ import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './Chats.module.css';
 import shared from '../../../styles/shared.module.css';
 import steelBallRun from '../../../assets/images/SBR.png';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'motion/react';
 
 const Chats = ({ userId, username }) => {
   const { chats, isLoading, error, refetch } = useChats();
@@ -80,7 +82,17 @@ const Chats = ({ userId, username }) => {
   const nullChats = [];
   if (!chatId) {
     return (
-      <section className={shared.headerContentInputLayout}>
+      <motion.section
+        className={shared.headerContentInputLayout}
+        initial={{ x: '-100%' }}
+        animate={{ x: 0 }}
+        transition={{
+          type: 'spring',
+          visualDuration: 0.2,
+          bounce: 0.3,
+        }}
+        layout
+      >
         <header className={styles.header}>
           <h1 className={shared.title}>{username ? username : 'Username'}</h1>
           <IconButton
@@ -153,7 +165,7 @@ const Chats = ({ userId, username }) => {
           setValue={setSearch}
           placeholder="Search Chats"
         />
-      </section>
+      </motion.section>
     );
   }
 };

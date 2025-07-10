@@ -45,11 +45,16 @@
 
 ## TODOS - frontend
 
+-   motion
+    -   layout animations
+    -   button click animations
+    -   notification animations
+    -   user items / chat items grow on hover
+
 ### TODO LATER
 
 -   view other profiles
 -   desktop view
--   slide animations for page change?
 -   socket
 
 -   bug: profile -> bio + username overflow
