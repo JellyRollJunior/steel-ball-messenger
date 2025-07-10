@@ -93,7 +93,12 @@ const NewChat = () => {
         )}
         {filteredUsers &&
           filteredUsers.map((user) => (
-            <li key={user.id} className={styles.userItemWrapper}>
+            <motion.li
+              key={user.id}
+              className={styles.userItemWrapper}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <label className={styles.userItem} htmlFor={user.id}>
                 <img src={steelBall} alt="" className={styles.profilePicture} />
                 <h3 className={styles.username}>{user.username}</h3>
@@ -104,7 +109,7 @@ const NewChat = () => {
                   onClick={() => setSelectedUser(user.id)}
                 />
               </label>
-            </li>
+            </motion.li>
           ))}
         {filteredUsers && filteredUsers.length == 0 && (
           <li className={shared.loadingContainer}>

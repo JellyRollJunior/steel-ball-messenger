@@ -46,10 +46,8 @@
 ## TODOS - frontend
 
 -   motion
-    -   layout animations
-    -   button click animations
     -   notification animations
-    -   user items / chat items grow on hover
+    -   loading spinner animation motion
 
 ### TODO LATER
 

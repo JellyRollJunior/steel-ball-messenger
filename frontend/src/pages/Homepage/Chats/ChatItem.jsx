@@ -1,9 +1,15 @@
 import steelBall from '../../../assets/images/steel-ball.png';
 import styles from './ChatItem.module.css';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'motion/react';
 
 const ChatItem = ({ usernames, latestMessage, onClick }) => {
   return (
-    <li className={styles.chatItemWrapper}>
+    <motion.li
+      className={styles.chatItemWrapper}
+      whileHover={{ scale: 1.1 }}
+      whileTap={{ scale: 0.95 }}
+    >
       <button className={styles.chatItem} onClick={onClick}>
         <img
           src={steelBall}
@@ -15,7 +21,7 @@ const ChatItem = ({ usernames, latestMessage, onClick }) => {
           {latestMessage ? latestMessage : 'Send a message'}
         </p>
       </button>
-    </li>
+    </motion.li>
   );
 };
 
