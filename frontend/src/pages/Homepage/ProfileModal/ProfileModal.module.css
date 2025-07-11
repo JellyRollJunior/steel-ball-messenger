@@ -1,0 +1,13 @@
+.layout {
+  display: grid;
+  grid-template-rows: 2fr 3fr 2fr;
+  height: 100%;
+  gap: 12px;
+}
+
+.bioContent {
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+  overflow-wrap: break-word;
+}
