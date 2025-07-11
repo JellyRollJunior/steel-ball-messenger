@@ -14,7 +14,7 @@ import leftArrow from '../../../assets/icons/left-arrow.svg';
 import tusk from '../../../assets/images/tusk.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { ProfileModal } from '../ProfileModal/ProfileModal.jsx';
+import { ChatterProfile } from '../ChatterProfile/ChatterProfile.jsx';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const navigate = useNavigate();
@@ -64,8 +64,12 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
     }
   }, [messages]);
 
+  const returnToMessages = () => {
+    setShowProfile(false);
+  }
+
   if (showProfile) {
-    return <ProfileModal userId={userId} />;
+    return <ChatterProfile userId={userId} back={returnToMessages} />;
   }
 
   return (

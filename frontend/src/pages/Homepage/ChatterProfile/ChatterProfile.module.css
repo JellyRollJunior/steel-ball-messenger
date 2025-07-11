@@ -5,6 +5,15 @@
   gap: 12px;
 }
 
+.header {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  
+  width: 100%;
+  gap: 6px;
+}
+
 .bioContent {
   height: 100%;
   width: 100%;
