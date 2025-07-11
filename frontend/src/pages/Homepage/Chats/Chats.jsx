@@ -20,6 +20,7 @@ const Chats = ({ userId, username }) => {
   const { setPageContent } = useContext(PageContentContext);
   const [chatId, setChatId] = useState(null);
   const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
+  const [chatPartnerId, setChatPartnerId] = useState(null);
   const [search, setSearch] = useState('');
   const [filteredChats, setFilteredChats] = useState([]);
 
@@ -49,16 +50,6 @@ const Chats = ({ userId, username }) => {
     }
   }, [userId, chats, search, setFilteredChats, error, createToast]);
 
-  const returnToChats = () => {
-    setChatId(null);
-    refetch();
-  };
-
-  const navigateToMessages = (id, chatName) => {
-    setChatId(id);
-    setChatPartnerUsernames(chatName);
-  };
-
   const getUsernames = (chat) => {
     return chat.users.length > 1
       ? chat.users
@@ -68,12 +59,32 @@ const Chats = ({ userId, username }) => {
       : chat.users[0].username;
   };
 
+  const getChatPartnerId = (chat) => {
+    for (let i = 0; i < chat.users.length; i++) {
+      if (chat.users[i].id != userId) {
+        return chat.users[i].id;
+      }
+    }
+  };
+
+  const returnToChats = () => {
+    setChatId(null);
+    refetch();
+  };
+
+  const navigateToMessages = (id, chatName, chatPartnerId) => {
+    setChatId(id);
+    setChatPartnerUsernames(chatName);
+    setChatPartnerId(chatPartnerId);
+  };
+
   if (chatId) {
     return (
       <Messages
         userId={userId}
         chatId={chatId}
         chatPartnerUsernames={chatPartnerUsernames}
+        chatPartnerId={chatPartnerId}
         returnToChats={returnToChats}
       />
     );
@@ -124,7 +135,11 @@ const Chats = ({ userId, username }) => {
                       chat.latestMessage ? chat.latestMessage.content : null
                     }
                     onClick={() =>
-                      navigateToMessages(chat.id, getUsernames(chat))
+                      navigateToMessages(
+                        chat.id,
+                        getUsernames(chat),
+                        getChatPartnerId(chat)
+                      )
                     }
                   />
                 );

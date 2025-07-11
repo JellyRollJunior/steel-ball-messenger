@@ -16,7 +16,13 @@ import tusk from '../../../assets/images/tusk.png';
 import { motion } from 'motion/react';
 import { ChatterProfile } from '../ChatterProfile/ChatterProfile.jsx';
 
-const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
+const Messages = ({
+  userId,
+  chatPartnerUsernames,
+  chatPartnerId,
+  chatId,
+  returnToChats,
+}) => {
   const navigate = useNavigate();
   const { createToast } = useContext(ToastContext);
   const { messages, error, refetch: refetchMessages } = useMessages(chatId);
@@ -66,10 +72,10 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
 
   const returnToMessages = () => {
     setShowProfile(false);
-  }
+  };
 
   if (showProfile) {
-    return <ChatterProfile userId={userId} back={returnToMessages} />;
+    return <ChatterProfile userId={chatPartnerId} back={returnToMessages} />;
   }
 
   return (

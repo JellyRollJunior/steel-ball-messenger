@@ -1,3 +1,6 @@
+import { useContext, useEffect } from 'react';
+import { ToastContext } from '../../../providers/ToastContext/ToastContext.jsx';
+import { useChatterProfile } from '../../../hooks/useChatterProfile.js';
 import { IconButton } from '../../../components/IconButton/IconButton.jsx';
 import styles from './ChatterProfile.module.css';
 import profileStyles from '../Profile/Profile.module.css';
@@ -5,40 +8,16 @@ import leftArrow from '../../../assets/icons/left-arrow.svg';
 import steelBall from '../../../assets/images/steel-ball.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { useEffect, useState } from 'react';
-import { makeRequest } from '../../../utils/requests.js';
-import { getUrl } from '../../../utils/serverUrl.js';
-import { handleTokenError } from '../../../utils/handleTokenError.js';
-import { useNavigate } from 'react-router';
 
 const ChatterProfile = ({ userId, back }) => {
-  const navigate = useNavigate();
-  const [profile, setProfile] = useState(null);
+  const { createToast } = useContext(ToastContext);
+  const { profile, error } = useChatterProfile(userId);
 
   useEffect(() => {
-    const abortController = new AbortController();
-
-    const fetchUserInfo = async () => {
-      const token = localStorage.getItem('token');
-      try {
-        const data = await makeRequest(getUrl(`/users/${userId}/profiles`), {
-          mode: 'cors',
-          method: 'GET',
-          headers: {
-            Authorizaton: `bearer ${token}`,
-          },
-          signal: abortController.signal,
-        });
-        setProfile(data);
-      } catch (error) {
-        handleTokenError(error, navigate);
-      }
-    };
-
-    fetchUserInfo();
-
-    return () => abortController.abort();
-  }, [userId, navigate]);
+    if (error) {
+      createToast('Unable to fetch user profile');
+    }
+  }, [error, createToast]);
 
   return (
     <motion.div className={styles.layout}>
@@ -48,7 +27,7 @@ const ChatterProfile = ({ userId, back }) => {
           <h2 className={profileStyles.title}>Username</h2>
         </header>
         <h1 className={profileStyles.username}>
-          {profile && profile.name ? profile.name : 'Username'}
+          {profile && profile.username ? profile.username : 'Username'}
         </h1>
       </div>
       <div className={profileStyles.widget}>
