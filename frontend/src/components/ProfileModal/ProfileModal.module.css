@@ -1,0 +1,14 @@
+.wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 998;
+}
+
+.layout {
+  composes: card from '../../styles/shared.module.css';
+  position: relative;
+  top: -50%;
+  left: -50%;
+  border-radius: 24px;
+}

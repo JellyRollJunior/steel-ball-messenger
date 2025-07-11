@@ -45,9 +45,13 @@
 
 ## TODOS - frontend
 
+-   view other profiles
+    -   show profile modal 
+        -   on click username title
+
+
 ### TODO LATER
 
--   view other profiles
 -   desktop view
 -   socket
 
