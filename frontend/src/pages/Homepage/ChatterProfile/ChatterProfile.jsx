@@ -20,7 +20,7 @@ const ChatterProfile = ({ userId, back }) => {
   }, [error, createToast]);
 
   return (
-    <motion.div className={styles.layout}>
+    <motion.div className={styles.layout} initial={{ x: 100 }} animate={{ x: 0}}>
       <div className={profileStyles.widget}>
         <header className={styles.header}>
           <IconButton onClick={back} icon={leftArrow} size={26} />
