@@ -46,8 +46,12 @@
 ## TODOS - frontend
 
 -   view other profiles
+    -   click tusk button on messages to go to profile 
     -   show profile modal 
         -   on click username title
+    -   add content to profile modal
+    -   make request using supplied user Id
+    -   
 
 
 ### TODO LATER

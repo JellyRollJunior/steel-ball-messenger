@@ -11,8 +11,10 @@ import { TextInput } from '../../../components/TextInput/TextInput.jsx';
 import styles from './Messages.module.css';
 import shared from '../../../styles/shared.module.css';
 import leftArrow from '../../../assets/icons/left-arrow.svg';
+import tusk from '../../../assets/images/tusk.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
+import { ProfileModal } from '../../../components/ProfileModal/ProfileModal.jsx';
 
 const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const navigate = useNavigate();
@@ -21,6 +23,7 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
   const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
     if (error) {
@@ -61,6 +64,10 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
     }
   }, [messages]);
 
+  if (showProfile) {
+    return <ProfileModal userId={userId} />;
+  }
+
   return (
     <motion.section
       className={shared.headerContentInputLayout}
@@ -76,6 +83,12 @@ const Messages = ({ userId, chatPartnerUsernames, chatId, returnToChats }) => {
       <header className={styles.header}>
         <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
+        <IconButton
+          onClick={() => setShowProfile(true)}
+          icon={tusk}
+          size={32}
+          style={{ marginLeft: 'auto' }}
+        />
       </header>
       <ul className={styles.messagesWrapper}>
         {reversedMessages &&
