@@ -6,9 +6,32 @@ import tusk from '../../assets/images/tusk.png';
 import steelBallRun from '../../assets/images/SBR.png';
 
 const pages = Object.freeze({
-  CHATS: { name: 'Chats', icon: steelBall, backgroundImage: gyro },
-  NEWCHAT: { name: 'New Chat', icon: steelBallRun, backgroundImage: valentine },
-  PROFILE: { name: 'Profile', icon: tusk, backgroundImage: johnny  },
+    CHATS: {
+        name: 'Chats',
+        icon: steelBall,
+        backgroundImage: gyro,
+        isNav: true,
+    },
+    NEWCHAT: {
+        name: 'New Chat',
+        icon: steelBallRun,
+        backgroundImage: valentine,
+        isNav: true,
+    },
+    PROFILE: {
+        name: 'Profile',
+        icon: tusk,
+        backgroundImage: johnny,
+        isNav: true,
+    },
+    MESSAGES: {
+        name: 'Messages',
+        isNav: false,
+    },
+    CHATTERPROFILE: {
+        name: 'Chatter Profile',
+        isNav: false,
+    }
 });
 
-export { pages}
+export { pages };

@@ -24,6 +24,8 @@
 -   Frontend
     -   Font face font-weights (didn't know i could set those)
     -   "Scroll" to newest message by using flex column-reverse and rendering messages in reverse order
+    -   First time using CSS libraries (Motion)
+        -   Motion is very fun and easy to use! I will use it for my future projects for sure
 
 ### Retrospective aka yapping
 
@@ -38,6 +40,8 @@
 -   Proud: custom "liquid glass" card stying
 -   as always, color palette pulled from Araki's art
 -   Learning to prioritize fixes. Critical first, non pertinent later
+-   Make use of fixed for nav bars next time
+    -   Maybe learn tailwind instead. I see a lot of other projects using it
 
 ## TODOS - backend
 
@@ -45,12 +49,12 @@
 
 ## TODOS - frontend
 
+-   desktop view
+    -   scroll bar styling
+
 ### TODO LATER
 
--   desktop view
 -   socket
 
 -   bug: profile -> bio + username overflow
 -   bug: login button should be disabled when logging in (also signup)
-
--   extra: allow selecting multiple users (group chats)
