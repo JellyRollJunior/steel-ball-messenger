@@ -71,7 +71,7 @@ const Homepage = () => {
         // if screensize <= 1000
         //  - render messages
         //  - else, do not render messages, render chats
-        return (
+        return window.innerWidth <= 1000 ? (
           <Messages
             userId={user ? user.id : null}
             chatId={messagesData ? messagesData.chatId : null}
@@ -79,17 +79,25 @@ const Homepage = () => {
             chatPartnerUsernames={messagesData ? messagesData.usernames : null}
             renderChatterProfile={renderChatterProfile}
           />
+        ) : (
+          <Chats
+            userId={user ? user.id : null}
+            username={user ? user.username : null}
+            renderMessages={renderMessages}
+          />
         );
       case pages.CHATTERPROFILE.name:
         return (
           <ChatterProfile
             userId={chatPartner.id}
             renderMessages={() =>
-              renderMessages(
-                messagesData.chatId,
-                messagesData.usernames,
-                messagesData.chatPartnerId
-              )
+              messagesData
+                ? renderMessages(
+                    messagesData.chatId,
+                    messagesData.usernames,
+                    messagesData.chatPartnerId
+                  )
+                : setPageContent(pages.CHATS)
             }
           />
         );
@@ -137,6 +145,7 @@ const Homepage = () => {
           chatPartnerId={messagesData ? messagesData.chatPartnerId : null}
           chatPartnerUsernames={messagesData ? messagesData.usernames : null}
           renderChatterProfile={renderChatterProfile}
+          isBackButtonShown={false}
         />
       </div>
     </div>

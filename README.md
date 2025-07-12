@@ -50,12 +50,9 @@
 ## TODOS - frontend
 
 -   desktop view
-    -   decouple messages and chatter profile rendering from chats page
     -   scroll bar styling
-    -   messages section
-        -   basic layout
-        -   render if screen width >= certain amount
-        -   move messages page render condition up 
+    -   messages 
+        -   if no chat selected, display select a chat message
 
 ### TODO LATER
 

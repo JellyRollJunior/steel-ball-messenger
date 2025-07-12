@@ -23,6 +23,7 @@ const Messages = ({
   chatPartnerUsernames,
   renderChatterProfile = () => {},
   chatPartnerId,
+  isBackButtonShown = true,
 }) => {
   const navigate = useNavigate();
   const { createToast } = useContext(ToastContext);
@@ -86,7 +87,7 @@ const Messages = ({
       layout
     >
       <header className={styles.header}>
-        <IconButton onClick={renderChats} icon={leftArrow} size={26} />
+        {isBackButtonShown && <IconButton onClick={renderChats} icon={leftArrow} size={26} />}
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
         <IconButton
           onClick={() => renderChatterProfile(chatPartnerId)}
