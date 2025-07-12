@@ -55,8 +55,18 @@
   }
 
   .footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     height: 100%;
     width: 100%;
     border-radius: 12px;
+  }
+
+  .buttonHolder {
+    display: flex;
+    gap: 16px;
+    margin: 6px 0 3px 0;
   }
 }

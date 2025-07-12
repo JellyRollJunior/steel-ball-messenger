@@ -6,13 +6,16 @@ import { PageContentContext } from '../../providers/PageContentContext/PageConte
 import { pages } from './pages.js';
 import { IconButton } from '../../components/IconButton/IconButton.jsx';
 import { Chats } from './Chats/Chats.jsx';
+import { Messages } from './Messages/Messages.jsx';
 import { NewChat } from './NewChat/NewChat.jsx';
 import { Profile } from './Profile/Profile.jsx';
+import { ChatterProfile } from './ChatterProfile/ChatterProfile.jsx';
 import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
 import gyro from '../../assets/backgroundImages/gyro-headshot.png';
-import { Messages } from './Messages/Messages.jsx';
-import { ChatterProfile } from './ChatterProfile/ChatterProfile.jsx';
+import github from '../../assets/icons/github-60.png';
+import instagram from '../../assets/icons/instagram-60.png';
+import linkedin from '../../assets/icons/linkedin-60.png';
 
 const Homepage = () => {
   const { user, error, refetch } = useCurrent();
@@ -150,7 +153,26 @@ const Homepage = () => {
           />
         </div>
         <footer className={styles.footerWrapper}>
-          <div className={`${styles.footer} ${shared.card}`}></div>
+          <div className={`${styles.footer} ${shared.card}`}>
+            <div className={styles.buttonHolder}>
+              <a href="https://github.com/jellyrolljunior" target="”_blank”">
+                <IconButton icon={github} size={36} />
+              </a>
+              <a
+                href="https://www.instagram.com/river.flows__"
+                target="”_blank”"
+              >
+                <IconButton icon={instagram} size={36} />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jellyrolljunior/"
+                target="”_blank”"
+              >
+                <IconButton icon={linkedin} size={36} />
+              </a>
+            </div>
+            <p>Created by JellyRollJunior (Brandon Lin)</p>
+          </div>
         </footer>
       </div>
     </div>

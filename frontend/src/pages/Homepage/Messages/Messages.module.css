@@ -4,6 +4,7 @@
   justify-content: start;
   align-items: center;
   gap: 6px;
+  min-height: 51px;
 }
 
 .backButton {
