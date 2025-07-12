@@ -6,6 +6,8 @@
   --green: #5bbd1e;
 
   position: relative;
+  scrollbar-color: rgb(219, 219, 219) rgb(0, 0, 0, 0);
+  scrollbar-width: thin;
 }
 
 ul {

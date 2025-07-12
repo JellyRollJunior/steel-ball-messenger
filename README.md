@@ -50,9 +50,7 @@
 ## TODOS - frontend
 
 -   desktop view
-    -   scroll bar styling
-    -   messages 
-        -   if no chat selected, display select a chat message
+    -   bug: lot so messages overflow app height
 
 ### TODO LATER
 
