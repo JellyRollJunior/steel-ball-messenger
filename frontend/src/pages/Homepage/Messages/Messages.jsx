@@ -14,28 +14,33 @@ import leftArrow from '../../../assets/icons/left-arrow.svg';
 import tusk from '../../../assets/images/tusk.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
-import { ChatterProfile } from '../ChatterProfile/ChatterProfile.jsx';
+import { PageContentContext } from '../../../providers/PageContentContext/PageContentContext.jsx';
+import { pages } from '../pages.js';
 
 const Messages = ({
   userId,
-  chatPartnerUsernames,
-  chatPartnerId,
   chatId,
-  returnToChats,
+  chatPartnerUsernames,
+  renderChatterProfile = () => {},
+  chatPartnerId,
 }) => {
   const navigate = useNavigate();
   const { createToast } = useContext(ToastContext);
+  const { setPageContent } = useContext(PageContentContext);
   const { messages, error, refetch: refetchMessages } = useMessages(chatId);
   const [reversedMessages, setReverseMessages] = useState([]);
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
-  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
     if (error) {
       createToast('Unable to fetch messages', true);
     }
-  }, [error, createToast]);
+
+    if (Array.isArray(messages)) {
+      setReverseMessages(messages.slice(0).reverse());
+    }
+  }, [error, createToast, messages]);
 
   const sendMessage = async (event) => {
     event.preventDefault();
@@ -64,19 +69,9 @@ const Messages = ({
     }
   };
 
-  useEffect(() => {
-    if (Array.isArray(messages)) {
-      setReverseMessages(messages.slice(0).reverse());
-    }
-  }, [messages]);
-
-  const returnToMessages = () => {
-    setShowProfile(false);
+  const renderChats = () => {
+    setPageContent(pages.CHATS);
   };
-
-  if (showProfile) {
-    return <ChatterProfile userId={chatPartnerId} back={returnToMessages} />;
-  }
 
   return (
     <motion.section
@@ -91,10 +86,10 @@ const Messages = ({
       layout
     >
       <header className={styles.header}>
-        <IconButton onClick={returnToChats} icon={leftArrow} size={26} />
+        <IconButton onClick={renderChats} icon={leftArrow} size={26} />
         <h1 className={shared.title}>{chatPartnerUsernames}</h1>
         <IconButton
-          onClick={() => setShowProfile(true)}
+          onClick={() => renderChatterProfile(chatPartnerId)}
           icon={tusk}
           size={32}
           style={{ marginLeft: 'auto' }}

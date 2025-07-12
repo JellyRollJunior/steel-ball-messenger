@@ -26,10 +26,12 @@ const pages = Object.freeze({
     },
     MESSAGES: {
         name: 'Messages',
+        backgroundImage: gyro,
         isNav: false,
     },
     CHATTERPROFILE: {
         name: 'Chatter Profile',
+        backgroundImage: gyro,
         isNav: false,
     }
 });

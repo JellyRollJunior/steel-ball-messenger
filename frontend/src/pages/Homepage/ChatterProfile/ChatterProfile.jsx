@@ -9,7 +9,7 @@ import steelBall from '../../../assets/images/steel-ball.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
-const ChatterProfile = ({ userId, back }) => {
+const ChatterProfile = ({ userId, renderMessages }) => {
   const { createToast } = useContext(ToastContext);
   const { profile, error } = useChatterProfile(userId);
 
@@ -23,7 +23,7 @@ const ChatterProfile = ({ userId, back }) => {
     <motion.div className={styles.layout} initial={{ x: 100 }} animate={{ x: 0}}>
       <div className={profileStyles.widget}>
         <header className={styles.header}>
-          <IconButton onClick={back} icon={leftArrow} size={26} />
+          <IconButton onClick={renderMessages} icon={leftArrow} size={26} />
           <h2 className={profileStyles.title}>Username</h2>
         </header>
         <h1 className={profileStyles.username}>

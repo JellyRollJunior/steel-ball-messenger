@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { ToastContext } from '../../providers/ToastContext/ToastContext.jsx';
 import { useCurrent } from '../../hooks/useCurrent.js';
@@ -12,11 +12,14 @@ import styles from './Homepage.module.css';
 import shared from '../../styles/shared.module.css';
 import gyro from '../../assets/backgroundImages/gyro-headshot.png';
 import { Messages } from './Messages/Messages.jsx';
+import { ChatterProfile } from './ChatterProfile/ChatterProfile.jsx';
 
 const Homepage = () => {
   const { user, error, refetch } = useCurrent();
   const { createToast } = useContext(ToastContext);
   const { pageContent, setPageContent } = useContext(PageContentContext);
+  const [messagesData, setMessagesData] = useState(null);
+  const [chatPartner, setChatPartner] = useState(null);
 
   // redirect to login if no token
   const navigate = useNavigate();
@@ -27,6 +30,22 @@ const Homepage = () => {
       createToast('Unable to retrieve user info', true);
     }
   }, [createToast, error]);
+
+  const renderMessages = (chatId, usernames, chatPartnerId) => {
+    setMessagesData({
+      chatId,
+      usernames,
+      chatPartnerId,
+    });
+    setPageContent(pages.MESSAGES);
+  };
+
+  const renderChatterProfile = (chatPartnerId) => {
+    setChatPartner({
+      id: chatPartnerId,
+    });
+    setPageContent(pages.CHATTERPROFILE);
+  };
 
   const renderMainContent = () => {
     switch (pageContent.name) {
@@ -45,6 +64,33 @@ const Homepage = () => {
           <Chats
             userId={user ? user.id : null}
             username={user ? user.username : null}
+            renderMessages={renderMessages}
+          />
+        );
+      case pages.MESSAGES.name:
+        // if screensize <= 1000
+        //  - render messages
+        //  - else, do not render messages, render chats
+        return (
+          <Messages
+            userId={user ? user.id : null}
+            chatId={messagesData ? messagesData.chatId : null}
+            chatPartnerId={messagesData ? messagesData.chatPartnerId : null}
+            chatPartnerUsernames={messagesData ? messagesData.usernames : null}
+            renderChatterProfile={renderChatterProfile}
+          />
+        );
+      case pages.CHATTERPROFILE.name:
+        return (
+          <ChatterProfile
+            userId={chatPartner.id}
+            renderMessages={() =>
+              renderMessages(
+                messagesData.chatId,
+                messagesData.usernames,
+                messagesData.chatPartnerId
+              )
+            }
           />
         );
       default:
@@ -64,23 +110,34 @@ const Homepage = () => {
       <div className={styles.mainLayout}>
         <main className={styles.contentWrapper}>{renderMainContent()}</main>
         <nav className={`${styles.nav} ${shared.card}`}>
-          {Object.values(pages).map((page) => page.isNav && (
-            <div
-              className={pageContent.name == page.name ? styles.selected : ''}
-              key={page.name}
-            >
-              <IconButton
-                onClick={() => setPageContent(page)}
-                label={page.name}
-                icon={page.icon}
-                size={52}
-              />
-            </div>
-          ))}
+          {Object.values(pages).map(
+            (page) =>
+              page.isNav && (
+                <div
+                  className={
+                    pageContent.name == page.name ? styles.selected : ''
+                  }
+                  key={page.name}
+                >
+                  <IconButton
+                    onClick={() => setPageContent(page)}
+                    label={page.name}
+                    icon={page.icon}
+                    size={52}
+                  />
+                </div>
+              )
+          )}
         </nav>
       </div>
       <div className={styles.asideWrapper}>
-        <Messages />
+        <Messages
+          userId={user ? user.id : null}
+          chatId={messagesData ? messagesData.chatId : null}
+          chatPartnerId={messagesData ? messagesData.chatPartnerId : null}
+          chatPartnerUsernames={messagesData ? messagesData.usernames : null}
+          renderChatterProfile={renderChatterProfile}
+        />
       </div>
     </div>
   );

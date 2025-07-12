@@ -14,13 +14,10 @@ import steelBallRun from '../../../assets/images/SBR.png';
 // eslint-disable-next-line no-unused-vars
 import { motion } from 'motion/react';
 
-const Chats = ({ userId, username }) => {
-  const { chats, isLoading, error, refetch } = useChats();
+const Chats = ({ userId, username, renderMessages }) => {
+  const { chats, isLoading, error } = useChats();
   const { createToast } = useContext(ToastContext);
   const { setPageContent } = useContext(PageContentContext);
-  const [chatId, setChatId] = useState(null);
-  const [chatPartnerUsernames, setChatPartnerUsernames] = useState('');
-  const [chatPartnerId, setChatPartnerId] = useState(null);
   const [search, setSearch] = useState('');
   const [filteredChats, setFilteredChats] = useState([]);
 
@@ -67,31 +64,8 @@ const Chats = ({ userId, username }) => {
     }
   };
 
-  const returnToChats = () => {
-    setChatId(null);
-    refetch();
-  };
-
-  const navigateToMessages = (id, chatName, chatPartnerId) => {
-    setChatId(id);
-    setChatPartnerUsernames(chatName);
-    setChatPartnerId(chatPartnerId);
-  };
-
-  if (chatId) {
-    return (
-      <Messages
-        userId={userId}
-        chatId={chatId}
-        chatPartnerUsernames={chatPartnerUsernames}
-        chatPartnerId={chatPartnerId}
-        returnToChats={returnToChats}
-      />
-    );
-  }
-
   const nullChats = [];
-  if (!chatId) {
+  
     return (
       <motion.section
         className={shared.headerContentInputLayout}
@@ -135,7 +109,7 @@ const Chats = ({ userId, username }) => {
                       chat.latestMessage ? chat.latestMessage.content : null
                     }
                     onClick={() =>
-                      navigateToMessages(
+                      renderMessages(
                         chat.id,
                         getUsernames(chat),
                         getChatPartnerId(chat)
@@ -159,7 +133,7 @@ const Chats = ({ userId, username }) => {
                       chat.latestMessage ? chat.latestMessage.content : null
                     }
                     onClick={() =>
-                      navigateToMessages(chat.id, getUsernames(chat))
+                      renderMessages(chat.id, getUsernames(chat), getChatPartnerId(chat))
                     }
                   />
                 )
@@ -182,7 +156,7 @@ const Chats = ({ userId, username }) => {
         />
       </motion.section>
     );
-  }
+  
 };
 
 export { Chats };
