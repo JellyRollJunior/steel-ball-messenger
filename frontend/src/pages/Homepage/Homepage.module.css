@@ -48,6 +48,7 @@
     height: 100%;
     width: 100%;
     padding: 14px 18px 8px 18px;
+    overflow: hidden;
   }
 
   .footerWrapper {
