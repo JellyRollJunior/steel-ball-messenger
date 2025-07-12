@@ -29,7 +29,7 @@ const Messages = ({
   const { createToast } = useContext(ToastContext);
   const { setPageContent } = useContext(PageContentContext);
   const { messages, error, refetch: refetchMessages } = useMessages(chatId);
-  const [reversedMessages, setReverseMessages] = useState([]);
+  const [reversedMessages, setReverseMessages] = useState();
   const [message, setMessage] = useState('');
   const [isDisabled, setIsDisabled] = useState(false);
 
@@ -128,6 +128,11 @@ const Messages = ({
           <li className={styles.messageWrapper}>
             <div className={styles.date}>Start the conversation!</div>
           </li>
+        )}
+        {!reversedMessages && (
+          <li className={styles.messageWrapper}>
+            <div className={styles.date}>Select a chat to view messages!</div>
+          </li>     
         )}
       </ul>
       <form onSubmit={sendMessage}>

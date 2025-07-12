@@ -138,15 +138,20 @@ const Homepage = () => {
           )}
         </nav>
       </div>
-      <div className={styles.asideWrapper}>
-        <Messages
-          userId={user ? user.id : null}
-          chatId={messagesData ? messagesData.chatId : null}
-          chatPartnerId={messagesData ? messagesData.chatPartnerId : null}
-          chatPartnerUsernames={messagesData ? messagesData.usernames : null}
-          renderChatterProfile={renderChatterProfile}
-          isBackButtonShown={false}
-        />
+      <div className={styles.mainLayout}>
+        <div className={styles.asideWrapper}>
+          <Messages
+            userId={user ? user.id : null}
+            chatId={messagesData ? messagesData.chatId : null}
+            chatPartnerId={messagesData ? messagesData.chatPartnerId : null}
+            chatPartnerUsernames={messagesData ? messagesData.usernames : null}
+            renderChatterProfile={renderChatterProfile}
+            isBackButtonShown={false}
+          />
+        </div>
+        <footer className={styles.footerWrapper}>
+          <div className={`${styles.footer} ${shared.card}`}></div>
+        </footer>
       </div>
     </div>
   );
