@@ -141,7 +141,7 @@ const Homepage = () => {
           )}
         </nav>
       </div>
-      <div className={styles.mainLayout}>
+      <div className={`${styles.mainLayout} ${styles.desktopOnly}`}>
         <div className={styles.asideWrapper}>
           <Messages
             userId={user ? user.id : null}

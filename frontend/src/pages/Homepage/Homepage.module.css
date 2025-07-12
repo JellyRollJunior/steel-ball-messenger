@@ -28,7 +28,7 @@
   border-radius: 16px;
 }
 
-.asideWrapper {
+.desktopOnly {
   display: none;
 }
 
@@ -38,13 +38,16 @@
     grid-template-columns: 1fr 2fr;
   }
 
+  .desktopOnly {
+    display: grid;
+  }
+
   .mainLayout {
     width: 100%;
     grid-row: span 2;
   }
 
   .asideWrapper {
-    display: block;
     height: 100%;
     width: 100%;
     padding: 14px 18px 8px 18px;
