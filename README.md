@@ -1,4 +1,65 @@
-# steel-ball-messenger
+<h1 align="center">Steel Ball Messenger</h1>
+<h3 align="center">Message your friends to the theme of Steel Ball Run by Araki Hirohiko</h3>
+<p align="center">
+    <img width="700px" src="./readme/desktop-overview.gif" >
+</p>
+
+### Description
+
+-   Message your friends by creating chats
+-   Personalize your account with a custom bio
+
+### Features
+
+-   Account signup and authorization
+-   Messages, chats, and bio saved on database
+-   Creating chats between two accounts
+-   Profiles for every account
+-   Latest message shown for each chat shown on chats page
+-   Search bar for filtering chats and users
+-   Neat login / signup / loading animations
+-   Mobile and Desktop design
+-   Neat design 8) Cool art!
+
+### App Showcase
+
+| Mobile overview (gif)                            |
+| ------------------------------------------------ |
+| <img width="400px" src="./readme/overview.gif" > |
+
+| Send Message, latest message, search (gif)                     |
+| -------------------------------------------------------------- |
+| <img width="400px" src="./readme/search-messages-latest.gif" > |
+
+| View other user profile (gif)                        |
+| ---------------------------------------------------- |
+| <img width="400px" src="./readme/other-profile.gif"> |
+
+| Edit bio (gif)                                   |
+| ------------------------------------------------ |
+| <img width="400px" src="./readme/edit-bio.gif" > |
+
+| Login (gif)                                  | Logout                                         |
+| -------------------------------------------- | ---------------------------------------------- |
+| <img width="400px" src="./readme/login.gif"> | <img width="400px" src="./readme/signup.png" > |
+
+### Server Stack
+
+-   NodeJS, Express
+-   Prisma ORM, PostgreSQL
+-   Other libraries
+    -   Jsonwebtoken
+    -   dotenv
+    -   express-validator
+
+### Frontend Stack
+
+-   React, JSX
+-   CSS Modules
+-   libraries
+    -   react-router
+    -   motion
+    -   date-fns
 
 ### Endpoints
 
@@ -22,13 +83,26 @@
     -   using prisma connect to connect two models! neato
 
 -   Frontend
+
+    -   One page design
     -   Font face font-weights (didn't know i could set those)
     -   "Scroll" to newest message by using flex column-reverse and rendering messages in reverse order
+    -   First time implement search filtering! It was fun
     -   First time using CSS libraries (Motion)
         -   Motion is very fun and easy to use! I will use it for my future projects for sure
 
 ### Retrospective aka yapping
 
+-   Although not my favorite project, I learned the most from this one
+    -   I would like to plan out the architecture of my frontend more clearly before coding!
+-   I got burned by not planning my frontend design
+    -   Original prototype was ugly and was not fun to code
+    -   Final design was not up to my standard for design
+    -   However: This is my first time doing a one page navigation
+        -   Mobile-ish first design! Looks like an app haha
+        -   I am proud for experimenting with doing one, even if my implementation could use some work
+    -   Actionable items
+        -   Spend a day designing the frontend before coding frontend!
 -   I tried implement backend and frontend at the same time again. I would make a basic UI after completing each backend feature (just enough to use the backend).
     -   pros:
         -   Actually using each backend route is useful because it shows what data to return and what is not needed
@@ -38,23 +112,28 @@
     -   Takeaways: I will continue this process but treat the basic frontend as a prototype and delete it after backend is "complete"
 -   getting confident using prisma select and include
 -   Proud: custom "liquid glass" card stying
--   as always, color palette pulled from Araki's art
 -   Learning to prioritize fixes. Critical first, non pertinent later
--   Make use of fixed for nav bars next time
-    -   Maybe learn tailwind instead. I see a lot of other projects using it
 
-## TODOS - backend
+### Start commands
 
--   FIX: disallow creating chats that already exist (same users)
+```bash
+# Start backend server
+cd backend
+npm install
+node app.js
+```
 
-## TODOS - frontend
+```bash
+# Start frontend react
+cd frontend
+npm install
+npm run dev
+```
 
--   desktop view
-    -   bug: lot so messages overflow app height
+### Acknowledgements
 
-### TODO LATER
-
--   socket
-
--   bug: profile -> bio + username overflow
--   bug: login button should be disabled when logging in (also signup)
+| Usage  | Source                                                                                              |
+| ------ | --------------------------------------------------------------------------------------------------- |
+| Images | Araki Hirohiko                                                                                      |
+| Icons  | icons8.com                                                                                          |
+| Specs  | [The Odin Project](https://www.theodinproject.com/lessons/nodejs-where-s-waldo-a-photo-tagging-app) |
