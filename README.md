@@ -54,7 +54,7 @@
 
 ### Frontend Stack
 
--   React, JSX
+-   React (Vite), JSX
 -   CSS Modules
 -   libraries
     -   react-router
