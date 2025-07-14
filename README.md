@@ -19,6 +19,7 @@
 -   Search bar for filtering chats and users
 -   Neat login / signup / loading animations
 -   Mobile and Desktop design
+-   Toast alerts designed by ME! I DID IT!
 -   Neat design 8) Cool art!
 
 ### App Showcase
